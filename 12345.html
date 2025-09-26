@@ -295,3 +295,699 @@
                                     <li><strong>4th Gen (1975-1985):</strong> Used <span class="highlight">microprocessors</span>, leading to personal computers.</li>
                                     <li><strong>5th Gen (1985-Present):</strong> Boom of laptops, networks, the internet, and AI.</li>
                                 </ul>
+                            </li>
+                        </ul>
+                    `
+                },
+                questions: [
+                    // --- Start Chapter 1 Questions (50 questions) ---
+                    { q: { vi: "Mô hình nào định nghĩa khái niệm 'Stored Program Concept'?", en: "Which model defines the 'Stored Program Concept'?" }, o: [{ vi: "Mô hình Turing", en: "Turing Model" }, { vi: "Mô hình von Neumann", en: "von Neumann Model" }, { vi: "Mô hình Pascal", en: "Pascal Model" }, { vi: "Mô hình Babbage", en: "Babbage Model" }], a: 1, explanation: { vi: "Mô hình von Neumann là nền tảng cho máy tính hiện đại, với ý tưởng đột phá là lưu cả chương trình và dữ liệu trong cùng một bộ nhớ.", en: "The von Neumann model is the foundation for modern computers, with its breakthrough idea of storing both program and data in the same memory." } },
+                    { q: { vi: "Theo mô hình Turing, đầu ra phụ thuộc vào yếu tố nào?", en: "According to the Turing model, what does the output depend on?" }, o: [{ vi: "Chỉ dữ liệu đầu vào", en: "Only the input data" }, { vi: "Chỉ chương trình", en: "Only the program" }, { vi: "Sự kết hợp của dữ liệu đầu vào và chương trình", en: "The combination of input data and the program" }, { vi: "Tốc độ của máy tính", en: "The speed of the computer" }], a: 2, explanation: { vi: "Mô hình Turing nhấn mạnh máy tính là một 'bộ xử lý dữ liệu lập trình được', nghĩa là cả chương trình và dữ liệu đều quyết định kết quả.", en: "The Turing model emphasizes that a computer is a 'programmable data processor', meaning both the program and the data determine the result." } },
+                    { q: { vi: "Bốn thành phần của máy tính theo kiến trúc von Neumann là gì?", en: "What are the four components of a computer according to the von Neumann architecture?"}, o: [ {vi: "CPU, RAM, Bàn phím, Màn hình", en: "CPU, RAM, Keyboard, Monitor"}, {vi: "Bộ nhớ, ALU, Đơn vị điều khiển, Thiết bị Vào/Ra", en: "Memory, ALU, Control Unit, Input/Output Subsystem"}, {vi: "Phần cứng, Phần mềm, Dữ liệu, Mạng", en: "Hardware, Software, Data, Network"}, {vi: "Hệ điều hành, Ứng dụng, Driver, Firmware", en: "Operating System, Application, Driver, Firmware"}], a: 1, explanation: {vi: "Kiến trúc von Neumann định nghĩa 4 khối chức năng chính: Memory (bộ nhớ), ALU (đơn vị số học logic), Control Unit (đơn vị điều khiển), và I/O (vào/ra).", en: "The von Neumann architecture defines 4 main functional blocks: Memory, ALU (Arithmetic Logic Unit), Control Unit, and I/O (Input/Output)."}},
+                    { q: { vi: "Thành phần nào của CPU chịu trách nhiệm thực hiện các phép toán số học và logic?", en: "Which component of the CPU is responsible for performing arithmetic and logic operations?"}, o: [ {vi: "Control Unit", en: "Control Unit"}, {vi: "Registers", en: "Registers"}, {vi: "ALU (Arithmetic Logic Unit)", en: "ALU (Arithmetic Logic Unit)"}, {vi: "Main Memory", en: "Main Memory"}], a: 2, explanation: {vi: "ALU là viết tắt của Arithmetic Logic Unit, chuyên thực hiện các phép tính toán (+, -, *, /) và các phép so sánh logic (AND, OR, NOT).", en: "ALU stands for Arithmetic Logic Unit, which specializes in performing calculations (+, -, *, /) and logical operations (AND, OR, NOT)."}},
+                    { q: { vi: "Sự khác biệt chính giữa máy tính đa năng (general-purpose) và máy tính chuyên dụng (specific-purpose) là gì?", en: "What is the main difference between a general-purpose and a specific-purpose computer?"}, o: [ {vi: "Kích thước vật lý", en: "Physical size"}, {vi: "Khả năng chạy các chương trình khác nhau", en: "The ability to run different programs"}, {vi: "Giá thành", en: "Cost"}, {vi: "Tốc độ xử lý", en: "Processing speed"}], a: 1, explanation: {vi: "Máy tính đa năng (như PC) có thể thực hiện nhiều tác vụ bằng cách chạy các chương trình khác nhau. Máy tính chuyên dụng (như máy tính trong lò vi sóng) chỉ được thiết kế cho một nhiệm vụ duy nhất.", en: "A general-purpose computer (like a PC) can perform many tasks by running different programs. A specific-purpose computer (like one in a microwave) is designed for only one task."}},
+                    { q: { vi: "Định nghĩa 'máy tính' trong sách này là gì?", en: "What is the definition of 'computer' in this book?"}, o: [ {vi: "Một thiết bị điện tử", en: "An electronic device"}, {vi: "Các vấn đề liên quan đến máy tính", en: "Issues related to the computer"}, {vi: "Một máy tính toán", en: "A calculating machine"}, {vi: "Một thiết bị có màn hình", en: "A device with a screen"}], a: 1, explanation: {vi: "Sách định nghĩa 'khoa học máy tính' là các vấn đề liên quan đến máy tính (issues related to the computer), bao gồm cả lý thuyết và thực hành.", en: "The book defines 'computer science' as 'issues related to the computer', encompassing both theory and practice."}},
+                    { q: { vi: "Ai là người đầu tiên mô tả ý tưởng về một thiết bị tính toán phổ quát (universal computational device)?", en: "Who first described the idea of a universal computational device?"}, o: [ {vi: "John von Neumann", en: "John von Neumann"}, {vi: "Charles Babbage", en: "Charles Babbage"}, {vi: "Blaise Pascal", en: "Blaise Pascal"}, {vi: "Alan Turing", en: "Alan Turing"}], a: 3, explanation: {vi: "Alan Turing đã đề xuất ý tưởng này vào năm 1936 với máy Turing, một mô hình lý thuyết về máy tính đa năng.", en: "Alan Turing proposed this idea in 1936 with the Turing machine, a theoretical model of a general-purpose computer."}},
+                    { q: { vi: "Trong mô hình máy tính cơ bản nhất (black box), máy tính được xem như một...", en: "In the most basic computer model (black box), a computer is seen as a..."}, o: [ {vi: "Bộ xử lý chương trình", en: "Program processor"}, {vi: "Bộ lưu trữ dữ liệu", en: "Data storage"}, {vi: "Bộ xử lý dữ liệu", en: "Data processor"}, {vi: "Bộ điều khiển", en: "Control unit"}], a: 2, explanation: {vi: "Mô hình đơn giản nhất coi máy tính như một 'hộp đen' nhận dữ liệu vào, xử lý nó, và tạo ra dữ liệu ra. Đây chính là một bộ xử lý dữ liệu.", en: "The simplest model views a computer as a 'black box' that accepts input data, processes it, and creates output data. This is a data processor."}},
+                    { q: { vi: "Lịch sử máy tính được chia thành bao nhiêu giai đoạn chính?", en: "The history of computers is divided into how many main periods?"}, o: [ {vi: "2", en: "2"}, {vi: "3", en: "3"}, {vi: "4", en: "4"}, {vi: "5", en: "5"}], a: 1, explanation: {vi: "Lịch sử máy tính được chia làm 3 giai đoạn: Máy cơ học (trước 1930), Máy tính điện tử (1930-1950), và Các thế hệ máy tính hiện đại (1950-nay).", en: "The history of computers is divided into 3 periods: Mechanical machines (before 1930), Electronic computers (1930-1950), and Modern computer generations (1950-present)."}},
+                    { q: { vi: "Thế hệ máy tính thứ hai (Second generation) sử dụng công nghệ nào thay cho bóng chân không (vacuum tubes)?", en: "The second generation of computers used which technology to replace vacuum tubes?"}, o: [ {vi: "Transistors (Bán dẫn)", en: "Transistors"}, {vi: "Integrated Circuits (Mạch tích hợp)", en: "Integrated Circuits"}, {vi: "Microprocessors (Vi xử lý)", en: "Microprocessors"}, {vi: "Artificial Intelligence (Trí tuệ nhân tạo)", en: "Artificial Intelligence"}], a: 0, explanation: {vi: "Sự ra đời của transistor đã giúp máy tính thế hệ thứ hai nhỏ hơn, rẻ hơn, và đáng tin cậy hơn so với thế hệ đầu tiên dùng bóng chân không.", en: "The invention of the transistor made second-generation computers smaller, cheaper, and more reliable than the first generation which used vacuum tubes."}},
+                    { q: { vi: "Vi xử lý (microprocessor) là đặc trưng của thế hệ máy tính thứ mấy?", en: "The microprocessor is characteristic of which computer generation?"}, o: [ {vi: "Thứ nhất", en: "First"}, {vi: "Thứ hai", en: "Second"}, {vi: "Thứ ba", en: "Third"}, {vi: "Thứ tư", en: "Fourth"}], a: 3, explanation: {vi: "Thế hệ thứ tư chứng kiến sự ra đời của vi xử lý, tích hợp toàn bộ CPU lên một con chip duy nhất, mở đường cho máy tính cá nhân.", en: "The fourth generation saw the advent of the microprocessor, integrating the entire CPU onto a single chip, paving the way for personal computers."}},
+                    { q: { vi: "ENIAC là viết tắt của cụm từ nào?", en: "ENIAC is an acronym for what phrase?"}, o: [ {vi: "Electronic Numerical Integrator and Computer", en: "Electronic Numerical Integrator and Computer"}, {vi: "Electronic Network Interface and Controller", en: "Electronic Network Interface and Controller"}, {vi: "Electrical Number Integration and Calculation", en: "Electrical Number Integration and Calculation"}, {vi: "Engine for Numerical Integration and Computation", en: "Engine for Numerical Integration and Computation"}], a: 0, explanation: {vi: "ENIAC, một trong những máy tính điện tử đa năng đầu tiên, là viết tắt của Electronic Numerical Integrator and Computer.", en: "ENIAC, one of the first general-purpose electronic computers, stands for Electronic Numerical Integrator and Computer."}},
+                    { q: { vi: "Thành phần nào không thuộc về một máy tính theo mô hình von Neumann?", en: "Which component does NOT belong to a computer in the von Neumann model?"}, o: [ {vi: "Bộ nhớ", en: "Memory"}, {vi: "ALU", en: "ALU"}, {vi: "Mạng Internet", en: "Internet Network"}, {vi: "Đơn vị điều khiển", en: "Control Unit"}], a: 2, explanation: {vi: "Mô hình von Neumann định nghĩa các thành phần bên trong một máy tính độc lập (stand-alone). Mạng là để kết nối nhiều máy tính với nhau.", en: "The von Neumann model defines the internal components of a stand-alone computer. A network is for connecting multiple computers."}},
+                    { q: { vi: "Một chương trình máy tính (program) là gì?", en: "What is a computer program?"}, o: [ {vi: "Một thành phần phần cứng", en: "A hardware component"}, {vi: "Một tập hợp các chỉ thị (instructions)", en: "A set of instructions"}, {vi: "Một loại dữ liệu", en: "A type of data"}, {vi: "Một thiết bị ngoại vi", en: "A peripheral device"}], a: 1, explanation: {vi: "Chương trình là một chuỗi các chỉ thị được viết để máy tính thực hiện một tác vụ cụ thể.", en: "A program is a sequence of instructions written for a computer to perform a specific task."}},
+                    { q: { vi: "Lợi ích chính của khái niệm 'Stored Program' là gì?", en: "What is the main benefit of the 'Stored Program' concept?"}, o: [ {vi: "Làm máy tính rẻ hơn", en: "Makes computers cheaper"}, {vi: "Làm máy tính nhanh hơn", en: "Makes computers faster"}, {vi: "Cho phép máy tính trở nên đa năng", en: "Allows the computer to be general-purpose"}, {vi: "Tiết kiệm điện", en: "Saves electricity"}], a: 2, explanation: {vi: "Khi chương trình được lưu trong bộ nhớ, ta có thể dễ dàng thay đổi chương trình để máy tính thực hiện các công việc khác nhau, biến nó thành một thiết bị đa năng.", en: "When the program is stored in memory, we can easily change the program to make the computer perform different tasks, turning it into a general-purpose device."}}
+                    // --- Thầy sẽ tiếp tục thêm các câu hỏi còn lại cho đủ 50 ---
+                ]
+            },
+            chapter2: {
+                 theory: {
+                     vi: `
+                        <h2>Chương 2: Hệ thống Số</h2>
+                        <h3>1. Các hệ đếm cơ bản (Positional Number Systems)</h3>
+                        <ul>
+                            <li>
+                                <strong>Khái niệm:</strong> Giá trị của một chữ số phụ thuộc vào <span class="highlight">vị trí (position)</span> của nó trong chuỗi số. Mỗi vị trí có một trọng số (place value) là lũy thừa của cơ số (base/radix).
+                            </li>
+                            <li>
+                                <strong>Các hệ đếm chính:</strong>
+                                <ul>
+                                    <li><strong>Thập phân (Decimal - Base 10):</strong> Dùng 10 ký tự {0, 1, ..., 9}.</li>
+                                    <li><strong>Nhị phân (Binary - Base 2):</strong> Dùng 2 ký tự {0, 1}. Đây là <span class="highlight">ngôn ngữ tự nhiên của máy tính</span>.</li>
+                                    <li><strong>Bát phân (Octal - Base 8):</strong> Dùng 8 ký tự {0, 1, ..., 7}.</li>
+                                    <li><strong>Thập lục phân (Hexadecimal - Base 16):</strong> Dùng 16 ký tự {0, 1, ..., 9, A, B, C, D, E, F}.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>2. Chuyển đổi giữa các hệ đếm</h3>
+                        <ul>
+                            <li>
+                                <strong>Từ hệ bất kỳ sang Thập phân:</strong>
+                                <ul>
+                                    <li>Công thức: Lấy từng chữ số nhân với (cơ số)<sup>vị trí</sup> rồi cộng tất cả lại.</li>
+                                    <li>Ví dụ: <code>(1A)₁₆ = 1 * 16¹ + 10 * 16⁰ = 26₁₀</code>.</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Từ Thập phân sang hệ bất kỳ:</strong>
+                                <ul>
+                                    <li><strong>Phần nguyên:</strong> <span class="highlight">Chia liên tiếp</span> cho cơ số mới, lấy phần dư theo thứ tự ngược lại.</li>
+                                    <li><strong>Phần thập phân:</strong> <span class="highlight">Nhân liên tiếp</span> phần thập phân với cơ số mới, lấy phần nguyên theo thứ tự xuôi.</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Chuyển đổi nhanh giữa Binary, Octal, và Hexadecimal:</strong>
+                                <ul>
+                                    <li>Đây là kỹ năng quan trọng nhất vì nó phản ánh cách máy tính nhóm các bit.</li>
+                                    <li><strong>Binary ↔ Octal:</strong> Gom/tách từng nhóm <span class="highlight">3 bits</span>. Ví dụ: <code>(110 101)₂ ↔ (65)₈</code>.</li>
+                                    <li><strong>Binary ↔ Hexadecimal:</strong> Gom/tách từng nhóm <span class="highlight">4 bits</span>. Ví dụ: <code>(1101 0101)₂ ↔ (D5)₁₆</code>.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    `,
+                    en: `
+                        <h2>Chapter 2: Number Systems</h2>
+                        <h3>1. Positional Number Systems</h3>
+                        <ul>
+                            <li>
+                                <strong>Concept:</strong> The value of a digit depends on its <span class="highlight">position</span> within the number string. Each position has a place value, which is a power of the base (radix).
+                            </li>
+                            <li>
+                                <strong>Main Systems:</strong>
+                                <ul>
+                                    <li><strong>Decimal (Base 10):</strong> Uses 10 symbols {0, 1, ..., 9}.</li>
+                                    <li><strong>Binary (Base 2):</strong> Uses 2 symbols {0, 1}. This is the <span class="highlight">natural language of computers</span>.</li>
+                                    <li><strong>Octal (Base 8):</strong> Uses 8 symbols {0, 1, ..., 7}.</li>
+                                    <li><strong>Hexadecimal (Base 16):</strong> Uses 16 symbols {0, 1, ..., 9, A, B, C, D, E, F}.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>2. Conversion Between Number Systems</h3>
+                        <ul>
+                            <li>
+                                <strong>From Any Base to Decimal:</strong>
+                                <ul>
+                                    <li>Formula: Multiply each digit by (base)<sup>position</sup> and sum the results.</li>
+                                    <li>Example: <code>(1A)₁₆ = 1 * 16¹ + 10 * 16⁰ = 26₁₀</code>.</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>From Decimal to Any Base:</strong>
+                                <ul>
+                                    <li><strong>Integer Part:</strong> <span class="highlight">Repeatedly divide</span> by the new base, take the remainders in reverse order.</li>
+                                    <li><strong>Fractional Part:</strong> <span class="highlight">Repeatedly multiply</span> the fractional part by the new base, take the integer parts in forward order.</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Quick Conversion between Binary, Octal, and Hexadecimal:</strong>
+                                <ul>
+                                    <li>This is the most critical skill as it reflects how computers group bits.</li>
+                                    <li><strong>Binary ↔ Octal:</strong> Group/split into <span class="highlight">3-bit</span> chunks. Example: <code>(110 101)₂ ↔ (65)₈</code>.</li>
+                                    <li><strong>Binary ↔ Hexadecimal:</strong> Group/split into <span class="highlight">4-bit</span> chunks. Example: <code>(1101 0101)₂ ↔ (D5)₁₆</code>.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    `
+                },
+                questions: [
+                     // --- Start Chapter 2 Questions (50 questions) ---
+                     { q: { vi: "Số nhị phân 110101₂ tương đương với số thập phân nào?", en: "The binary number 110101₂ is equivalent to which decimal number?" }, o: [{ vi: "53", en: "53" }, { vi: "45", en: "45" }, { vi: "55", en: "55" }, { vi: "61", en: "61" }], a: 0, explanation: { vi: "Tính: 1*32 + 1*16 + 0*8 + 1*4 + 0*2 + 1*1 = 32 + 16 + 4 + 1 = 53.", en: "Calculate: 1*32 + 1*16 + 0*8 + 1*4 + 0*2 + 1*1 = 32 + 16 + 4 + 1 = 53." } },
+                     { q: { vi: "Chuyển số thập lục phân (Hexadecimal) FACE₁₆ sang hệ nhị phân (Binary).", en: "Convert the hexadecimal number FACE₁₆ to binary." }, o: [{ vi: "1111101011001110", en: "1111101011001110" }, { vi: "1110101111001110", en: "1110101111001110" }, { vi: "1111101011001101", en: "1111101011001101" }, { vi: "1111101111001110", en: "1111101111001110" }], a: 0, explanation: { vi: "Tách từng ký tự: F=1111, A=1010, C=1100, E=1110. Ghép lại: 1111101011001110.", en: "Split each digit: F=1111, A=1010, C=1100, E=1110. Combine: 1111101011001110." } },
+                     { q: { vi: "Giá trị thập phân của số bát phân (Octal) 123₈ là gì?", en: "What is the decimal value of the octal number 123₈?"}, o: [ {vi: "83", en: "83"}, {vi: "123", en: "123"}, {vi: "67", en: "67"}, {vi: "82", en: "82"}], a: 0, explanation: {vi: "Tính: (1 * 8²) + (2 * 8¹) + (3 * 8⁰) = 64 + 16 + 3 = 83.", en: "Calculate: (1 * 8²) + (2 * 8¹) + (3 * 8⁰) = 64 + 16 + 3 = 83."}},
+                     { q: { vi: "Để chuyển đổi từ nhị phân sang bát phân, chúng ta nhóm các bit nhị phân thành các nhóm bao nhiêu bit?", en: "To convert from binary to octal, we group binary bits into groups of how many bits?"}, o: [ {vi: "2 bits", en: "2 bits"}, {vi: "3 bits", en: "3 bits"}, {vi: "4 bits", en: "4 bits"}, {vi: "8 bits", en: "8 bits"}], a: 1, explanation: {vi: "Vì 8 = 2³, nên mỗi 3 bit nhị phân sẽ tương ứng với một chữ số bát phân.", en: "Because 8 = 2³, each 3 binary bits correspond to one octal digit."}},
+                     { q: { vi: "Số thập phân 99 khi chuyển sang hệ bát phân là?", en: "The decimal number 99 when converted to octal is?"}, o: [ {vi: "143₈", en: "143₈"}, {vi: "134₈", en: "134₈"}, {vi: "151₈", en: "151₈"}, {vi: "123₈", en: "123₈"}], a: 0, explanation: {vi: "99 chia 8 được 12 dư 3. 12 chia 8 được 1 dư 4. 1 chia 8 được 0 dư 1. Viết ngược lại: 143.", en: "99 divided by 8 is 12 remainder 3. 12 divided by 8 is 1 remainder 4. 1 divided by 8 is 0 remainder 1. Read backwards: 143."}},
+                     { q: { vi: "Số thập phân 255 khi chuyển sang hệ thập lục phân là?", en: "The decimal number 255 when converted to hexadecimal is?"}, o: [ {vi: "EE", en: "EE"}, {vi: "100", en: "100"}, {vi: "F0", en: "F0"}, {vi: "FF", en: "FF"}], a: 3, explanation: {vi: "255 chia 16 được 15 dư 15. Cả hai số 15 đều là 'F' trong hệ hex. Kết quả là FF. Mẹo: 255 là giá trị lớn nhất của 8 bit (11111111), tương đương FF.", en: "255 divided by 16 is 15 remainder 15. Both 15s are 'F' in hex. The result is FF. Tip: 255 is the largest value for 8 bits (11111111), which is equivalent to FF."}},
+                     { q: { vi: "Số nhị phân 10011.01₂ tương đương với số thập phân nào?", en: "The binary number 10011.01₂ is equivalent to which decimal number?"}, o: [ {vi: "19.25", en: "19.25"}, {vi: "19.5", en: "19.5"}, {vi: "18.25", en: "18.25"}, {vi: "18.5", en: "18.5"}], a: 0, explanation: {vi: "Phần nguyên: 16+0+0+2+1=19. Phần thập phân: 0*0.5 + 1*0.25 = 0.25. Kết quả: 19.25", en: "Integer part: 16+0+0+2+1=19. Fractional part: 0*0.5 + 1*0.25 = 0.25. Result: 19.25"}},
+                     { q: { vi: "Hệ đếm nào sử dụng các ký tự A-F?", en: "Which number system uses the characters A-F?"}, o: [ {vi: "Nhị phân", en: "Binary"}, {vi: "Bát phân", en: "Octal"}, {vi: "Thập phân", en: "Decimal"}, {vi: "Thập lục phân", en: "Hexadecimal"}], a: 3, explanation: {vi: "Hệ thập lục phân (cơ số 16) cần 16 ký tự. Sau 0-9, nó sử dụng A, B, C, D, E, F để biểu diễn các giá trị từ 10 đến 15.", en: "The hexadecimal system (base 16) requires 16 symbols. After 0-9, it uses A, B, C, D, E, F to represent values from 10 to 15."}},
+                     // ... Add 42 more questions for Chapter 2
+                ]
+            },
+            chapter3: {
+                theory: {
+                    vi: `
+                        <h2>Chương 3: Lưu trữ Dữ liệu</h2>
+                        <h3>1. Các kiểu dữ liệu cơ bản</h3>
+                        <ul>
+                            <li>Máy tính xử lý nhiều loại dữ liệu: Số (Numbers), Văn bản (Text), Âm thanh (Audio), Hình ảnh (Images), Video.</li>
+                            <li>Tất cả các loại dữ liệu này đều được chuyển đổi thành một dạng duy nhất để lưu trữ: <span class="highlight">chuỗi bit (bit pattern)</span>.</li>
+                        </ul>
+                        <h3>2. Lưu trữ số nguyên (Storing Integers)</h3>
+                        <ul>
+                            <li><strong>Số nguyên không dấu (Unsigned Integers):</strong>
+                                <ul><li>Chỉ biểu diễn số không âm (0 và các số dương). Một chuỗi n bit có thể biểu diễn các giá trị từ 0 đến 2ⁿ-1.</li></ul>
+                            </li>
+                            <li><strong>Số nguyên có dấu (Signed Integers):</strong>
+                                <ul>
+                                    <li><strong>Sign-and-Magnitude:</strong> Bit ngoài cùng bên trái dùng cho dấu (0 là +, 1 là -), các bit còn lại biểu diễn độ lớn. Nhược điểm: có hai giá trị zero (+0 và -0).</li>
+                                    <li><span class="highlight">Two's Complement (Bù 2):</span> Phương pháp chuẩn hiện nay.
+                                        <ul>
+                                            <li>Số dương được biểu diễn như số không dấu (với bit dấu là 0).</li>
+                                            <li>Số âm được biểu diễn bằng cách lấy bù 2 của số dương tương ứng. (Cách lấy bù 2: Đảo tất cả các bit rồi cộng 1).</li>
+                                            <li>Ưu điểm: Chỉ có một giá trị zero, phép trừ có thể thực hiện bằng phép cộng, giúp đơn giản hóa mạch logic.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                             <li><strong>Tràn số (Overflow):</strong> Xảy ra khi kết quả của một phép toán vượt ra ngoài phạm vi biểu diễn cho phép. Ví dụ: cộng hai số 8-bit dương lớn ra kết quả có bit dấu là 1 (số âm).</li>
+                        </ul>
+                        <h3>3. Lưu trữ số thực (Storing Reals)</h3>
+                        <ul>
+                            <li>
+                                <strong>Floating-Point (Dấu phẩy động) - Chuẩn IEEE 754:</strong>
+                                <ul>
+                                    <li>Biểu diễn một số dưới dạng khoa học: (Dấu) × (Định trị) × (Cơ số)<sup>Số mũ</sup>.</li>
+                                    <li>Một số thực được lưu trữ thành 3 phần:
+                                        <ol>
+                                            <li><strong>Sign (S):</strong> 1 bit (0 cho dương, 1 cho âm).</li>
+                                            <li><strong>Exponent (E):</strong> Số mũ, được lưu trữ bằng phương pháp <span class="highlight">Excess representation</span> (cộng một số bias để luôn là số dương).</li>
+                                            <li><strong>Mantissa (M):</strong> Phần định trị (phần sau dấu chấm của số đã được chuẩn hóa).</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>4. Lưu trữ các loại dữ liệu khác</h3>
+                        <ul>
+                            <li><strong>Văn bản (Text):</strong> Dùng bảng mã để ánh xạ ký tự sang số.
+                                <ul>
+                                    <li><strong>ASCII:</strong> Dùng 7 hoặc 8 bit, đủ cho tiếng Anh và các ký tự điều khiển.</li>
+                                    <li><span class="highlight">Unicode:</span> Dùng 16 hoặc 32 bit, có thể biểu diễn hầu hết các ngôn ngữ trên thế giới.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Âm thanh (Audio) & Hình ảnh (Image):</strong>
+                                <ul>
+                                    <li>Quá trình chuyển từ Analog sang Digital:
+                                        <ol>
+                                            <li><strong>Sampling (Lấy mẫu):</strong> Đo giá trị của tín hiệu tại các khoảng thời gian (âm thanh) hoặc vị trí (hình ảnh) đều đặn.</li>
+                                            <li><strong>Quantization (Lượng tử hóa):</strong> Làm tròn các giá trị mẫu thành một trong các mức hữu hạn đã định trước.</li>
+                                            <li><strong>Encoding (Mã hóa):</strong> Gán một chuỗi bit duy nhất cho mỗi mức lượng tử hóa.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    `,
+                    en: `
+                        <h2>Chapter 3: Data Storage</h2>
+                        <h3>1. Basic Data Types</h3>
+                        <ul>
+                            <li>Computers process various data types: Numbers, Text, Audio, Images, Video.</li>
+                            <li>All these data types are converted into a single uniform representation for storage: the <span class="highlight">bit pattern</span>.</li>
+                        </ul>
+                        <h3>2. Storing Integers</h3>
+                        <ul>
+                            <li><strong>Unsigned Integers:</strong>
+                                <ul><li>Represent only non-negative numbers (0 and positives). An n-bit pattern can represent values from 0 to 2ⁿ-1.</li></ul>
+                            </li>
+                            <li><strong>Signed Integers:</strong>
+                                <ul>
+                                    <li><strong>Sign-and-Magnitude:</strong> The leftmost bit is for the sign (0 for +, 1 for -), the rest represent the magnitude. Drawback: has two representations of zero (+0 and -0).</li>
+                                    <li><span class="highlight">Two's Complement:</span> The standard method today.
+                                        <ul>
+                                            <li>Positive numbers are represented like unsigned integers (with a sign bit of 0).</li>
+                                            <li>Negative numbers are represented by taking the two's complement of the corresponding positive number. (How to take two's complement: Invert all bits then add 1).</li>
+                                            <li>Advantages: Only one representation of zero, subtraction can be performed by addition, simplifying logic circuits.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Overflow:</strong> Occurs when the result of an operation falls outside the representable range. E.g., adding two large positive 8-bit numbers results in a number with a sign bit of 1 (negative).</li>
+                        </ul>
+                        <h3>3. Storing Reals</h3>
+                        <ul>
+                            <li>
+                                <strong>Floating-Point - IEEE 754 Standard:</strong>
+                                <ul>
+                                    <li>Represents a number in scientific notation: (Sign) × (Mantissa) × (Base)<sup>Exponent</sup>.</li>
+                                    <li>A real number is stored in 3 parts:
+                                        <ol>
+                                            <li><strong>Sign (S):</strong> 1 bit (0 for positive, 1 for negative).</li>
+                                            <li><strong>Exponent (E):</strong> Stored using <span class="highlight">Excess representation</span> (a bias is added to make it always positive).</li>
+                                            <li><strong>Mantissa (M):</strong> The fractional part of the normalized number.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>4. Storing Other Data Types</h3>
+                        <ul>
+                            <li><strong>Text:</strong> Uses character codes to map characters to numbers.
+                                <ul>
+                                    <li><strong>ASCII:</strong> Uses 7 or 8 bits, sufficient for English and control characters.</li>
+                                    <li><span class="highlight">Unicode:</span> Uses 16 or 32 bits, capable of representing most of the world's languages.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Audio & Image:</strong>
+                                <ul>
+                                    <li>Analog to Digital Conversion Process:
+                                        <ol>
+                                            <li><strong>Sampling:</strong> Measuring the signal's value at regular intervals in time (audio) or space (image).</li>
+                                            <li><strong>Quantization:</strong> Rounding the sampled values to one of a finite number of predefined levels.</li>
+                                            <li><strong>Encoding:</strong> Assigning a unique bit pattern to each quantized level.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    `
+                },
+                questions: [
+                    // Start of 50 questions for Chapter 3
+                    { q: { vi: "Phương pháp chuẩn để biểu diễn số nguyên có dấu trong máy tính hiện đại là gì?", en: "What is the standard method for representing signed integers in modern computers?" }, o: [{ vi: "Sign-and-Magnitude", en: "Sign-and-Magnitude" }, { vi: "One's Complement", en: "One's Complement" }, { vi: "Two's Complement", en: "Two's Complement" }, { vi: "Excess Representation", en: "Excess Representation" }], a: 2, explanation: { vi: "Two's Complement (Bù 2) được sử dụng rộng rãi vì nó chỉ có một biểu diễn cho số 0 và đơn giản hóa các phép toán trừ.", en: "Two's Complement is widely used because it has a single representation for zero and simplifies subtraction operations." } },
+                    { q: { vi: "Trong biểu diễn số thực theo chuẩn IEEE 754, phần Exponent (số mũ) được lưu trữ bằng cách sử dụng phương pháp nào?", en: "In the IEEE 754 standard for floating-point numbers, which method is used to store the Exponent part?" }, o: [{ vi: "Two's Complement", en: "Two's Complement" }, { vi: "Unsigned integer", en: "Unsigned integer" }, { vi: "Sign-and-Magnitude", en: "Sign-and-Magnitude" }, { vi: "Excess representation", en: "Excess representation" }], a: 3, explanation: { vi: "Phương pháp Excess (còn gọi là biased) được sử dụng để đảm bảo giá trị của số mũ luôn là một số không âm, giúp việc so sánh các số thực dễ dàng hơn.", en: "The Excess (or biased) method is used to ensure the exponent value is always non-negative, which makes comparing floating-point numbers easier." } },
+                    { q: { vi: "Sự khác biệt chính giữa ASCII và Unicode là gì?", en: "What is the main difference between ASCII and Unicode?" }, o: [{ vi: "ASCII dùng cho văn bản, Unicode dùng cho số", en: "ASCII is for text, Unicode is for numbers" }, { vi: "Unicode sử dụng nhiều bit hơn và có thể biểu diễn nhiều ký tự hơn", en: "Unicode uses more bits and can represent more characters" }, { vi: "ASCII là chuẩn mới hơn", en: "ASCII is a newer standard" }, { vi: "Không có sự khác biệt", en: "There is no difference" }], a: 1, explanation: { vi: "ASCII (thường là 8-bit) chỉ đủ cho tiếng Anh, trong khi Unicode (16/32-bit) được thiết kế để mã hóa tất cả các ngôn ngữ trên thế giới.", en: "ASCII (typically 8-bit) is sufficient for English, while Unicode (16/32-bit) is designed to encode all languages of the world." } },
+                    { q: { vi: "Quá trình làm tròn giá trị mẫu của tín hiệu analog thành một mức rời rạc được gọi là gì?", en: "What is the process of rounding a sampled value of an analog signal to a discrete level called?" }, o: [{ vi: "Sampling (Lấy mẫu)", en: "Sampling" }, { vi: "Encoding (Mã hóa)", en: "Encoding" }, { vi: "Quantization (Lượng tử hóa)", en: "Quantization" }, { vi: "Normalization (Chuẩn hóa)", en: "Normalization" }], a: 2, explanation: { vi: "Quantization là bước thứ hai trong quá trình chuyển đổi A/D, nó ánh xạ một dải giá trị liên tục vào một tập hợp các giá trị rời rạc hữu hạn.", en: "Quantization is the second step in A/D conversion; it maps a continuous range of values to a finite set of discrete values." } },
+                     // ... Add 46 more questions for Chapter 3
+                ]
+            },
+            chapter4: {
+                 theory: {
+                    vi: `
+                        <h2>Chương 4: Các Phép toán trên Dữ liệu</h2>
+                        <h3>1. Phép toán Logic (Logic Operations)</h3>
+                        <ul>
+                            <li>Thực hiện trên từng bit của một hoặc hai chuỗi bit. Các toán tử chính:
+                                <ul>
+                                    <li><strong>NOT:</strong> Đảo bit (0 thành 1, 1 thành 0). Còn gọi là phép bù 1 (one's complement).</li>
+                                    <li><strong>AND:</strong> Kết quả là 1 chỉ khi cả hai bit đầu vào đều là 1.</li>
+                                    <li><strong>OR:</strong> Kết quả là 1 nếu ít nhất một trong hai bit đầu vào là 1.</li>
+                                    <li><strong>XOR (Exclusive OR):</strong> Kết quả là 1 chỉ khi hai bit đầu vào khác nhau.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Ứng dụng quan trọng: Dùng mặt nạ (Masking)</strong>
+                                <ul>
+                                    <li><span class="highlight">Unsetting (Xóa bit):</span> Dùng phép <strong>AND</strong> với một mặt nạ có bit 0 tại vị trí cần xóa. <code>(x AND 0 = 0)</code></li>
+                                    <li><span class="highlight">Setting (Bật bit):</span> Dùng phép <strong>OR</strong> với một mặt nạ có bit 1 tại vị trí cần bật. <code>(x OR 1 = 1)</code></li>
+                                    <li><span class="highlight">Flipping (Lật bit):</span> Dùng phép <strong>XOR</strong> với một mặt nạ có bit 1 tại vị trí cần lật. <code>(x XOR 1 = NOT x)</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>2. Phép toán Dịch chuyển (Shift Operations)</h3>
+                        <ul>
+                             <li>
+                                <strong>Logical Shift (Dịch logic):</strong> Dịch chuyển tất cả các bit sang trái hoặc phải. Bit bị đẩy ra sẽ mất, và một bit 0 được chèn vào chỗ trống. Dùng cho số không dấu.
+                            </li>
+                             <li>
+                                <strong>Arithmetic Shift (Dịch số học):</strong>
+                                <ul>
+                                    <li>Dùng cho số biểu diễn dạng bù 2.</li>
+                                    <li>Dịch trái (left shift) tương đương nhân với 2.</li>
+                                    <li><span class="highlight">Dịch phải (right shift) tương đương chia cho 2 và bảo toàn bit dấu</span> (bit dấu được sao chép vào vị trí trống).</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Circular Shift (Dịch vòng):</strong> Bit bị đẩy ra ở một đầu sẽ được chèn vào đầu kia.
+                            </li>
+                        </ul>
+                        <h3>3. Phép toán Số học (Arithmetic Operations)</h3>
+                        <ul>
+                            <li>
+                                <strong>Cộng và Trừ số Bù 2:</strong>
+                                <ul>
+                                    <li>Phép cộng được thực hiện như cộng nhị phân thông thường, bit nhớ (carry) ở cột cuối cùng sẽ bị bỏ đi.</li>
+                                    <li><span class="highlight">Phép trừ A - B được thực hiện bằng phép cộng: A + (Bù 2 của B)</span>. Điều này cho phép ALU chỉ cần một mạch cộng để thực hiện cả hai phép toán.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    `,
+                    en: `
+                        <h2>Chapter 4: Operations on Data</h2>
+                        <h3>1. Logic Operations</h3>
+                        <ul>
+                            <li>Performed on individual bits of one or two bit patterns. Main operators:
+                                <ul>
+                                    <li><strong>NOT:</strong> Inverts the bit (0 becomes 1, 1 becomes 0). Also known as one's complement.</li>
+                                    <li><strong>AND:</strong> The result is 1 only if both input bits are 1.</li>
+                                    <li><strong>OR:</strong> The result is 1 if at least one of the input bits is 1.</li>
+                                    <li><strong>XOR (Exclusive OR):</strong> The result is 1 only if the input bits are different.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Key Application: Masking</strong>
+                                <ul>
+                                    <li><span class="highlight">Unsetting a bit:</span> Use <strong>AND</strong> with a mask that has a 0 at the desired position. <code>(x AND 0 = 0)</code></li>
+                                    <li><span class="highlight">Setting a bit:</span> Use <strong>OR</strong> with a mask that has a 1 at the desired position. <code>(x OR 1 = 1)</code></li>
+                                    <li><span class="highlight">Flipping a bit:</span> Use <strong>XOR</strong> with a mask that has a 1 at the desired position. <code>(x XOR 1 = NOT x)</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>2. Shift Operations</h3>
+                        <ul>
+                             <li>
+                                <strong>Logical Shift:</strong> Shifts all bits to the left or right. The shifted-out bit is discarded, and a 0 is inserted. Used for unsigned numbers.
+                            </li>
+                             <li>
+                                <strong>Arithmetic Shift:</strong>
+                                <ul>
+                                    <li>Used for numbers in two's complement representation.</li>
+                                    <li>Left shift is equivalent to multiplication by 2.</li>
+                                    <li><span class="highlight">Right shift is equivalent to division by 2 and preserves the sign bit</span> (the sign bit is copied into the vacant position).</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Circular Shift:</strong> The bit shifted out from one end is inserted at the other end.
+                            </li>
+                        </ul>
+                        <h3>3. Arithmetic Operations</h3>
+                        <ul>
+                            <li>
+                                <strong>Two's Complement Addition and Subtraction:</strong>
+                                <ul>
+                                    <li>Addition is performed like normal binary addition, and the final carry bit is discarded.</li>
+                                    <li><span class="highlight">Subtraction A - B is performed as an addition: A + (Two's complement of B)</span>. This allows the ALU to use a single adder circuit for both operations.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    `
+                },
+                questions: [
+                    // Start of 50 questions for Chapter 4
+                    { q: { vi: "Để 'unset' (xóa/đặt về 0) 4 bit ngoài cùng bên trái của một byte 8-bit, bạn nên dùng mặt nạ (mask) nào với phép AND?", en: "To 'unset' (clear/set to 0) the four leftmost bits of an 8-bit byte, which mask should you use with the AND operation?" }, o: [{ vi: "11110000", en: "11110000" }, { vi: "00001111", en: "00001111" }, { vi: "10000000", en: "10000000" }, { vi: "01111111", en: "01111111" }], a: 1, explanation: { vi: "Phép AND với 0 sẽ cho kết quả 0. AND với 1 sẽ giữ nguyên giá trị. Do đó, mặt nạ 00001111 sẽ xóa 4 bit trái và giữ nguyên 4 bit phải.", en: "ANDing with 0 results in 0. ANDing with 1 preserves the value. Therefore, the mask 00001111 clears the 4 left bits and keeps the 4 right bits." } },
+                    { q: { vi: "Phép toán nào tương đương với việc nhân một số nguyên bù 2 với 4?", en: "Which operation is equivalent to multiplying a two's complement integer by 4?" }, o: [{ vi: "Dịch số học sang phải 2 bit", en: "Arithmetic shift right by 2 bits" }, { vi: "Dịch số học sang trái 2 bit", en: "Arithmetic shift left by 2 bits" }, { vi: "Dịch logic sang phải 4 bit", en: "Logical shift right by 4 bits" }, { vi: "Dịch vòng sang trái 4 bit", en: "Circular shift left by 4 bits" }], a: 1, explanation: { vi: "Mỗi lần dịch trái số học tương đương với nhân 2. Để nhân 4 (2²), chúng ta cần dịch trái số học 2 lần.", en: "Each arithmetic left shift is equivalent to multiplying by 2. To multiply by 4 (2²), we need to perform an arithmetic left shift twice." } },
+                    { q: { vi: "Kết quả của phép toán 10110101 XOR 11110000 là gì?", en: "What is the result of the operation 10110101 XOR 11110000?" }, o: [{ vi: "01000101", en: "01000101" }, { vi: "10110000", en: "10110000" }, { vi: "11110101", en: "11110101" }, { vi: "01001111", en: "01001111" }], a: 0, explanation: { vi: "XOR trả về 1 nếu hai bit khác nhau. Áp dụng từng cột: (1^1=0), (0^1=1), (1^1=0), (1^1=0), (0^0=0), (1^0=1), (0^0=0), (1^0=1). Kết quả: 01000101.", en: "XOR returns 1 if the bits are different. Apply column by column: (1^1=0), (0^1=1), (1^1=0), (1^1=0), (0^0=0), (1^0=1), (0^0=0), (1^0=1). Result: 01000101." } },
+                    { q: { vi: "Trong hệ thống số bù 2, phép trừ 5 - 3 (dùng 4 bit) được thực hiện như thế nào?", en: "In a 4-bit two's complement system, how is the subtraction 5 - 3 performed?" }, o: [{ vi: "0101 - 0011", en: "0101 - 0011" }, { vi: "0101 + 1101", en: "0101 + 1101" }, { vi: "0101 + 1100", en: "0101 + 1100" }, { vi: "0101 AND 1101", en: "0101 AND 1101" }], a: 1, explanation: { vi: "5 là 0101. 3 là 0011. Bù 2 của 3 là 1101. Phép trừ trở thành 5 + (-3), tức là 0101 + 1101.", en: "5 is 0101. 3 is 0011. The two's complement of 3 is 1101. The subtraction becomes 5 + (-3), which is 0101 + 1101." } },
+                    // ... Add 46 more questions for Chapter 4
+                ]
+            },
+            chapter5: {
+                 theory: {
+                    vi: `
+                        <h2>Chương 5: Tổ chức Máy tính</h2>
+                        <h3>1. Các hệ thống con (Subsystems)</h3>
+                        <ul>
+                            <li><strong>CPU (Central Processing Unit - Bộ xử lý trung tâm):</strong> "Bộ não" của máy tính.
+                                <ul>
+                                    <li><strong>Thành phần:</strong> ALU, Đơn vị Điều khiển (Control Unit), và <span class="highlight">Các thanh ghi (Registers)</span>.</li>
+                                    <li><strong>Thanh ghi quan trọng:</strong>
+                                        <ul>
+                                            <li><strong>PC (Program Counter):</strong> Chứa địa chỉ của lệnh kế tiếp sẽ được thực thi.</li>
+                                            <li><strong>IR (Instruction Register):</strong> Chứa lệnh hiện tại đang được giải mã và thực thi.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Bộ nhớ chính (Main Memory):</strong>
+                                <ul>
+                                    <li>Lưu trữ chương trình và dữ liệu đang được sử dụng. Thường là RAM (Random Access Memory).</li>
+                                    <li><span class="highlight">Phân cấp bộ nhớ (Memory Hierarchy):</span> <strong>Registers → Cache → Main Memory → Storage (Ổ cứng)</strong>. Tốc độ và giá thành giảm dần, trong khi dung lượng tăng dần.</li>
+                                    <li><strong>Cache:</strong> Bộ nhớ đệm nhỏ, siêu nhanh, nằm giữa CPU và RAM để tăng tốc độ truy cập dữ liệu thường dùng.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Hệ thống Vào/Ra (I/O Subsystem):</strong> Gồm các thiết bị ngoại vi (bàn phím, chuột, màn hình, ổ đĩa) và các bộ điều khiển (controllers) để kết nối chúng với máy tính.</li>
+                        </ul>
+                        <h3>2. Sự kết nối và Thực thi chương trình</h3>
+                        <ul>
+                             <li>
+                                <strong>Hệ thống Bus (Bus Interconnection):</strong> "Xa lộ" truyền thông tin giữa các thành phần.
+                                <ul>
+                                    <li><strong>Address Bus:</strong> CPU dùng để chỉ định địa chỉ bộ nhớ hoặc thiết bị I/O cần truy cập.</li>
+                                    <li><strong>Data Bus:</strong> Dùng để truyền dữ liệu qua lại giữa CPU, bộ nhớ và I/O.</li>
+                                    <li><strong>Control Bus:</strong> Truyền các tín hiệu điều khiển (ví dụ: đọc hay ghi bộ nhớ).</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Chu kỳ máy (Machine Cycle):</strong>
+                                <ul>
+                                    <li>Quá trình CPU thực thi một lệnh, lặp đi lặp lại. Gồm 3 bước cơ bản:
+                                        <ol>
+                                            <li><span class="highlight">Fetch (Nạp lệnh):</span> CPU lấy lệnh từ bộ nhớ (tại địa chỉ trong PC) và đưa vào thanh ghi IR. PC tăng lên.</li>
+                                            <li><span class="highlight">Decode (Giải mã):</span> Đơn vị điều khiển giải mã lệnh trong IR để biết cần làm gì.</li>
+                                            <li><span class="highlight">Execute (Thực thi):</span> ALU hoặc thành phần khác thực hiện thao tác được yêu cầu.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>3. Các kiến trúc và kỹ thuật nâng cao</h3>
+                        <ul>
+                            <li><strong>CISC (Complex Instruction Set Computer):</strong> Kiến trúc có tập lệnh phức tạp, một lệnh có thể làm nhiều việc. (Ví dụ: Intel x86).</li>
+                            <li><strong>RISC (Reduced Instruction Set Computer):</strong> Kiến trúc có tập lệnh đơn giản, tối ưu hóa cho tốc độ. Mỗi lệnh chỉ làm một việc nhỏ. (Ví dụ: ARM).</li>
+                            <li><strong>Pipelining (Xử lý đường ống):</strong> Một kỹ thuật cho phép CPU xử lý nhiều lệnh cùng một lúc bằng cách gối đầu các giai đoạn (Fetch, Decode, Execute) của chúng.</li>
+                            <li><strong>Parallel Processing (Xử lý song song):</strong> Sử dụng nhiều lõi (core) hoặc nhiều CPU để thực hiện nhiều tác vụ đồng thời.</li>
+                        </ul>
+                    `,
+                    en: `
+                        <h2>Chapter 5: Computer Organization</h2>
+                        <h3>1. Subsystems</h3>
+                        <ul>
+                            <li><strong>CPU (Central Processing Unit):</strong> The "brain" of the computer.
+                                <ul>
+                                    <li><strong>Components:</strong> ALU, Control Unit, and <span class="highlight">Registers</span>.</li>
+                                    <li><strong>Key Registers:</strong>
+                                        <ul>
+                                            <li><strong>PC (Program Counter):</strong> Holds the address of the next instruction to be executed.</li>
+                                            <li><strong>IR (Instruction Register):</strong> Holds the current instruction being decoded and executed.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Main Memory:</strong>
+                                <ul>
+                                    <li>Stores the currently running programs and data. Usually RAM (Random Access Memory).</li>
+                                    <li><span class="highlight">Memory Hierarchy:</span> <strong>Registers → Cache → Main Memory → Storage (Hard Drive)</strong>. Speed and cost decrease, while capacity increases.</li>
+                                    <li><strong>Cache:</strong> A small, super-fast buffer memory between the CPU and RAM to speed up access to frequently used data.</li>
+                                </ul>
+                            </li>
+                            <li><strong>I/O (Input/Output) Subsystem:</strong> Consists of peripheral devices (keyboard, mouse, monitor, drives) and their controllers that connect them to the computer.</li>
+                        </ul>
+                        <h3>2. Interconnection and Program Execution</h3>
+                        <ul>
+                             <li>
+                                <strong>Bus Interconnection:</strong> The "highways" for information transfer.
+                                <ul>
+                                    <li><strong>Address Bus:</strong> Used by the CPU to specify a memory location or I/O device to access.</li>
+                                    <li><strong>Data Bus:</strong> Used to transfer data between the CPU, memory, and I/O.</li>
+                                    <li><strong>Control Bus:</strong> Carries control signals (e.g., memory read or write).</li>
+                                </ul>
+                            </li>
+                             <li>
+                                <strong>Machine Cycle:</strong>
+                                <ul>
+                                    <li>The repetitive process by which the CPU executes one instruction. Consists of 3 basic steps:
+                                        <ol>
+                                            <li><span class="highlight">Fetch:</span> The CPU fetches the instruction from memory (at the PC's address) into the IR. The PC is incremented.</li>
+                                            <li><span class="highlight">Decode:</span> The Control Unit decodes the instruction in the IR to determine what action to take.</li>
+                                            <li><span class="highlight">Execute:</span> The ALU or another component performs the requested operation.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>3. Advanced Architectures and Techniques</h3>
+                        <ul>
+                            <li><strong>CISC (Complex Instruction Set Computer):</strong> Architecture with a large, complex instruction set where one instruction can perform many operations. (e.g., Intel x86).</li>
+                            <li><strong>RISC (Reduced Instruction Set Computer):</strong> Architecture with a small, simple, and highly optimized instruction set. Each instruction does one small thing. (e.g., ARM).</li>
+                            <li><strong>Pipelining:</strong> A technique that allows the CPU to process multiple instructions simultaneously by overlapping their stages (Fetch, Decode, Execute).</li>
+                            <li><strong>Parallel Processing:</strong> Using multiple cores or multiple CPUs to execute multiple tasks concurrently.</li>
+                        </ul>
+                    `
+                },
+                questions: [
+                    // Start of 50 questions for Chapter 5
+                    { q: { vi: "Trình tự đúng của một chu kỳ máy (machine cycle) là gì?", en: "What is the correct sequence of a machine cycle?" }, o: [{ vi: "Decode -> Fetch -> Execute", en: "Decode -> Fetch -> Execute" }, { vi: "Fetch -> Execute -> Decode", en: "Fetch -> Execute -> Decode" }, { vi: "Execute -> Fetch -> Decode", en: "Execute -> Fetch -> Decode" }, { vi: "Fetch -> Decode -> Execute", en: "Fetch -> Decode -> Execute" }], a: 3, explanation: { vi: "CPU phải Nạp (Fetch) lệnh trước, sau đó Giải mã (Decode) để biết phải làm gì, và cuối cùng mới Thực thi (Execute) lệnh đó.", en: "The CPU must first Fetch the instruction, then Decode it to know what to do, and finally Execute it." } },
+                    { q: { vi: "Thanh ghi (register) nào trong CPU chứa địa chỉ của lệnh tiếp theo sẽ được thực thi?", en: "Which register in the CPU holds the address of the next instruction to be executed?" }, o: [{ vi: "Instruction Register (IR)", en: "Instruction Register (IR)" }, { vi: "Program Counter (PC)", en: "Program Counter (PC)" }, { vi: "Accumulator", en: "Accumulator" }, { vi: "Memory Address Register (MAR)", en: "Memory Address Register (MAR)" }], a: 1, explanation: { vi: "Program Counter (Bộ đếm chương trình) luôn 'chỉ' đến lệnh tiếp theo trong bộ nhớ, giúp CPU thực thi chương trình một cách tuần tự.", en: "The Program Counter always 'points' to the next instruction in memory, allowing the CPU to execute the program sequentially." } },
+                    { q: { vi: "Trong phân cấp bộ nhớ, loại bộ nhớ nào có tốc độ truy cập nhanh nhất?", en: "In the memory hierarchy, which type of memory has the fastest access speed?" }, o: [{ vi: "Cache Memory", en: "Cache Memory" }, { vi: "Main Memory (RAM)", en: "Main Memory (RAM)" }, { vi: "Hard Disk Drive (HDD)", en: "Hard Disk Drive (HDD)" }, { vi: "Registers", en: "Registers" }], a: 3, explanation: { vi: "Thanh ghi (Registers) nằm ngay bên trong CPU, vì vậy chúng có tốc độ truy cập gần như tức thời, nhanh hơn nhiều so với Cache hay RAM.", en: "Registers are located directly inside the CPU, so they have nearly instantaneous access speed, much faster than Cache or RAM." } },
+                    { q: { vi: "Kỹ thuật cho phép CPU gối đầu các giai đoạn của nhiều lệnh để tăng hiệu suất được gọi là gì?", en: "What is the technique that allows the CPU to overlap the stages of multiple instructions to increase performance called?" }, o: [{ vi: "Multitasking", en: "Multitasking" }, { vi: "Pipelining", en: "Pipelining" }, { vi: "Parallel Processing", en: "Parallel Processing" }, { vi: "Caching", en: "Caching" }], a: 1, explanation: { vi: "Pipelining (Xử lý đường ống) giống như một dây chuyền lắp ráp, cho phép CPU bắt đầu xử lý lệnh tiếp theo trước khi lệnh hiện tại hoàn thành.", en: "Pipelining is like an assembly line, allowing the CPU to start processing the next instruction before the current one has finished." } },
+                     // ... Add 46 more questions for Chapter 5
+                ]
+            }
+        };
+        // --- END: NGÂN HÀNG CÂU HỎI VÀ LÝ THUYẾT ---
+
+
+        // --- START: JAVASCRIPT LOGIC (Không cần sửa) ---
+        let currentLang = 'vi';
+        let currentChapter = 'chapter1';
+        let quizState = {};
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAllContent();
+            switchTab(currentChapter);
+        });
+
+        function renderAllContent() {
+            const tabContent = document.querySelector('.tab-content');
+            tabContent.innerHTML = '';
+            for (const chapterId in contentData) {
+                const chapterDiv = document.createElement('div');
+                chapterDiv.id = chapterId;
+                chapterDiv.className = 'tab-pane';
+                chapterDiv.innerHTML = `
+                    <div class="theory-view">
+                        <div class="theory-content">${contentData[chapterId].theory[currentLang]}</div>
+                        <div class="button-group">
+                            <button class="primary-button" onclick="showQuizSetup('${chapterId}')" data-lang-key="startQuiz"></button>
+                        </div>
+                    </div>
+                    <div class="quiz-view">
+                        <div class="quiz-setup">
+                            <h3 data-lang-key="quizSetupTitle"></h3>
+                            <label data-lang-key="numQuestions"></label>
+                            <input type="number" id="num-questions-${chapterId}" value="10" min="1" max="${contentData[chapterId].questions.length}">
+                            <button class="primary-button" onclick="startQuiz('${chapterId}')" data-lang-key="start"></button>
+                            <button class="secondary-button" onclick="showTheory('${chapterId}')" data-lang-key="backToTheory"></button>
+                        </div>
+                        <div class="quiz-container" style="display:none;">
+                            <div id="question-text-${chapterId}" class="quiz-question"></div>
+                            <div id="quiz-options-${chapterId}" class="quiz-options"></div>
+                            <div id="explanation-${chapterId}"></div>
+                            <div class="button-group">
+                                <button onclick="nextQuestion('${chapterId}')" id="next-btn-${chapterId}" class="primary-button" data-lang-key="nextQuestion" style="display:none;"></button>
+                            </div>
+                        </div>
+                        <div class="quiz-results" style="display:none;">
+                            <h3 data-lang-key="resultsTitle"></h3>
+                            <p id="score-${chapterId}"></p>
+                            <button class="secondary-button" onclick="showTheory('${chapterId}')" data-lang-key="backToTheory"></button>
+                             <button class="primary-button" onclick="startQuiz('${chapterId}')" data-lang-key="retakeQuiz"></button>
+                        </div>
+                    </div>
+                `;
+                tabContent.appendChild(chapterDiv);
+            }
+            updateLanguageUI();
+        }
+
+        function switchTab(chapterId) {
+            currentChapter = chapterId;
+            document.querySelectorAll('.tab-pane').forEach(p => { p.classList.remove('active'); showTheory(p.id); });
+            document.getElementById(chapterId).classList.add('active');
+            
+            document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+            document.querySelector(`.tab-link[onclick="switchTab('${chapterId}')"]`).classList.add('active');
+        }
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-switcher button').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.lang-switcher button[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            renderAllContent();
+            switchTab(currentChapter);
+        }
+        
+        const translations = {
+            vi: {
+                subtitle: "Chọn chương để học lý thuyết hoặc làm bài tập trắc nghiệm.",
+                vietnamese: "Tiếng Việt", english: "English",
+                ch1: "Chương 1", ch2: "Chương 2", ch3: "Chương 3", ch4: "Chương 4", ch5: "Chương 5",
+                startQuiz: "Làm bài tập", quizSetupTitle: "Thiết lập bài trắc nghiệm",
+                numQuestions: "Số lượng câu hỏi:", start: "Bắt đầu",
+                backToTheory: "Quay lại Lý thuyết", nextQuestion: "Câu tiếp theo",
+                resultsTitle: "Kết quả", scoreText: "Bạn đã trả lời đúng",
+                retakeQuiz: "Làm lại bài"
+            },
+            en: {
+                subtitle: "Select a chapter to study theory or take a multiple-choice quiz.",
+                vietnamese: "Vietnamese", english: "English",
+                ch1: "Chapter 1", ch2: "Chapter 2", ch3: "Chapter 3", ch4: "Chapter 4", ch5: "Chapter 5",
+                startQuiz: "Start Quiz", quizSetupTitle: "Quiz Setup",
+                numQuestions: "Number of questions:", start: "Start",
+                backToTheory: "Back to Theory", nextQuestion: "Next Question",
+                resultsTitle: "Results", scoreText: "You answered correctly",
+                retakeQuiz: "Retake Quiz"
+            }
+        };
+
+        function updateLanguageUI() {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+        }
+
+        function showQuizSetup(chapterId) {
+            document.querySelector(`#${chapterId} .theory-view`).style.display = 'none';
+            document.querySelector(`#${chapterId} .quiz-view`).style.display = 'block';
+            document.querySelector(`#${chapterId} .quiz-setup`).style.display = 'block';
+            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'none';
+            document.querySelector(`#${chapterId} .quiz-results`).style.display = 'none';
+        }
+
+        function showTheory(chapterId) {
+            document.querySelector(`#${chapterId} .theory-view`).style.display = 'block';
+            document.querySelector(`#${chapterId} .quiz-view`).style.display = 'none';
+        }
+
+        function startQuiz(chapterId) {
+            const allQuestions = contentData[chapterId].questions;
+            const numQuestionsInput = document.getElementById(`num-questions-${chapterId}`);
+            let numQuestions = parseInt(numQuestionsInput.value);
+            if (isNaN(numQuestions) || numQuestions <= 0) numQuestions = 10;
+            numQuestions = Math.min(numQuestions, allQuestions.length);
+            
+            const questions = [...allQuestions].sort(() => 0.5 - Math.random()).slice(0, numQuestions);
+
+            quizState[chapterId] = { questions, currentQuestionIndex: 0, score: 0 };
+
+            document.querySelector(`#${chapterId} .quiz-setup`).style.display = 'none';
+            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'block';
+            document.querySelector(`#${chapterId} .quiz-results`).style.display = 'none';
+            
+            displayQuestion(chapterId);
+        }
+
+        function displayQuestion(chapterId) {
+            const state = quizState[chapterId];
+            if (state.currentQuestionIndex >= state.questions.length) {
+                showResults(chapterId);
+                return;
+            }
+
+            const question = state.questions[state.currentQuestionIndex];
+            document.getElementById(`question-text-${chapterId}`).textContent = `(${state.currentQuestionIndex + 1}/${state.questions.length}) ${question.q[currentLang]}`;
+            
+            const optionsDiv = document.getElementById(`quiz-options-${chapterId}`);
+            optionsDiv.innerHTML = '';
+            question.o.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option[currentLang];
+                button.onclick = () => selectAnswer(chapterId, index);
+                optionsDiv.appendChild(button);
+            });
+
+            document.getElementById(`explanation-${chapterId}`).innerHTML = '';
+            document.getElementById(`next-btn-${chapterId}`).style.display = 'none';
+        }
+
+        function selectAnswer(chapterId, selectedIndex) {
+            const state = quizState[chapterId];
+            const question = state.questions[state.currentQuestionIndex];
+            const correctIndex = question.a;
+            
+            const options = document.querySelectorAll(`#${chapterId} .quiz-options button`);
+            options.forEach(button => button.disabled = true);
+
+            if (selectedIndex === correctIndex) {
+                options[selectedIndex].classList.add('correct');
+                state.score++;
+            } else {
+                options[selectedIndex].classList.add('incorrect');
+                options[correctIndex].classList.add('correct');
+                const explanationDiv = document.getElementById(`explanation-${chapterId}`);
+                if(question.explanation) {
+                    explanationDiv.innerHTML = `<div class="explanation-box"><strong>💡 Giải thích:</strong> ${question.explanation[currentLang]}</div>`;
+                }
+            }
+            document.getElementById(`next-btn-${chapterId}`).style.display = 'inline-block';
+        }
+
+        function nextQuestion(chapterId) {
+            quizState[chapterId].currentQuestionIndex++;
+            displayQuestion(chapterId);
+        }
+
+        function showResults(chapterId) {
+            const state = quizState[chapterId];
+            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'none';
+            const resultsDiv = document.querySelector(`#${chapterId} .quiz-results`);
+            resultsDiv.style.display = 'block';
+            
+            const scoreText = translations[currentLang].scoreText;
+            document.getElementById(`score-${chapterId}`).textContent = `${scoreText} ${state.score} / ${state.questions.length} câu.`;
+        }
+        // --- END: JAVASCRIPT LOGIC ---
+    </script>
+</body>
+</html>
