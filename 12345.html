@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSI FPTU - Ôn tập Lý thuyết & Bài tập</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid #0055a5; /* FPT Blue */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            color: #0055a5;
+            margin: 0;
+        }
+        .lang-switcher {
+            margin-top: 10px;
+        }
+        .lang-switcher button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 4px;
+        }
+        .lang-switcher button.active {
+            background-color: #0055a5;
+            color: white;
+            border-color: #0055a5;
+        }
+        .tab-nav {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .tab-link {
+            flex: 1;
+            padding: 12px;
+            cursor: pointer;
+            border: none;
+            background-color: #eee;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .tab-link.active {
+            background-color: #f26f21; /* FPT Orange */
+            color: white;
+        }
+        .tab-link:hover:not(.active) {
+            background-color: #ddd;
+        }
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        h2, h3 {
+            color: #0055a5;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+        ul ul {
+            list-style-type: circle;
+        }
+        .quiz-view, .quiz-setup, .quiz-results {
+            display: none;
+        }
+        .quiz-container, .quiz-setup, .quiz-results {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        .quiz-question {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .quiz-options button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.2s;
+        }
+        .quiz-options button:hover:not([disabled]) {
+            background-color: #e9e9e9;
+            border-color: #aaa;
+        }
+        .quiz-options button.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            font-weight: bold;
+        }
+        .quiz-options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        .button-group button, .quiz-setup button, .quiz-results button, .quiz-setup input {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px 5px 10px 0;
+        }
+        .quiz-setup input {
+             width: 80px;
+        }
+        .primary-button {
+            border: 1px solid #0055a5;
+            background-color: #0055a5;
+            color: white;
+        }
+        .secondary-button {
+            border: 1px solid #6c757d;
+            background-color: #6c757d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSI FPTU - Công cụ Ôn tập</h1>
+            <p data-lang-key="subtitle">Chọn chương để học lý thuyết hoặc làm bài tập trắc nghiệm.</p>
+            <div class="lang-switcher">
+                <button onclick="switchLanguage('vi')" class="active" data-lang-key="vietnamese">Tiếng Việt</button>
+                <button onclick="switchLanguage('en')" data-lang-key="english">English</button>
+            </div>
+        </header>
+
+        <div class="tab-nav">
+            <button class="tab-link active" onclick="switchTab('chapter1')" data-lang-key="ch1">Chương 1</button>
+            <button class="tab-link" onclick="switchTab('chapter2')" data-lang-key="ch2">Chương 2</button>
+            <button class="tab-link" onclick="switchTab('chapter3')" data-lang-key="ch3">Chương 3</button>
+            <button class="tab-link" onclick="switchTab('chapter4')" data-lang-key="ch4">Chương 4</button>
+            <button class="tab-link" onclick="switchTab('chapter5')" data-lang-key="ch5">Chương 5</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Content will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const contentData = {
+            chapter1: {
+                theory: {
+                    vi: `<h2>Chương 1: Giới thiệu Tổng quan</h2><h3>Mục tiêu: Hiểu được máy tính là gì về mặt lý thuyết và cấu trúc.</h3><ul><li><strong>Hai Mô Hình Nền Tảng:</strong><ul><li><strong>Mô hình Turing (Turing Model):</strong> Định nghĩa máy tính một cách toán học. Đây là một "bộ xử lý dữ liệu lập trình được".<br>Công thức cốt lõi: <span class="highlight">Dữ liệu đầu vào + Chương trình -> Máy tính -> Dữ liệu đầu ra</span>.</li><li><strong>Mô hình von Neumann (von Neumann Model):</strong> Mô hình kiến trúc của hầu hết các máy tính hiện đại.<br><span class="highlight">Khái niệm đột phá: Lưu trữ chương trình trong bộ nhớ (Stored Program Concept)</span>. Gồm 4 thành phần: Bộ nhớ (Memory), ALU, Đơn vị điều khiển (Control Unit), Thiết bị vào/ra (I/O).</li></ul></li><li><strong>Ba Thành Phần Của Máy Tính:</strong> Phần cứng (Hardware), Dữ liệu (Data), Phần mềm (Software).</li></ul>`,
+                    en: `<h2>Chapter 1: Introduction</h2><h3>Objectives: Understand what a computer is theoretically and structurally.</h3><ul><li><strong>Two Foundational Models:</strong><ul><li><strong>Turing Model:</strong> A mathematical definition of a computer. It's a "programmable data processor".<br>Core formula: <span class="highlight">Input Data + Program -> Computer -> Output Data</span>.</li><li><strong>von Neumann Model:</strong> The architectural model for most modern computers.<br><span class="highlight">Breakthrough concept: Stored Program Concept</span>. Comprises 4 components: Memory, ALU, Control Unit, I/O Subsystem.</li></ul></li><li><strong>Three Components of a Computer:</strong> Hardware, Data, Software.</li></ul>`
+                },
+                questions: [
+                    { q: { vi: "Mô hình nào định nghĩa khái niệm 'Stored Program Concept' (Chương trình được lưu trong bộ nhớ)?", en: "Which model defines the 'Stored Program Concept'?" }, o: [{ vi: "Mô hình Turing", en: "Turing Model" }, { vi: "Mô hình von Neumann", en: "von Neumann Model" }, { vi: "Mô hình Pascal", en: "Pascal Model" }, { vi: "Mô hình Babbage", en: "Babbage Model" }], a: 1 },
+                    { q: { vi: "Theo mô hình Turing, đầu ra phụ thuộc vào yếu tố nào?", en: "According to the Turing model, what does the output depend on?" }, o: [{ vi: "Chỉ dữ liệu đầu vào", en: "Only the input data" }, { vi: "Chỉ chương trình", en: "Only the program" }, { vi: "Sự kết hợp của dữ liệu đầu vào và chương trình", en: "The combination of input data and the program" }, { vi: "Tốc độ của máy tính", en: "The speed of the computer" }], a: 2 },
+                    { q: { vi: "Bốn thành phần của máy tính theo kiến trúc von Neumann là gì?", en: "What are the four components of a computer according to the von Neumann architecture?"}, o: [ {vi: "CPU, RAM, Bàn phím, Màn hình", en: "CPU, RAM, Keyboard, Monitor"}, {vi: "Bộ nhớ, ALU, Đơn vị điều khiển, Thiết bị Vào/Ra", en: "Memory, ALU, Control Unit, Input/Output Subsystem"}, {vi: "Phần cứng, Phần mềm, Dữ liệu, Mạng", en: "Hardware, Software, Data, Network"}, {vi: "Hệ điều hành, Ứng dụng, Driver, Firmware", en: "Operating System, Application, Driver, Firmware"}], a: 1 },
+                    { q: { vi: "Thành phần nào của CPU chịu trách nhiệm thực hiện các phép toán số học và logic?", en: "Which component of the CPU is responsible for performing arithmetic and logic operations?"}, o: [ {vi: "Control Unit", en: "Control Unit"}, {vi: "Registers", en: "Registers"}, {vi: "ALU (Arithmetic Logic Unit)", en: "ALU (Arithmetic Logic Unit)"}, {vi: "Main Memory", en: "Main Memory"}], a: 2},
+                    { q: { vi: "Sự khác biệt chính giữa máy tính đa năng (general-purpose) và máy tính chuyên dụng (specific-purpose) là gì?", en: "What is the main difference between a general-purpose and a specific-purpose computer?"}, o: [ {vi: "Kích thước vật lý", en: "Physical size"}, {vi: "Khả năng chạy các chương trình khác nhau", en: "The ability to run different programs"}, {vi: "Giá thành", en: "Cost"}, {vi: "Tốc độ xử lý", en: "Processing speed"}], a: 1}
+                ]
+            },
+            chapter2: {
+                theory: {
+                    vi: `<h2>Chương 2: Hệ thống Số</h2><h3>Mục tiêu: Hiểu cách biểu diễn số trong các hệ đếm khác nhau.</h3><ul><li><strong>Các Hệ Đếm Chính:</strong> Decimal (base 10), <span class="highlight">Binary (base 2)</span>, Octal (base 8), Hexadecimal (base 16).</li><li><strong>Kỹ Năng Chuyển Đổi Cốt Lõi:</strong><ul><li><strong>Bất kỳ hệ đếm nào -> Thập phân:</strong> Tổng (chữ số * cơ số ^ vị trí).</li><li><strong>Thập phân -> Bất kỳ hệ đếm nào:</strong> Chia liên tiếp (phần nguyên), Nhân liên tiếp (phần thập phân).</li><li><strong>Chuyển đổi nhanh:</strong> <span class="highlight">Binary ↔ Octal (nhóm 3 bits)</span>, <span class="highlight">Binary ↔ Hexadecimal (nhóm 4 bits)</span>.</li></ul></li></ul>`,
+                    en: `<h2>Chapter 2: Number Systems</h2><h3>Objectives: Understand how numbers are represented in different numeral systems.</h3><ul><li><strong>Main Number Systems:</strong> Decimal (base 10), <span class="highlight">Binary (base 2)</span>, Octal (base 8), Hexadecimal (base 16).</li><li><strong>Core Conversion Skills:</strong><ul><li><strong>Any base -> Decimal:</strong> Sum of (digit * base ^ position).</li><li><strong>Decimal -> Any base:</strong> Repeated division (integer part), Repeated multiplication (fractional part).</li><li><strong>Quick Conversions:</strong> <span class="highlight">Binary ↔ Octal (groups of 3 bits)</span>, <span class="highlight">Binary ↔ Hexadecimal (groups of 4 bits)</span>.</li></ul></li></ul>`
+                },
+                questions: [
+                    { q: { vi: "Số nhị phân 1101 tương đương với số thập phân nào?", en: "The binary number 1101 is equivalent to which decimal number?" }, o: [{ vi: "11", en: "11" }, { vi: "13", en: "13" }, { vi: "14", en: "14" }, { vi: "15", en: "15" }], a: 1 },
+                    { q: { vi: "Chuyển số thập lục phân (Hexadecimal) A5 sang hệ nhị phân (Binary).", en: "Convert the hexadecimal number A5 to binary." }, o: [{ vi: "10100101", en: "10100101" }, { vi: "10010101", en: "10010101" }, { vi: "11000101", en: "11000101" }, { vi: "10101010", en: "10101010" }], a: 0 },
+                    { q: { vi: "Giá trị thập phân của số bát phân (Octal) 72 là gì?", en: "What is the decimal value of the octal number 72?"}, o: [ {vi: "58", en: "58"}, {vi: "72", en: "72"}, {vi: "90", en: "90"}, {vi: "114", en: "114"}], a: 0},
+                    { q: { vi: "Để chuyển đổi từ nhị phân sang thập lục phân, chúng ta nhóm các bit nhị phân thành các nhóm bao nhiêu bit?", en: "To convert from binary to hexadecimal, we group binary bits into groups of how many bits?"}, o: [ {vi: "2 bits", en: "2 bits"}, {vi: "3 bits", en: "3 bits"}, {vi: "4 bits", en: "4 bits"}, {vi: "8 bits", en: "8 bits"}], a: 2},
+                    { q: { vi: "Số thập phân 26 khi chuyển sang hệ thập lục phân là?", en: "The decimal number 26 when converted to hexadecimal is?"}, o: [ {vi: "1A", en: "1A"}, {vi: "B2", en: "B2"}, {vi: "26", en: "26"}, {vi: "1C", en: "1C"}], a: 0}
+                ]
+            },
+            chapter3: {
+                theory: {
+                    vi: `<h2>Chương 3: Lưu trữ Dữ liệu</h2><h3>Mục tiêu: Hiểu cách các loại dữ liệu được mã hóa thành chuỗi bit.</h3><ul><li><strong>Lưu trữ Số Nguyên (Integers):</strong><ul><li><strong>Số không dấu (Unsigned):</strong> Chuyển trực tiếp sang nhị phân.</li><li><strong>Số có dấu (Signed):</strong> <span class="highlight">Two's Complement (Bù 2) là phương pháp chuẩn</span>. Ưu điểm: chỉ có 1 giá trị zero, phép trừ trở thành phép cộng.</li></ul></li><li><strong>Lưu trữ Số Thực (Reals):</strong><ul><li><strong>Floating-Point (Dấu phẩy động):</strong> <span class="highlight">Chuẩn IEEE 754</span>. Lưu 3 phần: Dấu (Sign), Số mũ (Exponent), và Định trị (Mantissa).</li></ul></li><li><strong>Lưu trữ Dữ liệu khác:</strong><ul><li><strong>Văn bản (Text):</strong> Dùng bảng mã như <span class="highlight">ASCII</span> và <span class="highlight">Unicode</span>.</li><li><strong>Âm thanh/Hình ảnh:</strong> Qua 3 bước: Sampling (Lấy mẫu), Quantization (Lượng tử hóa), Encoding (Mã hóa).</li></ul></li></ul>`,
+                    en: `<h2>Chapter 3: Data Storage</h2><h3>Objectives: Understand how different data types are encoded into bit strings.</h3><ul><li><strong>Storing Integers:</strong><ul><li><strong>Unsigned:</strong> Direct binary conversion.</li><li><strong>Signed:</strong> <span class="highlight">Two's Complement is the standard method</span>. Advantages: single zero, subtraction becomes addition.</li></ul></li><li><strong>Storing Reals:</strong><ul><li><strong>Floating-Point:</strong> <span class="highlight">IEEE 754 standard</span>. Stores 3 parts: Sign, Exponent, and Mantissa.</li></ul></li><li><strong>Storing Other Data:</strong><ul><li><strong>Text:</strong> Using character codes like <span class="highlight">ASCII</span> and <span class="highlight">Unicode</span>.</li><li><strong>Audio/Image:</strong> Via 3 steps: Sampling, Quantization, Encoding.</li></ul></li></ul>`
+                },
+                questions: [
+                    { q: { vi: "Phương pháp nào được sử dụng phổ biến nhất để biểu diễn số nguyên có dấu trong máy tính hiện đại?", en: "Which method is most commonly used to represent signed integers in modern computers?" }, o: [{ vi: "Sign-and-magnitude", en: "Sign-and-magnitude" }, { vi: "One's complement", en: "One's complement" }, { vi: "Two's complement", en: "Two's complement" }, { vi: "Unsigned representation", en: "Unsigned representation" }], a: 2 },
+                    { q: { vi: "Chuẩn IEEE 754 dùng để định nghĩa cách lưu trữ loại dữ liệu nào?", en: "The IEEE 754 standard is used to define the storage of which data type?" }, o: [{ vi: "Số nguyên không dấu", en: "Unsigned integers" }, { vi: "Số thực (dấu phẩy động)", en: "Real numbers (floating-point)" }, { vi: "Ký tự văn bản", en: "Text characters" }, { vi: "Hình ảnh", en: "Images" }], a: 1 },
+                    { q: { vi: "Bảng mã nào được thiết kế để hỗ trợ tất cả các ngôn ngữ trên thế giới?", en: "Which character encoding standard is designed to support all languages in the world?"}, o: [ {vi: "ASCII", en: "ASCII"}, {vi: "EBCDIC", en: "EBCDIC"}, {vi: "Unicode", en: "Unicode"}, {vi: "Morse Code", en: "Morse Code"}], a: 2},
+                ]
+            },
+             chapter4: {
+                theory: {
+                    vi: `<h2>Chương 4: Các Phép toán trên Dữ liệu</h2><h3>Mục tiêu: Nắm vững các phép toán cơ bản thực hiện ở mức bit.</h3><ul><li><strong>Phép toán Logic (Logic Operations):</strong><ul><li>Các toán tử: <code>NOT</code>, <code>AND</code>, <code>OR</code>, <code>XOR</code>.</li><li><span class="highlight">Ứng dụng quan trọng nhất: Masking (Mặt nạ).</span><ul><li><code>AND</code> để Unset (xóa) bit: <code>value AND 0 = 0</code>.</li><li><code>OR</code> để Set (bật) bit: <code>value OR 1 = 1</code>.</li><li><code>XOR</code> để Flip (lật) bit: <code>value XOR 1 = NOT value</code>.</li></ul></li></ul></li><li><strong>Phép toán Dịch chuyển (Shift Operations):</strong><ul><li><strong>Logical Shift:</strong> Dịch chuyển bit, chèn số 0.</li><li><strong>Arithmetic Shift:</strong> Dùng cho số bù 2, <span class="highlight">bảo toàn bit dấu khi dịch phải</span>.</li></ul></li><li><strong>Phép toán Số học (Arithmetic Operations):</strong><ul><li><span class="highlight"><code>A - B</code> được thực hiện bằng <code>A + (Two's complement of B)</code>.</span></li></ul></li></ul>`,
+                    en: `<h2>Chapter 4: Operations on Data</h2><h3>Objectives: Master the basic operations performed at the bit level.</h3><ul><li><strong>Logic Operations:</strong><ul><li>Operators: <code>NOT</code>, <code>AND</code>, <code>OR</code>, <code>XOR</code>.</li><li><span class="highlight">Most important application: Masking.</span><ul><li><code>AND</code> to Unset bits: <code>value AND 0 = 0</code>.</li><li><code>OR</code> to Set bits: <code>value OR 1 = 1</code>.</li><li><code>XOR</code> to Flip bits: <code>value XOR 1 = NOT value</code>.</li></ul></li></ul></li><li><strong>Shift Operations:</strong><ul><li><strong>Logical Shift:</strong> Shifts bits, inserts zeros.</li><li><strong>Arithmetic Shift:</strong> For two's complement numbers, <span class="highlight">preserves the sign bit on right shift</span>.</li></ul></li><li><strong>Arithmetic Operations:</strong><ul><li><span class="highlight"><code>A - B</code> is performed as <code>A + (Two's complement of B)</code>.</span></li></ul></li></ul>`
+                },
+                questions: [
+                    { q: { vi: "Để 'set' (bật) bit thứ 3 từ phải sang của một byte (xxxx x1xx) mà không làm thay đổi các bit khác, bạn nên dùng mặt nạ (mask) và phép toán nào?", en: "To 'set' the 3rd bit from the right of a byte (xxxx x1xx) without changing other bits, which mask and operation should you use?" }, o: [{ vi: "AND với 00000100", en: "AND with 00000100" }, { vi: "OR với 00000100", en: "OR with 00000100" }, { vi: "XOR với 11111011", en: "XOR with 11111011" }, { vi: "AND với 11111011", en: "AND with 11111011" }], a: 1 },
+                    { q: { vi: "Phép toán nào tương đương với việc nhân một số nguyên bù 2 với 2?", en: "Which operation is equivalent to multiplying a two's complement integer by 2?" }, o: [{ vi: "Dịch số học sang phải 1 bit", en: "Arithmetic shift right by 1 bit" }, { vi: "Dịch logic sang phải 1 bit", en: "Logical shift right by 1 bit" }, { vi: "Dịch số học sang trái 1 bit", en: "Arithmetic shift left by 1 bit" }, { vi: "Phép toán NOT", en: "NOT operation" }], a: 2 }
+                ]
+            },
+            chapter5: {
+                theory: {
+                    vi: `<h2>Chương 5: Tổ chức Máy tính</h2><h3>Mục tiêu: Hiểu cách các thành phần chính của máy tính kết nối và làm việc với nhau.</h3><ul><li><strong>Các Hệ thống con (Subsystems):</strong><ul><li><strong>CPU:</strong> "Bộ não" gồm ALU, Control Unit, và <span class="highlight">Registers (thanh ghi)</span>. Thanh ghi quan trọng: PC (Program Counter) và IR (Instruction Register).</li><li><strong>Bộ nhớ chính (Main Memory):</strong> RAM, ROM.</li><li><strong>Hệ thống Vào/Ra (I/O).</li></ul></li><li><strong>Sự kết nối (Interconnection):</strong><ul><li><strong>BUS:</strong> "Xa lộ" truyền dữ liệu, gồm <span class="highlight">Data Bus, Address Bus, và Control Bus</span>.</li></ul></li><li><strong>Thực thi Chương trình (Program Execution):</strong><ul><li><strong>Chu kỳ máy (Machine Cycle):</strong> <span class="highlight">Fetch -> Decode -> Execute</span>.</li></ul></li><li><strong>Tối ưu hóa:</strong> Pipelining (gối đầu lệnh), Parallel Processing (xử lý song song).</li></ul>`,
+                    en: `<h2>Chapter 5: Computer Organization</h2><h3>Objectives: Understand how the main components of a computer connect and work together.</h3><ul><li><strong>Subsystems:</strong><ul><li><strong>CPU:</strong> The "brain" with ALU, Control Unit, and <span class="highlight">Registers</span>. Key registers: PC (Program Counter) and IR (Instruction Register).</li><li><strong>Main Memory:</strong> RAM, ROM.</li><li><strong>I/O Subsystem.</li></ul></li><li><strong>Interconnection:</strong><ul><li><strong>BUS:</strong> The "highway" for data transfer, consisting of <span class="highlight">Data Bus, Address Bus, and Control Bus</span>.</li></ul></li><li><strong>Program Execution:</strong><ul><li><strong>Machine Cycle:</strong> <span class="highlight">Fetch -> Decode -> Execute</span>.</li></ul></li><li><strong>Optimization:</strong> Pipelining, Parallel Processing.</li></ul>`
+                },
+                questions: [
+                    { q: { vi: "Trình tự đúng của một chu kỳ máy (machine cycle) là gì?", en: "What is the correct sequence of a machine cycle?" }, o: [{ vi: "Decode -> Fetch -> Execute", en: "Decode -> Fetch -> Execute" }, { vi: "Fetch -> Execute -> Decode", en: "Fetch -> Execute -> Decode" }, { vi: "Execute -> Fetch -> Decode", en: "Execute -> Fetch -> Decode" }, { vi: "Fetch -> Decode -> Execute", en: "Fetch -> Decode -> Execute" }], a: 3 },
+                    { q: { vi: "Thanh ghi (register) nào trong CPU chứa địa chỉ của lệnh tiếp theo sẽ được thực thi?", en: "Which register in the CPU holds the address of the next instruction to be executed?" }, o: [{ vi: "Instruction Register (IR)", en: "Instruction Register (IR)" }, { vi: "Program Counter (PC)", en: "Program Counter (PC)" }, { vi: "Accumulator", en: "Accumulator" }, { vi: "Memory Address Register (MAR)", en: "Memory Address Register (MAR)" }], a: 1 },
+                ]
+            }
+        };
+
+        let currentLang = 'vi';
+        let currentChapter = 'chapter1';
+        let quizState = {};
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAllContent();
+            switchTab(currentChapter);
+        });
+
+        function renderAllContent() {
+            const tabContent = document.querySelector('.tab-content');
+            tabContent.innerHTML = '';
+            for (const chapterId in contentData) {
+                const chapterDiv = document.createElement('div');
+                chapterDiv.id = chapterId;
+                chapterDiv.className = 'tab-pane';
+                chapterDiv.innerHTML = `
+                    <div class="theory-view">
+                        <div class="theory-content">${contentData[chapterId].theory[currentLang]}</div>
+                        <div class="button-group">
+                            <button class="primary-button" onclick="showQuizSetup('${chapterId}')" data-lang-key="startQuiz">Làm bài tập</button>
+                        </div>
+                    </div>
+                    <div class="quiz-view">
+                        <div class="quiz-setup">
+                            <h3 data-lang-key="quizSetupTitle">Thiết lập bài trắc nghiệm</h3>
+                            <label data-lang-key="numQuestions">Số lượng câu hỏi:</label>
+                            <input type="number" id="num-questions-${chapterId}" value="5" min="1" max="${contentData[chapterId].questions.length}">
+                            <button class="primary-button" onclick="startQuiz('${chapterId}')" data-lang-key="start">Bắt đầu</button>
+                            <button class="secondary-button" onclick="showTheory('${chapterId}')" data-lang-key="backToTheory">Quay lại Lý thuyết</button>
+                        </div>
+                        <div class="quiz-container" style="display:none;">
+                            <div id="question-text-${chapterId}" class="quiz-question"></div>
+                            <div id="quiz-options-${chapterId}" class="quiz-options"></div>
+                            <div class="button-group">
+                                <button onclick="nextQuestion('${chapterId}')" id="next-btn-${chapterId}" class="primary-button" data-lang-key="nextQuestion" style="display:none;">Câu tiếp theo</button>
+                            </div>
+                        </div>
+                        <div class="quiz-results" style="display:none;">
+                            <h3 data-lang-key="resultsTitle">Kết quả</h3>
+                            <p id="score-${chapterId}"></p>
+                            <button class="secondary-button" onclick="showTheory('${chapterId}')" data-lang-key="backToTheory">Quay lại Lý thuyết</button>
+                        </div>
+                    </div>
+                `;
+                tabContent.appendChild(chapterDiv);
+            }
+            updateLanguageUI();
+        }
+
+        function switchTab(chapterId) {
+            currentChapter = chapterId;
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            document.getElementById(chapterId).classList.add('active');
+            
+            document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+            document.querySelector(`.tab-link[onclick="switchTab('${chapterId}')"]`).classList.add('active');
+        }
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-switcher button').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.lang-switcher button[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            renderAllContent();
+            switchTab(currentChapter);
+        }
+        
+        const translations = {
+            vi: {
+                subtitle: "Chọn chương để học lý thuyết hoặc làm bài tập trắc nghiệm.",
+                vietnamese: "Tiếng Việt", english: "English",
+                ch1: "Chương 1", ch2: "Chương 2", ch3: "Chương 3", ch4: "Chương 4", ch5: "Chương 5",
+                startQuiz: "Làm bài tập", quizSetupTitle: "Thiết lập bài trắc nghiệm",
+                numQuestions: "Số lượng câu hỏi:", start: "Bắt đầu",
+                backToTheory: "Quay lại Lý thuyết", nextQuestion: "Câu tiếp theo",
+                resultsTitle: "Kết quả", scoreText: "Bạn đã trả lời đúng"
+            },
+            en: {
+                subtitle: "Select a chapter to study theory or take a multiple-choice quiz.",
+                vietnamese: "Tiếng Việt", english: "English",
+                ch1: "Chapter 1", ch2: "Chapter 2", ch3: "Chapter 3", ch4: "Chapter 4", ch5: "Chapter 5",
+                startQuiz: "Start Quiz", quizSetupTitle: "Quiz Setup",
+                numQuestions: "Number of questions:", start: "Start",
+                backToTheory: "Back to Theory", nextQuestion: "Next Question",
+                resultsTitle: "Results", scoreText: "You answered correctly"
+            }
+        };
+
+        function updateLanguageUI() {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+        }
+
+        function showQuizSetup(chapterId) {
+            document.querySelector(`#${chapterId} .theory-view`).style.display = 'none';
+            document.querySelector(`#${chapterId} .quiz-view`).style.display = 'block';
+            document.querySelector(`#${chapterId} .quiz-setup`).style.display = 'block';
+            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'none';
+            document.querySelector(`#${chapterId} .quiz-results`).style.display = 'none';
+        }
+
+        function showTheory(chapterId) {
+            document.querySelector(`#${chapterId} .theory-view`).style.display = 'block';
+            document.querySelector(`#${chapterId} .quiz-view`).style.display = 'none';
+        }
+
+        function startQuiz(chapterId) {
+            const allQuestions = contentData[chapterId].questions;
+            const numQuestionsInput = document.getElementById(`num-questions-${chapterId}`);
+            const numQuestions = Math.min(parseInt(numQuestionsInput.value), allQuestions.length);
+            
+            const questions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, numQuestions);
+
+            quizState[chapterId] = { questions, currentQuestionIndex: 0, score: 0 };
+
+            document.querySelector(`#${chapterId} .quiz-setup`).style.display = 'none';
+            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'block';
+            
+            displayQuestion(chapterId);
+        }
+
+        function displayQuestion(chapterId) {
+            const state = quizState[chapterId];
+            if (state.currentQuestionIndex >= state.questions.length) {
+                showResults(chapterId);
+                return;
+            }
+
+            const question = state.questions[state.currentQuestionIndex];
+            document.getElementById(`question-text-${chapterId}`).textContent = `(${state.currentQuestionIndex + 1}/${state.questions.length}) ${question.q[currentLang]}`;
+            
+            const optionsDiv = document.getElementById(`quiz-options-${chapterId}`);
+            optionsDiv.innerHTML = '';
+            question.o.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option[currentLang];
+                button.onclick = () => selectAnswer(chapterId, index, question.a);
+                optionsDiv.appendChild(button);
+            });
+            document.getElementById(`next-btn-${chapterId}`).style.display = 'none';
+        }
+
+        function selectAnswer(chapterId, selectedIndex, correctIndex) {
+            const state = quizState[chapterId];
+            const options = document.querySelectorAll(`#quiz-options-${chapterId} button`);
+            options.forEach(button => button.disabled = true);
+
+            if (selectedIndex === correctIndex) {
+                options[selectedIndex].classList.add('correct');
+                state.score++;
+            } else {
+                options[selectedIndex].classList.add('incorrect');
+                options[correctIndex].classList.add('correct');
+            }
+            document.getElementById(`next-btn-${chapterId}`).style.display = 'inline-block';
+        }
+
+        function nextQuestion(chapterId) {
+            quizState[chapterId].currentQuestionIndex++;
+            displayQuestion(chapterId);
+        }
+
+        function showResults(chapterId) {
+            const state = quizState[chapterId];
+            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'none';
+            const resultsDiv = document.querySelector(`#${chapterId} .quiz-results`);
+            resultsDiv.style.display = 'block';
+            
+            const scoreText = translations[currentLang].scoreText;
+            document.getElementById(`score-${chapterId}`).textContent = `${scoreText} ${state.score} / ${state.questions.length} câu.`;
+        }
+    </script>
+</body>
+</html>
