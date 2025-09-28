@@ -224,30 +224,15 @@
                                     <li>Định nghĩa máy tính như một <span class="highlight">bộ xử lý dữ liệu có thể lập trình được (programmable data processor)</span>.</li>
                                     <li>Đây là một mô hình lý thuyết, toán học, không phải kiến trúc vật lý.</li>
                                     <li>Công thức cốt lõi: <strong>Dữ liệu đầu vào + Chương trình -> Máy tính -> Dữ liệu đầu ra</strong>.</li>
-                                    <li>Ý nghĩa: Cùng một dữ liệu đầu vào, nếu thay đổi chương trình, ta sẽ có kết quả đầu ra khác nhau. Điều này định nghĩa nên một máy tính đa năng (general-purpose).</li>
                                 </ul>
                             </li>
                             <li>
                                 <strong>Mô hình von Neumann (von Neumann Model):</strong>
                                 <ul>
                                     <li>Mô hình kiến trúc cho hầu hết các máy tính hiện đại.</li>
-                                    <li><span class="highlight">Khái niệm đột phá: Chương trình được lưu trong bộ nhớ (Stored Program Concept)</span>. Cả chương trình (tập lệnh) và dữ liệu đều được lưu trữ trong cùng một bộ nhớ và có cùng định dạng (nhị phân).</li>
-                                    <li>Kiến trúc bao gồm 4 hệ thống con (subsystems):
-                                        <ol>
-                                            <li><strong>Bộ nhớ (Memory):</strong> Lưu trữ chương trình và dữ liệu.</li>
-                                            <li><strong>Đơn vị Số học & Logic (Arithmetic Logic Unit - ALU):</strong> Thực hiện các phép tính và so sánh logic.</li>
-                                            <li><strong>Đơn vị Điều khiển (Control Unit):</strong> Điều phối hoạt động của tất cả các thành phần khác.</li>
-                                            <li><strong>Hệ thống Vào/Ra (Input/Output Subsystem):</strong> Giao tiếp với thế giới bên ngoài (bàn phím, màn hình, ổ cứng...).</li>
-                                        </ol>
-                                    </li>
+                                    <li><span class="highlight">Khái niệm đột phá: Chương trình được lưu trong bộ nhớ (Stored Program Concept)</span>. Cả chương trình và dữ liệu đều được lưu trữ trong cùng một bộ nhớ và có cùng định dạng (nhị phân).</li>
                                 </ul>
                             </li>
-                        </ul>
-                        <h3>2. Ba thành phần của máy tính</h3>
-                        <ul>
-                            <li><strong>Phần cứng (Hardware):</strong> Các thành phần vật lý của máy tính (CPU, RAM, ổ đĩa, ...).</li>
-                            <li><strong>Dữ liệu (Data):</strong> Các thông tin thô (số, văn bản, hình ảnh) được máy tính xử lý. Dữ liệu được biểu diễn dưới dạng nhị phân.</li>
-                            <li><strong>Phần mềm (Software):</strong> Tập hợp các chương trình (tập lệnh) hướng dẫn phần cứng phải làm gì. Phần mềm là cầu nối giữa người dùng và phần cứng.</li>
                         </ul>
                     `,
                     en: `
@@ -260,7 +245,6 @@
                                     <li>Defines a computer as a <span class="highlight">programmable data processor</span>.</li>
                                     <li>This is a theoretical, mathematical model, not a physical architecture.</li>
                                     <li>Core formula: <strong>Input Data + Program -> Computer -> Output Data</strong>.</li>
-                                    <li>Significance: With the same input data, changing the program yields a different output. This defines a general-purpose computer.</li>
                                 </ul>
                             </li>
                             <li>
@@ -268,28 +252,13 @@
                                 <ul>
                                     <li>The architectural model for most modern computers.</li>
                                     <li><span class="highlight">Breakthrough concept: The Stored Program Concept</span>. Both the program (instructions) and data are stored in the same memory and share the same format (binary).</li>
-                                    <li>The architecture consists of four subsystems:
-                                        <ol>
-                                            <li><strong>Memory:</strong> Stores programs and data.</li>
-                                            <li><strong>Arithmetic Logic Unit (ALU):</strong> Performs calculations and logical comparisons.</li>
-                                            <li><strong>Control Unit:</strong> Coordinates the operations of all other components.</li>
-                                            <li><strong>Input/Output (I/O) Subsystem:</strong> Communicates with the outside world (keyboard, monitor, drives...).</li>
-                                        </ol>
-                                    </li>
                                 </ul>
                             </li>
-                        </ul>
-                        <h3>2. Three Components of a Computer</h3>
-                        <ul>
-                            <li><strong>Hardware:</strong> The physical parts of the computer (CPU, RAM, disk drive, etc.).</li>
-                            <li><strong>Data:</strong> Raw information (numbers, text, images) that the computer processes. Data is represented in binary format.</li>
-                            <li><strong>Software:</strong> A collection of programs (sets of instructions) that tells the hardware what to do. Software is the bridge between the user and the hardware.</li>
                         </ul>
                     `
                 },
                 questions: [
-                    { q: { vi: "Mô hình nào định nghĩa khái niệm 'Stored Program Concept' (Chương trình được lưu trong bộ nhớ)?", en: "Which model defines the 'Stored Program Concept'?" }, o: [{ vi: "Mô hình Turing", en: "Turing Model" }, { vi: "Mô hình von Neumann", en: "von Neumann Model" }, { vi: "Mô hình Pascal", en: "Pascal Model" }, { vi: "Mô hình Babbage", en: "Babbage Model" }], a: 1, explanation: { vi: "Ghi nhớ: Von Neumann = Chương trình trong Bộ nhớ. Đây là kiến trúc máy tính hiện đại.", en: "Remember: Von Neumann = Program in Memory. This is the modern computer architecture." } },
-                    { q: { vi: "Theo mô hình Turing, đầu ra phụ thuộc vào yếu tố nào?", en: "According to the Turing model, what does the output depend on?" }, o: [{ vi: "Chỉ dữ liệu đầu vào", en: "Only the input data" }, { vi: "Chỉ chương trình", en: "Only the program" }, { vi: "Sự kết hợp của dữ liệu đầu vào và chương trình", en: "The combination of input data and the program" }, { vi: "Tốc độ của máy tính", en: "The speed of the computer" }], a: 2, explanation: { vi: "Máy Turing là một 'bộ xử lý dữ liệu LẬP TRÌNH ĐƯỢC'. 'Lập trình được' có nghĩa là chương trình quyết định cách xử lý dữ liệu.", en: "A Turing machine is a 'PROGRAMMABLE data processor'. 'Programmable' means the program dictates how the data is handled." } }
+                    { q: { vi: "Mô hình nào định nghĩa khái niệm 'Stored Program Concept'?", en: "Which model defines the 'Stored Program Concept'?" }, o: [{ vi: "Mô hình Turing", en: "Turing Model" }, { vi: "Mô hình von Neumann", en: "von Neumann Model" }, { vi: "Mô hình Pascal", en: "Pascal Model" }, { vi: "Mô hình Babbage", en: "Babbage Model" }], a: 1, explanation: { vi: "Von Neumann = Chương trình trong Bộ nhớ.", en: "Von Neumann = Program in Memory." } }
                 ]
             },
             chapter2: {
@@ -298,83 +267,43 @@
                         <h2>Chương 2: Hệ thống Số</h2>
                         <h3>1. Các hệ đếm cơ bản (Positional Number Systems)</h3>
                         <ul>
-                            <li><strong>Khái niệm:</strong> Giá trị của một chữ số phụ thuộc vào <span class="highlight">vị trí (position)</span> của nó trong chuỗi số. Mỗi vị trí có một trọng số (place value) là lũy thừa của cơ số (base/radix).</li>
-                            <li><strong>Các hệ đếm chính:</strong>
-                                <ul>
-                                    <li><strong>Thập phân (Decimal - Base 10):</strong> Dùng 10 ký tự {0, 1, ..., 9}.</li>
-                                    <li><strong>Nhị phân (Binary - Base 2):</strong> Dùng 2 ký tự {0, 1}. Đây là <span class="highlight">ngôn ngữ tự nhiên của máy tính</span>.</li>
-                                    <li><strong>Bát phân (Octal - Base 8):</strong> Dùng 8 ký tự {0, 1, ..., 7}.</li>
-                                    <li><strong>Thập lục phân (Hexadecimal - Base 16):</strong> Dùng 16 ký tự {0, 1, ..., 9, A, B, C, D, E, F}.</li>
-                                </ul>
-                            </li>
+                            <li><strong>Khái niệm:</strong> Giá trị của một chữ số phụ thuộc vào <span class="highlight">vị trí</span> của nó trong chuỗi số. Mỗi vị trí có một trọng số là lũy thừa của cơ số.</li>
+                            <li><strong>Các hệ đếm chính:</strong> Binary (2), Octal (8), Decimal (10), Hexadecimal (16).</li>
                         </ul>
                         <h3>2. Ví dụ về Chuyển đổi</h3>
                         <h4>Chuyển từ hệ bất kỳ sang Thập phân</h4>
-                        <p>Quy tắc: Lấy từng chữ số nhân với (cơ số)<sup>vị trí</sup> rồi cộng tất cả lại.</p>
-                        <pre><strong>Ví dụ 1: (11001)₂ sang thập phân</strong>
-N = 1×2⁴ + 1×2³ + 0×2² + 0×2¹ + 1×2⁰
-  = 16  +  8   +  0   +  0   +  1
-  = 25₁₀
-
-<strong>Ví dụ 2: (2AE)₁₆ sang thập phân (A=10, E=14)</strong>
+                        <pre><strong>Ví dụ: (2AE)₁₆ sang thập phân (A=10, E=14)</strong>
 N = 2×16² + 10×16¹ + 14×16⁰
-  = 2×256 + 10×16  + 14×1
-  = 512   + 160    + 14
-  = 686₁₀</pre>
-                        <h4>Chuyển từ Thập phân sang hệ bất kỳ (Phần nguyên)</h4>
-                        <p>Quy tắc: <span class="highlight">Chia liên tiếp</span> cho cơ số mới, lấy phần dư theo thứ tự ngược lại.</p>
+  = 2×256 + 160 + 14 = 686₁₀</pre>
+                        <h4>Chuyển từ Thập phân sang hệ bất kỳ</h4>
                         <pre><strong>Ví dụ: 35₁₀ sang nhị phân (chia cho 2)</strong>
 35 / 2 = 17 dư 1  ↑
 17 / 2 = 8  dư 1  |
- 8 / 2 = 4  dư 0  | Đọc ngược
- 4 / 2 = 2  dư 0  | từ dưới lên
+ 8 / 2 = 4  dư 0  | Đọc ngược từ dưới lên
+ 4 / 2 = 2  dư 0  |
  2 / 2 = 1  dư 0  |
  1 / 2 = 0  dư 1  ↑
 Kết quả: (100011)₂</pre>
-                        <h4>Chuyển đổi nhanh giữa Binary ↔ Octal ↔ Hexadecimal</h4>
-                        <p>Quy tắc: Gom nhóm <span class="highlight">3 bits</span> cho Octal và <span class="highlight">4 bits</span> cho Hexadecimal.</p>
-                        <pre><strong>Ví dụ 1: (10011100010)₂ sang Hexadecimal (gom nhóm 4)</strong>
-   100  1110  0010   (Thêm 2 số 0 vào đầu cho đủ nhóm)
-→ 0100  1110  0010
+                        <h4>Chuyển đổi nhanh Binary ↔ Hexadecimal</h4>
+                        <pre><strong>Ví dụ: (10011100010)₂ sang Hexadecimal (gom nhóm 4 bit)</strong>
+  0100  1110  0010  (Thêm 0 vào đầu)
     ↓     ↓     ↓
     4     E     2
-Kết quả: (4E2)₁₆
-
-<strong>Ví dụ 2: (101110010)₂ sang Octal (gom nhóm 3)</strong>
-  101  110  010
-   ↓    ↓    ↓
-   5    6    2
-Kết quả: (562)₈</pre>
+Kết quả: (4E2)₁₆</pre>
                     `,
                     en: `
                         <h2>Chapter 2: Number Systems</h2>
                         <h3>1. Positional Number Systems</h3>
                         <ul>
-                            <li><strong>Concept:</strong> The value of a digit depends on its <span class="highlight">position</span> within the number string. Each position has a place value, which is a power of the base (radix).</li>
-                            <li><strong>Main Systems:</strong>
-                                <ul>
-                                    <li><strong>Decimal (Base 10):</strong> Uses 10 symbols {0, 1, ..., 9}.</li>
-                                    <li><strong>Binary (Base 2):</strong> Uses 2 symbols {0, 1}. This is the <span class="highlight">natural language of computers</span>.</li>
-                                    <li><strong>Octal (Base 8):</strong> Uses 8 symbols {0, 1, ..., 7}.</li>
-                                    <li><strong>Hexadecimal (Base 16):</strong> Uses 16 symbols {0, 1, ..., 9, A, B, C, D, E, F}.</li>
-                                </ul>
-                            </li>
+                            <li><strong>Concept:</strong> The value of a digit depends on its <span class="highlight">position</span> within the number string. Each position has a place value, which is a power of the base.</li>
+                            <li><strong>Main Systems:</strong> Binary (2), Octal (8), Decimal (10), Hexadecimal (16).</li>
                         </ul>
                         <h3>2. Conversion Examples</h3>
                         <h4>Convert from Any Base to Decimal</h4>
-                        <p>Rule: Multiply each digit by (base)<sup>position</sup> and sum the results.</p>
-                        <pre><strong>Example 1: (11001)₂ to decimal</strong>
-N = 1×2⁴ + 1×2³ + 0×2² + 0×2¹ + 1×2⁰
-  = 16  +  8   +  0   +  0   +  1
-  = 25₁₀
-
-<strong>Example 2: (2AE)₁₆ to decimal (A=10, E=14)</strong>
+                        <pre><strong>Example: (2AE)₁₆ to decimal (A=10, E=14)</strong>
 N = 2×16² + 10×16¹ + 14×16⁰
-  = 2×256 + 10×16  + 14×1
-  = 512   + 160    + 14
-  = 686₁₀</pre>
-                        <h4>Convert from Decimal to Any Base (Integer Part)</h4>
-                        <p>Rule: <span class="highlight">Repeatedly divide</span> by the new base, take the remainders in reverse order.</p>
+  = 2×256 + 160 + 14 = 686₁₀</pre>
+                        <h4>Convert from Decimal to Any Base</h4>
                         <pre><strong>Example: 35₁₀ to binary (divide by 2)</strong>
 35 / 2 = 17 rem 1  ↑
 17 / 2 = 8  rem 1  |
@@ -383,71 +312,51 @@ N = 2×16² + 10×16¹ + 14×16⁰
  2 / 2 = 1  rem 0  |
  1 / 2 = 0  rem 1  ↑
 Result: (100011)₂</pre>
-                        <h4>Quick Conversion between Binary ↔ Octal ↔ Hexadecimal</h4>
-                        <p>Rule: Group <span class="highlight">3 bits</span> for Octal and <span class="highlight">4 bits</span> for Hexadecimal.</p>
-                        <pre><strong>Example 1: (10011100010)₂ to Hexadecimal (group of 4)</strong>
-   100  1110  0010   (Pad with two leading zeros)
-→ 0100  1110  0010
+                        <h4>Quick Conversion Binary ↔ Hexadecimal</h4>
+                        <pre><strong>Example: (10011100010)₂ to Hexadecimal (group of 4 bits)</strong>
+  0100  1110  0010  (Pad with leading zeros)
     ↓     ↓     ↓
     4     E     2
-Result: (4E2)₁₆
-
-<strong>Example 2: (101110010)₂ to Octal (group of 3)</strong>
-  101  110  010
-   ↓    ↓    ↓
-   5    6    2
-Result: (562)₈</pre>
+Result: (4E2)₁₆</pre>
                     `
                 },
                 questions: [
-                     { q: { vi: "Trong một hệ số vị (positional number system), radix (base) là gì?", en: "In a positional number system, what is the radix (base)?"}, o: [ {vi: "Giá trị lớn nhất có thể biểu diễn bằng một chữ số.", en: "The maximum value representable by a single digit."}, {vi: "Số chữ số tối đa cho biểu diễn số nguyên.", en: "The maximum number of digits for an integer representation."}, {vi: "Số kí hiệu (symbols) trong hệ (số lượng chữ số khác nhau).", en: "The number of symbols in the system (the count of different digits)."}, {vi: "Tổng các giá trị chữ số trong một số.", en: "The sum of the digit values in a number."}], a: 2, explanation: {vi: "Radix (base) định nghĩa số lượng ký hiệu duy nhất được sử dụng trong hệ đếm đó. Ví dụ, hệ thập phân có base 10 vì nó dùng 10 ký hiệu (0-9).", en: "The radix (base) defines the number of unique symbols used in that number system. For example, the decimal system has a base of 10 because it uses 10 symbols (0-9)."}},
-                     { q: { vi: "Một chữ số thập lục phân (hex digit) tương ứng với bao nhiêu bit?", en: "One hexadecimal digit corresponds to how many bits?"}, o: [ {vi: "2 bit", en: "2 bits"}, {vi: "3 bit", en: "3 bits"}, {vi: "4 bit", en: "4 bits"}, {vi: "8 bit", en: "8 bits"}], a: 2, explanation: {vi: "Vì 16 = 2⁴, mỗi chữ số thập lục phân có thể biểu diễn một tổ hợp duy nhất của 4 bit. Đây là cơ sở cho việc chuyển đổi nhanh.", en: "Because 16 = 2⁴, each hexadecimal digit can represent a unique combination of 4 bits. This is the basis for fast conversion."}}
+                     { q: { vi: "Một chữ số thập lục phân (hex digit) tương ứng với bao nhiêu bit?", en: "One hexadecimal digit corresponds to how many bits?"}, o: [ {vi: "2 bit", en: "2 bits"}, {vi: "3 bit", en: "3 bits"}, {vi: "4 bit", en: "4 bits"}, {vi: "8 bit", en: "8 bits"}], a: 2, explanation: {vi: "Vì 16 = 2⁴, mỗi chữ số thập lục phân có thể biểu diễn một tổ hợp duy nhất của 4 bit.", en: "Because 16 = 2⁴, each hexadecimal digit can represent a unique combination of 4 bits."}}
                 ]
             },
             chapter3: {
                 theory: {
                     vi: `
                         <h2>Chương 3: Lưu trữ Dữ liệu</h2>
-                        <p>Chương này giải thích cách các loại dữ liệu khác nhau (số, văn bản, hình ảnh, âm thanh) được biểu diễn dưới dạng các chuỗi bit (0 và 1) để máy tính có thể lưu trữ và xử lý.</p>
+                        <p>Chương này giải thích cách các loại dữ liệu khác nhau được biểu diễn dưới dạng các chuỗi bit (0 và 1) để máy tính có thể lưu trữ và xử lý.</p>
                         <h3>1. Lưu trữ số nguyên (Storing Integers)</h3>
                         <ul>
                             <li><strong>Số nguyên không dấu (Unsigned Integers):</strong> Dùng để biểu diễn các số không âm (0, 1, 2, ...). Với n bit, ta có thể biểu diễn các số từ 0 đến 2ⁿ-1.</li>
                             <li><strong>Số nguyên có dấu (Signed Integers):</strong>
                                 <ul>
                                     <li><strong>Dấu và Độ lớn (Sign-and-Magnitude):</strong> Dùng bit đầu tiên làm bit dấu (0=dương, 1=âm). Có nhược điểm là tồn tại hai biểu diễn cho số 0 (+0 và -0).</li>
-                                    <li><strong>Bù 2 (Two's Complement):</strong> Phương pháp tiêu chuẩn hiện nay. Nó chỉ có một biểu diễn cho số 0 và giúp đơn giản hóa các phép toán trừ (bằng cách chuyển chúng thành phép cộng).</li>
+                                    <li><strong>Bù 2 (Two's Complement):</strong> Phương pháp tiêu chuẩn hiện nay. Nó chỉ có một biểu diễn cho số 0 và giúp đơn giản hóa các phép toán trừ.</li>
                                 </ul>
                             </li>
-                        </ul>
-                        <h3>2. Lưu trữ số thực (Storing Reals)</h3>
-                        <ul>
-                            <li>Sử dụng biểu diễn <span class="highlight">Dấu phẩy động (Floating-Point)</span>, tương tự như ký hiệu khoa học.</li>
-                            <li>Một số được lưu thành 3 phần: <strong>Dấu (Sign)</strong>, <strong>Số mũ (Exponent)</strong>, và <strong>Phần định trị (Mantissa)</strong>.</li>
                         </ul>
                     `,
                     en: `
                         <h2>Chapter 3: Data Storage</h2>
-                        <p>This chapter explains how different types of data (numbers, text, images, audio) are represented as bit patterns (0s and 1s) so they can be stored and processed by a computer.</p>
+                        <p>This chapter explains how different data types are represented as bit patterns (0s and 1s) so they can be stored and processed by a computer.</p>
                         <h3>1. Storing Integers</h3>
                         <ul>
                             <li><strong>Unsigned Integers:</strong> Used to represent non-negative numbers (0, 1, 2, ...). With n bits, numbers from 0 to 2ⁿ-1 can be represented.</li>
                             <li><strong>Signed Integers:</strong>
                                 <ul>
-                                    <li><strong>Sign-and-Magnitude:</strong> Uses the first bit as a sign bit (0=positive, 1=negative). It has the drawback of having two representations for zero (+0 and -0).</li>
-                                    <li><strong>Two's Complement:</strong> The current standard method. It has only one representation for zero and simplifies subtraction operations (by converting them to addition).</li>
+                                    <li><strong>Sign-and-Magnitude:</strong> Uses the first bit as a sign bit (0=positive, 1=negative). It has the drawback of having two representations for zero.</li>
+                                    <li><strong>Two's Complement:</strong> The current standard method. It has only one representation for zero and simplifies subtraction operations.</li>
                                 </ul>
                             </li>
-                        </ul>
-                        <h3>2. Storing Reals</h3>
-                        <ul>
-                            <li>Uses <span class="highlight">Floating-Point</span> representation, which is similar to scientific notation.</li>
-                            <li>A number is stored in 3 parts: <strong>Sign</strong>, <strong>Exponent</strong>, and <strong>Mantissa</strong>.</li>
                         </ul>
                     `
                 },
                 questions: [
-                    { q: { vi: "Khi được lưu trữ trong máy tính, tất cả các loại dữ liệu đều được chuyển đổi thành một dạng biểu diễn thống nhất. Dạng biểu diễn chung này được gọi là gì?", en: "When stored in a computer, all data types are converted into a uniform representation. What is this common representation called?"}, o: [{vi: "Một byte (A byte)", en: "A byte"}, {vi: "Một mẫu bit (A bit pattern)", en: "A bit pattern"}, {vi: "Một từ (A word)", en: "A word"}, {vi: "Một con số (A number)", en: "A number"}], a: 1, explanation: {vi: "Dù là số, chữ, hay hình ảnh, tất cả đều được mã hóa thành các chuỗi 0 và 1, được gọi là mẫu bit.", en: "Whether it's a number, text, or image, everything is encoded into strings of 0s and 1s, known as a bit pattern."} },
-                    { q: { vi: "Hầu hết các máy tính ngày nay sử dụng phương pháp biểu diễn số nguyên nào để lưu trữ số nguyên có dấu?", en: "Which integer representation do most computers today use to store signed integers?"}, o: [{vi: "Biểu diễn không dấu (Unsigned representation)", en: "Unsigned representation"}, {vi: "Biểu diễn dấu-lượng (Sign-and-magnitude representation)", en: "Sign-and-magnitude representation"}, {vi: "Biểu diễn bù hai (Two's complement representation)", en: "Two's complement representation"}, {vi: "Biểu diễn bù một (One's complement representation)", en: "One's complement representation"}], a: 2, explanation: {vi: "Bù hai (Two's complement) là tiêu chuẩn vì nó giải quyết vấn đề hai số 0 và đơn giản hóa mạch logic cho phép trừ (biến nó thành phép cộng).", en: "Two's complement is the standard because it solves the two-zeros problem and simplifies the logic circuit for subtraction (by turning it into addition)."}}
+                    { q: { vi: "Hầu hết các máy tính ngày nay sử dụng phương pháp biểu diễn số nguyên nào để lưu trữ số nguyên có dấu?", en: "Which integer representation do most computers today use to store signed integers?"}, o: [{vi: "Biểu diễn không dấu", en: "Unsigned representation"}, {vi: "Biểu diễn dấu-lượng", en: "Sign-and-magnitude representation"}, {vi: "Biểu diễn bù hai", en: "Two's complement representation"}, {vi: "Biểu diễn bù một", en: "One's complement representation"}], a: 2, explanation: {vi: "Bù hai là tiêu chuẩn vì nó giải quyết vấn đề hai số 0 và đơn giản hóa mạch logic cho phép trừ.", en: "Two's complement is the standard because it solves the two-zeros problem and simplifies the logic circuit for subtraction."}}
                 ]
             },
             chapter4: {
@@ -456,16 +365,7 @@ Result: (562)₈</pre>
                         <h2>Chương 4: Các Phép toán trên Dữ liệu</h2>
                         <h3>1. Phép toán Logic (Logic Operations)</h3>
                         <ul>
-                            <li>Thực hiện trên từng bit của một hoặc hai chuỗi bit. Các toán tử chính:
-                                <ul>
-                                    <li><strong>NOT:</strong> Đảo bit (0 thành 1, 1 thành 0).</li>
-                                    <li><strong>AND:</strong> Kết quả là 1 chỉ khi cả hai bit đầu vào đều là 1.</li>
-                                    <li><strong>OR:</strong> Kết quả là 1 nếu ít nhất một trong hai bit đầu vào là 1.</li>
-                                    <li><strong>XOR (Exclusive OR):</strong> Kết quả là 1 chỉ khi hai bit đầu vào khác nhau.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Ứng dụng: Dùng mặt nạ (Masking)</strong>
+                            <li><strong>Ứng dụng: Dùng mặt nạ (Masking)</strong>
                                 <ul>
                                     <li><span class="highlight">Unsetting (Xóa bit về 0):</span> Dùng phép <strong>AND</strong> với mặt nạ có bit 0 tại vị trí cần xóa.</li>
                                     <li><span class="highlight">Setting (Bật bit lên 1):</span> Dùng phép <strong>OR</strong> với mặt nạ có bit 1 tại vị trí cần bật.</li>
@@ -478,21 +378,9 @@ Result: (562)₈</pre>
   1010 0110   (Dữ liệu gốc)
 & 0000 0111   (Mặt nạ AND - 0 ở vị trí cần xóa)
 -----------
-  0000 0110   (Kết quả)
-
-<strong>Ví dụ: Lật (flip) 5 bit ngoài cùng bên trái của 10100110</strong>
-  1010 0110   (Dữ liệu gốc)
-^ 1111 1000   (Mặt nạ XOR - 1 ở vị trí cần lật)
------------
-  0101 1110   (Kết quả)</pre>
-                        <h3>3. Phép toán Dịch chuyển (Shift Operations)</h3>
+  0000 0110   (Kết quả)</pre>
+                        <h3>3. Phép toán Số học (Arithmetic Operations)</h3>
                         <ul>
-                             <li><strong>Dịch logic (Logical Shift):</strong> Dịch chuyển các bit, chèn số 0 vào chỗ trống. Dùng cho số không dấu.</li>
-                             <li><strong>Dịch số học (Arithmetic Shift):</strong> Dùng cho số bù 2. Khi dịch phải, bit dấu được giữ nguyên để bảo toàn giá trị âm/dương. Dịch trái tương đương nhân 2, dịch phải tương đương chia 2.</li>
-                        </ul>
-                        <h3>4. Phép toán Số học (Arithmetic Operations)</h3>
-                        <ul>
-                            <li>Phép cộng số Bù 2 được thực hiện như cộng nhị phân thông thường, bit nhớ cuối cùng (nếu có) sẽ bị bỏ đi.</li>
                             <li><span class="highlight">Phép trừ A - B được thực hiện bằng phép cộng: A + (Bù 2 của B)</span>.</li>
                         </ul>
                          <pre><strong>Ví dụ: (+24) + (-17) dùng số bù 2 8-bit</strong>
@@ -506,16 +394,7 @@ Kết quả: (1)0000 0111  (Bỏ bit nhớ cuối)
                         <h2>Chapter 4: Operations on Data</h2>
                         <h3>1. Logic Operations</h3>
                         <ul>
-                            <li>Performed on individual bits of one or two bit patterns. Main operators:
-                                <ul>
-                                    <li><strong>NOT:</strong> Inverts the bit (0 becomes 1, 1 becomes 0).</li>
-                                    <li><strong>AND:</strong> The result is 1 only if both input bits are 1.</li>
-                                    <li><strong>OR:</strong> The result is 1 if at least one of the input bits is 1.</li>
-                                    <li><strong>XOR (Exclusive OR):</strong> The result is 1 only if the input bits are different.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Application: Masking</strong>
+                            <li><strong>Application: Masking</strong>
                                 <ul>
                                     <li><span class="highlight">Unsetting a bit (to 0):</span> Use <strong>AND</strong> with a mask that has a 0 at the desired position.</li>
                                     <li><span class="highlight">Setting a bit (to 1):</span> Use <strong>OR</strong> with a mask that has a 1 at the desired position.</li>
@@ -528,21 +407,9 @@ Kết quả: (1)0000 0111  (Bỏ bit nhớ cuối)
   1010 0110   (Original Data)
 & 0000 0111   (AND Mask - 0s where you want to clear)
 -----------
-  0000 0110   (Result)
-
-<strong>Example: Flip the five leftmost bits of 10100110</strong>
-  1010 0110   (Original Data)
-^ 1111 1000   (XOR Mask - 1s where you want to flip)
------------
-  0101 1110   (Result)</pre>
-                        <h3>3. Shift Operations</h3>
+  0000 0110   (Result)</pre>
+                        <h3>3. Arithmetic Operations</h3>
                         <ul>
-                             <li><strong>Logical Shift:</strong> Shifts bits and inserts a 0 into the empty spot. Used for unsigned numbers.</li>
-                             <li><strong>Arithmetic Shift:</strong> Used for two's complement numbers. A right shift preserves the sign bit. Left shift is equivalent to multiplying by 2, right shift is equivalent to dividing by 2.</li>
-                        </ul>
-                        <h3>4. Arithmetic Operations</h3>
-                        <ul>
-                            <li>Two's Complement addition is performed like normal binary addition, and the final carry bit (if any) is discarded.</li>
                             <li><span class="highlight">Subtraction A - B is performed as an addition: A + (Two's complement of B)</span>.</li>
                         </ul>
                          <pre><strong>Example: (+24) + (-17) using 8-bit two's complement</strong>
@@ -554,26 +421,24 @@ Result: (1)0000 0111  (Discard final carry)
                     `
                 },
                 questions: [
-                    { q: { vi: "Phép toán nào sau đây là một phép toán một ngôi (unary operator)?", en: "Which of the following is a unary operator?" }, o: [{ vi: "AND", en: "AND" }, { vi: "OR", en: "OR" }, { vi: "XOR", en: "XOR" }, { vi: "NOT", en: "NOT" }], a: 3, explanation: { vi: "NOT là toán tử một ngôi vì nó chỉ hoạt động trên một toán hạng (một đầu vào). AND, OR, XOR là toán tử hai ngôi (cần hai đầu vào).", en: "NOT is a unary operator because it operates on only one operand (one input). AND, OR, and XOR are binary operators (requiring two inputs)." } },
-                    { q: { vi: "Để 'unset' (tắt) một hoặc nhiều bit cụ thể trong một chuỗi bit (buộc chúng về 0), ta nên sử dụng phép toán nào kết hợp với một mặt nạ (mask)?", en: "To 'unset' (turn off) one or more specific bits in a bit string (forcing them to 0), which operation should be used with a mask?"}, o: [ {vi: "OR", en: "OR"}, {vi: "AND", en: "AND"}, {vi: "XOR", en: "XOR"}, {vi: "NOT", en: "NOT"}], a: 1, explanation: {vi: "Ghi nhớ: AND với 0 sẽ luôn cho kết quả là 0. Vì vậy, ta tạo một mặt nạ có bit 0 ở vị trí cần xóa và bit 1 ở các vị trí khác.", en: "Remember: ANDing with 0 always results in 0. Therefore, we create a mask with a 0 at the position to be cleared and 1s elsewhere."}}
+                    { q: { vi: "Để 'unset' (tắt) một bit cụ thể (buộc về 0), ta nên sử dụng phép toán nào với một mặt nạ?", en: "To 'unset' (turn off) a specific bit (force to 0), which operation should be used with a mask?"}, o: [ {vi: "OR", en: "OR"}, {vi: "AND", en: "AND"}, {vi: "XOR", en: "XOR"}, {vi: "NOT", en: "NOT"}], a: 1, explanation: {vi: "AND với 0 sẽ luôn cho kết quả là 0.", en: "ANDing with 0 always results in 0."}}
                 ]
             },
             chapter5: {
                  theory: {
                     vi: `
                         <h2>Chương 5: Tổ chức Máy tính</h2>
-                        <h3>1. Các hệ thống con (Subsystems)</h3>
+                        <h3>1. Các thành phần chính</h3>
                         <ul>
                             <li><strong>CPU (Central Processing Unit):</strong> "Bộ não" của máy tính. Gồm 3 phần: ALU (tính toán), Control Unit (điều khiển), và Registers (thanh ghi).</li>
                             <li><strong>Bộ nhớ chính (Main Memory):</strong> Thường là RAM, lưu trữ chương trình và dữ liệu đang chạy.</li>
-                            <li><strong>Hệ thống Vào/Ra (I/O Subsystem):</strong> Gồm các thiết bị ngoại vi như bàn phím, màn hình, ổ cứng...</li>
                         </ul>
                         <h3>2. Phân cấp bộ nhớ (Memory Hierarchy)</h3>
                         <p>Tốc độ và giá thành giảm dần, dung lượng tăng dần:</p>
                         <p><span class="highlight">Registers → Cache → Main Memory → Storage (Ổ cứng)</span></p>
                         <h3>3. Chu kỳ máy (Machine Cycle)</h3>
                         <ul>
-                             <li>Quá trình CPU thực thi một lệnh, lặp đi lặp lại. Gồm 3 bước cơ bản:
+                             <li>Quá trình CPU thực thi một lệnh. Gồm 3 bước cơ bản:
                                 <ol>
                                     <li><span class="highlight">Fetch (Nạp lệnh):</span> Lấy lệnh từ bộ nhớ.</li>
                                     <li><span class="highlight">Decode (Giải mã):</span> Hiểu xem lệnh yêu cầu làm gì.</li>
@@ -584,11 +449,10 @@ Result: (1)0000 0111  (Discard final carry)
                     `,
                     en: `
                         <h2>Chapter 5: Computer Organization</h2>
-                        <h3>1. Subsystems</h3>
+                        <h3>1. Main Components</h3>
                         <ul>
                            <li><strong>CPU (Central Processing Unit):</strong> The "brain" of the computer. Contains 3 parts: ALU (calculation), Control Unit (control), and Registers.</li>
                             <li><strong>Main Memory:</strong> Usually RAM, stores currently running programs and data.</li>
-                            <li><strong>I/O (Input/Output) Subsystem:</strong> Includes peripheral devices like keyboard, monitor, hard drive...</li>
                         </ul>
                         <h3>2. Memory Hierarchy</h3>
                         <p>Speed and cost decrease, while capacity increases:</p>
@@ -606,8 +470,7 @@ Result: (1)0000 0111  (Discard final carry)
                     `
                 },
                 questions: [
-                    { q: { vi: "Ba thành phần chính của CPU (Central Processing Unit) là gì?", en: "What are the three main components of a CPU (Central Processing Unit)?" }, o: [{ vi: "RAM, ROM, và Cache", en: "RAM, ROM, and Cache" }, { vi: "Data Bus, Address Bus, và Control Bus", en: "Data Bus, Address Bus, and Control Bus" }, { vi: "Đơn vị Số học và Logic (ALU), Đơn vị Điều khiển (Control Unit), và các Thanh ghi (Registers)", en: "Arithmetic Logic Unit (ALU), Control Unit, and Registers" }, { vi: "Input, Process, và Output", en: "Input, Process, and Output" }], a: 2, explanation: { vi: "CPU có bộ phận tính toán (ALU), bộ phận chỉ huy (Control Unit), và bộ nhớ siêu nhanh tại chỗ (Registers).", en: "The CPU has a calculation part (ALU), a command part (Control Unit), and super-fast local memory (Registers)." } },
-                    { q: { vi: "Chức năng chính của Program Counter (PC) là gì?", en: "What is the main function of the Program Counter (PC)?" }, o: [{ vi: "Lưu dữ liệu tạm thời", en: "To store temporary data" }, { vi: "Giữ địa chỉ lệnh tiếp theo cần thực thi", en: "To hold the address of the next instruction to be executed" }, { vi: "Thực hiện phép toán số học", en: "To perform arithmetic operations" }, { vi: "Điều khiển tốc độ bus", en: "To control the bus speed" }], a: 1, explanation: { vi: "PC luôn 'trỏ' đến lệnh tiếp theo, đảm bảo chương trình chạy một cách tuần tự.", en: "The PC always 'points' to the next instruction, ensuring the program runs sequentially." } }
+                    { q: { vi: "Ba thành phần chính của CPU là gì?", en: "What are the three main components of a CPU?" }, o: [{ vi: "RAM, ROM, và Cache", en: "RAM, ROM, and Cache" }, { vi: "ALU, Control Unit, và Registers", en: "ALU, Control Unit, and Registers" }, { vi: "Data Bus, Address Bus, và Control Bus", en: "Data Bus, Address Bus, and Control Bus" }], a: 1, explanation: { vi: "CPU có bộ phận tính toán (ALU), bộ phận chỉ huy (Control Unit), và bộ nhớ siêu nhanh tại chỗ (Registers).", en: "The CPU has a calculation part (ALU), a command part (Control Unit), and super-fast local memory (Registers)." } }
                 ]
             }
         };
@@ -772,8 +635,10 @@ Result: (1)0000 0111  (Discard final carry)
             const allQuestions = contentData[chapterId].questions;
             const numQuestionsInput = document.getElementById(`num-questions-${chapterId}`);
             let numQuestions = parseInt(numQuestionsInput.value);
-            if (isNaN(numQuestions) || numQuestions <= 0) numQuestions = 10;
-            numQuestions = Math.min(numQuestions, allQuestions.length);
+            if (isNaN(numQuestions) || numQuestions <= 0 || numQuestions > allQuestions.length) {
+                numQuestions = Math.min(10, allQuestions.length);
+                numQuestionsInput.value = numQuestions;
+            }
             
             const questions = [...allQuestions].sort(() => 0.5 - Math.random()).slice(0, numQuestions);
 
@@ -852,13 +717,21 @@ Result: (1)0000 0111  (Discard final carry)
             const titleElement = activeChapter.querySelector('.theory-content h2');
             if (titleElement) {
                 let topic = titleElement.textContent.trim();
-                // Remove chapter number for better search results
-                topic = topic.replace(/Chapter \\d+:|Chương \\d+:/i, '').trim();
-                const searchQuery = encodeURIComponent(topic + (currentLang === 'vi' ? ' giải thích chi tiết' : ' detailed explanation'));
-                const url = `https://www.google.com/search?q=${searchQuery}`;
+                // Loại bỏ số chương để câu hỏi tự nhiên hơn
+                topic = topic.replace(/Chapter \d+:|Chương \d+:/i, '').trim();
+
+                // Tạo câu hỏi cụ thể cho AI
+                const promptText = currentLang === 'vi' 
+                    ? `Hãy giải thích chi tiết về chủ đề sau trong Khoa học máy tính: "${topic}"`
+                    : `Please provide a detailed explanation of the following topic in Computer Science: "${topic}"`;
+
+                const encodedPrompt = encodeURIComponent(promptText);
+                // Dẫn thẳng đến Google Gemini với câu hỏi đã được điền sẵn
+                const url = `https://gemini.google.com/app?prompt=${encodedPrompt}`;
+                
                 window.open(url, '_blank');
             }
         }
     </script>
 </body>
-</html>```
+</html>
