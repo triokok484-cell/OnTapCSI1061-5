@@ -340,6 +340,124 @@
                     { q: { vi: "Điều nào sau đây là ĐÚNG về 'nút cổ chai von Neumann' (von Neumann bottleneck)?", en: "Which is TRUE about the von Neumann bottleneck?" }, o: [{ vi: "Nó làm tăng tốc độ CPU", en: "It increases CPU speed" }, { vi: "Nó giới hạn tốc độ truyền dữ liệu giữa CPU và bộ nhớ", en: "It limits data transfer between CPU and memory" }, { vi: "Nó cho phép thực thi song song", en: "It allows parallel execution" }, { vi: "Nó loại bỏ việc tìm nạp lệnh", en: "It eliminates instruction fetch" }], a: 1, explanation: { vi: "Nút cổ chai von Neumann đề cập đến việc CPU thường phải chờ đợi dữ liệu từ bộ nhớ do đường dẫn chung, làm hạn chế hiệu suất tổng thể.", en: "The von Neumann bottleneck refers to the fact that the CPU often has to wait for data from memory due to the shared bus, limiting overall performance." } }
                 ]
             },
+            chapter2: {
+                theory: {
+                     vi: `
+                        <h2>Chương 2: Hệ thống Số</h2>
+                        <h3>1. Các hệ đếm cơ bản (Positional Number Systems)</h3>
+                        <ul>
+                            <li><strong>Khái niệm:</strong> Giá trị của một chữ số phụ thuộc vào <span class="highlight">vị trí (position)</span> của nó trong chuỗi số. Mỗi vị trí có một trọng số (place value) là lũy thừa của cơ số (base/radix).</li>
+                            <li><strong>Các hệ đếm chính:</strong>
+                                <ul>
+                                    <li><strong>Thập phân (Decimal - Base 10):</strong> Dùng 10 ký tự {0, 1, ..., 9}.</li>
+                                    <li><strong>Nhị phân (Binary - Base 2):</strong> Dùng 2 ký tự {0, 1}. Đây là <span class="highlight">ngôn ngữ tự nhiên của máy tính</span>.</li>
+                                    <li><strong>Bát phân (Octal - Base 8):</strong> Dùng 8 ký tự {0, 1, ..., 7}.</li>
+                                    <li><strong>Thập lục phân (Hexadecimal - Base 16):</strong> Dùng 16 ký tự {0, 1, ..., 9, A, B, C, D, E, F}.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>2. Ví dụ về Chuyển đổi</h3>
+                        <h4>Chuyển từ hệ bất kỳ sang Thập phân</h4>
+                        <p>Quy tắc: Lấy từng chữ số nhân với (cơ số)<sup>vị trí</sup> rồi cộng tất cả lại.</p>
+                        <pre><strong>Ví dụ 1: (11001)₂ sang thập phân</strong>
+N = 1×2⁴ + 1×2³ + 0×2² + 0×2¹ + 1×2⁰ = 25₁₀
+<strong>Ví dụ 2: (2AE)₁₆ sang thập phân (A=10, E=14)</strong>
+N = 2×16² + 10×16¹ + 14×16⁰ = 686₁₀</pre>
+                        <h4>Chuyển từ Thập phân sang hệ bất kỳ (Phần nguyên)</h4>
+                        <p>Quy tắc: <span class="highlight">Chia liên tiếp</span> cho cơ số mới, lấy phần dư theo thứ tự ngược lại.</p>
+                        <pre><strong>Ví dụ: 35₁₀ sang nhị phân (chia cho 2)</strong>
+35 / 2 = 17 dư 1; 17 / 2 = 8 dư 1; 8 / 2 = 4 dư 0; 4 / 2 = 2 dư 0; 2 / 2 = 1 dư 0; 1 / 2 = 0 dư 1.
+Kết quả (đọc ngược): (100011)₂</pre>
+                        <h4>Chuyển đổi nhanh giữa Binary ↔ Octal ↔ Hexadecimal</h4>
+                        <p>Quy tắc: Gom nhóm <span class="highlight">3 bits</span> cho Octal và <span class="highlight">4 bits</span> cho Hexadecimal.</p>
+                        <pre><strong>Ví dụ: (10011100010)₂ sang Hexadecimal (gom nhóm 4)</strong>
+→ 0100 1110 0010 → (4E2)₁₆</pre>
+                    `,
+                    en: `
+                        <h2>Chapter 2: Number Systems</h2>
+                        <h3>1. Positional Number Systems</h3>
+                        <ul>
+                            <li><strong>Concept:</strong> The value of a digit depends on its <span class="highlight">position</span> within the number string. Each position has a place value, which is a power of the base (radix).</li>
+                            <li><strong>Main Systems:</strong>
+                                <ul>
+                                    <li><strong>Decimal (Base 10):</strong> Uses 10 symbols {0, 1, ..., 9}.</li>
+                                    <li><strong>Binary (Base 2):</strong> Uses 2 symbols {0, 1}. This is the <span class="highlight">natural language of computers</span>.</li>
+                                    <li><strong>Octal (Base 8):</strong> Uses 8 symbols {0, 1, ..., 7}.</li>
+                                    <li><strong>Hexadecimal (Base 16):</strong> Uses 16 symbols {0, 1, ..., 9, A, B, C, D, E, F}.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>2. Conversion Examples</h3>
+                        <h4>Convert from Any Base to Decimal</h4>
+                        <p>Rule: Multiply each digit by (base)<sup>position</sup> and sum the results.</p>
+                        <pre><strong>Example 1: (11001)₂ to decimal</strong>
+N = 1×2⁴ + 1×2³ + 0×2² + 0×2¹ + 1×2⁰ = 25₁₀
+<strong>Example 2: (2AE)₁₆ to decimal (A=10, E=14)</strong>
+N = 2×16² + 10×16¹ + 14×16⁰ = 686₁₀</pre>
+                        <h4>Convert from Decimal to Any Base (Integer Part)</h4>
+                        <p>Rule: <span class="highlight">Repeatedly divide</span> by the new base, take the remainders in reverse order.</p>
+                        <pre><strong>Example: 35₁₀ to binary (divide by 2)</strong>
+35 / 2 = 17 rem 1; 17 / 2 = 8 rem 1; 8 / 2 = 4 rem 0; 4 / 2 = 2 rem 0; 2 / 2 = 1 rem 0; 1 / 2 = 0 rem 1.
+Result (read backwards): (100011)₂</pre>
+                        <h4>Quick Conversion between Binary ↔ Octal ↔ Hexadecimal</h4>
+                        <p>Rule: Group <span class="highlight">3 bits</span> for Octal and <span class="highlight">4 bits</span> for Hexadecimal.</p>
+                        <pre><strong>Example: (10011100010)₂ to Hexadecimal (group of 4)</strong>
+→ 0100 1110 0010 → (4E2)₁₆</pre>
+                    `
+                },
+                questions: [
+                    { q: { vi: "Trong một hệ số vị (positional number system), radix (base) là gì?", en: "In a positional number system, what is the radix (base)?" }, o: [{ vi: "Giá trị lớn nhất có thể biểu diễn bằng một chữ số.", en: "The maximum value representable by a single digit." }, { vi: "Số chữ số tối đa cho biểu diễn số nguyên.", en: "The maximum number of digits for an integer representation." }, { vi: "Số kí hiệu (symbols) trong hệ (số lượng chữ số khác nhau).", en: "The number of symbols in the system (the count of different digits)." }, { vi: "Tổng các giá trị chữ số trong một số.", en: "The sum of the digit values in a number." }], a: 2, explanation: { vi: "Base (cơ số hay radix) định nghĩa tổng số ký hiệu duy nhất được sử dụng trong hệ đếm.", en: "The base (or radix) defines the total number of unique symbols used in the number system." } },
+                    { q: { vi: "Hệ thập phân (decimal) có base bằng bao nhiêu?", en: "What is the base of the decimal system?" }, o: [{ vi: "2", en: "2" }, { vi: "8", en: "8" }, { vi: "10", en: "10" }, { vi: "16", en: "16" }], a: 2, explanation: { vi: "Hệ thập phân sử dụng 10 chữ số (0-9), do đó cơ số của nó là 10.", en: "The decimal system uses 10 digits (0-9), so its base is 10." } },
+                    { q: { vi: "Trong hệ nhị phân (binary), mỗi chữ số gọi là gì?", en: "In the binary system, what is each digit called?" }, o: [{ vi: "nibble", en: "nibble" }, { vi: "digit", en: "digit" }, { vi: "byte", en: "byte" }, { vi: "bit", en: "bit" }], a: 3, explanation: { vi: "Mỗi chữ số trong hệ nhị phân được gọi là bit, viết tắt của 'binary digit'.", en: "Each digit in the binary system is called a bit, short for 'binary digit'." } },
+                    { q: { vi: "Ký tự 'B' trong hệ thập lục phân (hex) tương đương với giá trị thập phân nào?", en: "The character 'B' in the hexadecimal system is equivalent to which decimal value?" }, o: [{ vi: "10", en: "10" }, { vi: "11", en: "11" }, { vi: "12", en: "12" }, { vi: "13", en: "13" }], a: 1, explanation: { vi: "Trong hệ thập lục phân, A=10, B=11, C=12, D=13, E=14, F=15.", en: "In hexadecimal, A=10, B=11, C=12, D=13, E=14, F=15." } },
+                    { q: { vi: "Giá trị thập phân của (11001)₂ là:", en: "The decimal value of (11001)₂ is:" }, o: [{ vi: "25", en: "25" }, { vi: "27", en: "27" }, { vi: "29", en: "29" }, { vi: "31", en: "31" }], a: 0, explanation: { vi: "1*16 + 1*8 + 0*4 + 0*2 + 1*1 = 16+8+1 = 25.", en: "1*16 + 1*8 + 0*4 + 0*2 + 1*1 = 16+8+1 = 25." } },
+                    { q: { vi: "Giá trị lớn nhất có thể biểu diễn bằng một số nguyên không dấu (unsigned) với 5 bit là:", en: "The largest value that can be represented by a 5-bit unsigned integer is:" }, o: [{ vi: "16", en: "16" }, { vi: "31", en: "31" }, { vi: "63", en: "63" }, { vi: "127", en: "127" }], a: 1, explanation: { vi: "Giá trị lớn nhất của số không dấu n-bit là 2^n - 1. Với n=5, giá trị là 2^5 - 1 = 31.", en: "The largest value of an n-bit unsigned integer is 2^n - 1. For n=5, the value is 2^5 - 1 = 31." } },
+                    { q: { vi: "Số bit tối thiểu cần để biểu diễn số thập phân 234 là:", en: "The minimum number of bits needed to represent the decimal number 234 is:" }, o: [{ vi: "7", en: "7" }, { vi: "8", en: "8" }, { vi: "9", en: "9" }, { vi: "10", en: "10" }], a: 1, explanation: { vi: "2^7 = 128 (không đủ), 2^8 = 256 (đủ). Do đó, cần 8 bit.", en: "2^7 = 128 (not enough), 2^8 = 256 (enough). Therefore, 8 bits are needed." } },
+                    { q: { vi: "(2AE)₁₆ bằng bao nhiêu trong hệ thập phân?", en: "(2AE)₁₆ is equal to what in decimal?" }, o: [{ vi: "546", en: "546" }, { vi: "686", en: "686" }, { vi: "742", en: "742" }, { vi: "814", en: "814" }], a: 1, explanation: { vi: "2*16^2 + 10*16^1 + 14*16^0 = 512 + 160 + 14 = 686.", en: "2*16^2 + 10*16^1 + 14*16^0 = 512 + 160 + 14 = 686." } },
+                    { q: { vi: "(1256)₈ bằng bao nhiêu trong hệ thập phân?", en: "(1256)₈ is equal to what in decimal?" }, o: [{ vi: "342", en: "342" }, { vi: "512", en: "512" }, { vi: "686", en: "686" }, { vi: "732", en: "732" }], a: 2, explanation: { vi: "1*8^3 + 2*8^2 + 5*8^1 + 6*8^0 = 512 + 128 + 40 + 6 = 686.", en: "1*8^3 + 2*8^2 + 5*8^1 + 6*8^0 = 512 + 128 + 40 + 6 = 686." } },
+                    { q: { vi: "Một chữ số thập lục phân (hex digit) tương ứng với bao nhiêu bit?", en: "One hexadecimal digit corresponds to how many bits?" }, o: [{ vi: "2 bit", en: "2 bits" }, { vi: "3 bit", en: "3 bits" }, { vi: "4 bit", en: "4 bits" }, { vi: "8 bit", en: "8 bits" }], a: 2, explanation: { vi: "Vì 16 = 2^4, mỗi chữ số thập lục phân biểu diễn một nhóm 4 bit.", en: "Because 16 = 2^4, each hexadecimal digit represents a group of 4 bits." } },
+                    { q: { vi: "Chuyển (01101)₂ sang hệ bát phân (octal) sẽ là:", en: "Converting (01101)₂ to octal would be:" }, o: [{ vi: "(13)₈", en: "(13)₈" }, { vi: "(15)₈", en: "(15)₈" }, { vi: "(11)₈", en: "(11)₈" }, { vi: "(7)₈", en: "(7)₈" }], a: 1, explanation: { vi: "Gom nhóm 3 bit từ phải sang: 01 101. Thêm 0 vào bên trái: 001 101. 001₂ = 1, 101₂ = 5. Kết quả: (15)₈.", en: "Group 3 bits from right to left: 01 101. Pad with a leading zero: 001 101. 001₂ = 1, 101₂ = 5. Result: (15)₈." } },
+                    { q: { vi: "(1011000)₂ trong hệ thập phân là:", en: "Converting (1011000)₂ to decimal is:" }, o: [{ vi: "72", en: "72" }, { vi: "80", en: "80" }, { vi: "88", en: "88" }, { vi: "96", en: "96" }], a: 2, explanation: { vi: "64 + 16 + 8 = 88.", en: "64 + 16 + 8 = 88." } },
+                    { q: { vi: "(011110.01)₂ = ? (thập phân)", en: "(011110.01)₂ = ? (decimal)" }, o: [{ vi: "30.125", en: "30.125" }, { vi: "30.25", en: "30.25" }, { vi: "30.5", en: "30.5" }, { vi: "30.75", en: "30.75" }], a: 1, explanation: { vi: "Phần nguyên: 16+8+4+2=30. Phần thập phân: 0/2 + 1/4 = 0.25. Kết quả: 30.25.", en: "Integer part: 16+8+4+2=30. Fractional part: 0/2 + 1/4 = 0.25. Result: 30.25." } },
+                    { q: { vi: "(111111.111)₂ = ? (thập phân)", en: "(111111.111)₂ = ? (decimal)" }, o: [{ vi: "63.5", en: "63.5" }, { vi: "63.75", en: "63.75" }, { vi: "63.875", en: "63.875" }, { vi: "64.0", en: "64.0" }], a: 2, explanation: { vi: "Phần nguyên: 63. Phần thập phân: 1/2 + 1/4 + 1/8 = 0.5 + 0.25 + 0.125 = 0.875. Kết quả: 63.875.", en: "Integer part: 63. Fractional part: 1/2 + 1/4 + 1/8 = 0.5 + 0.25 + 0.125 = 0.875. Result: 63.875." } },
+                    { q: { vi: "Phương pháp chuyển phần nguyên của số thập phân sang hệ khác là gì?", en: "What is the method for converting the integer part of a decimal number to another base?" }, o: [{ vi: "Phép nhân lặp", en: "Repetitive multiplication" }, { vi: "Phép chia lặp", en: "Repetitive division" }, { vi: "Thay thế bằng bảng giá trị", en: "Substitution using a value table" }, { vi: "Sắp nhóm theo 3 hoặc 4 bit", en: "Grouping by 3 or 4 bits" }], a: 1, explanation: { vi: "Để chuyển đổi phần nguyên, ta liên tục chia số đó cho cơ số mới và thu thập các số dư theo thứ tự ngược lại.", en: "To convert the integer part, we repeatedly divide the number by the new base and collect the remainders in reverse order." } },
+                    { q: { vi: "Phương pháp chuyển phần phân số (fractional part) của số thập phân sang hệ khác là gì?", en: "What is the method for converting the fractional part of a decimal number to another base?" }, o: [{ vi: "Phép nhân lặp", en: "Repetitive multiplication" }, { vi: "Phép chia lặp", en: "Repetitive division" }, { vi: "Dùng logarit", en: "Using logarithms" }, { vi: "Dùng phép chia dư", en: "Using modulus" }], a: 0, explanation: { vi: "Để chuyển đổi phần thập phân, ta liên tục nhân phần thập phân đó với cơ số mới và thu thập các phần nguyên của kết quả.", en: "To convert the fractional part, we repeatedly multiply it by the new base and collect the integer parts of the results." } },
+                    { q: { vi: "(101.11)₂ tương đương bao nhiêu trong hệ thập phân?", en: "(101.11)₂ is equivalent to what in decimal?" }, o: [{ vi: "5.5", en: "5.5" }, { vi: "5.75", en: "5.75" }, { vi: "6.25", en: "6.25" }, { vi: "6.5", en: "6.5" }], a: 1, explanation: { vi: "Phần nguyên: 4+1=5. Phần thập phân: 1/2 + 1/4 = 0.75. Kết quả: 5.75.", en: "Integer part: 4+1=5. Fractional part: 1/2 + 1/4 = 0.75. Result: 5.75." } },
+                    { q: { vi: "Số 35 (thập phân) bằng gì trong hệ nhị phân?", en: "What is the decimal number 35 in binary?" }, o: [{ vi: "100011", en: "100011" }, { vi: "100111", en: "100111" }, { vi: "101011", en: "101011" }, { vi: "110011", en: "110011" }], a: 0, explanation: { vi: "35 chia 2 được 17 dư 1, 17 chia 2 được 8 dư 1, v.v. Đọc ngược các số dư ta được 100011.", en: "35 divided by 2 is 17 remainder 1, 17 divided by 2 is 8 remainder 1, etc. Reading the remainders backwards gives 100011." } },
+                    { q: { vi: "Số 126 (thập phân) bằng bao nhiêu trong hệ thập lục phân?", en: "What is the decimal number 126 in hexadecimal?" }, o: [{ vi: "7C", en: "7C" }, { vi: "7D", en: "7D" }, { vi: "7E", en: "7E" }, { vi: "7F", en: "7F" }], a: 2, explanation: { vi: "126 chia 16 được 7 dư 14. 14 trong hệ thập lục phân là E. Kết quả: 7E.", en: "126 divided by 16 is 7 with a remainder of 14. 14 in hexadecimal is E. Result: 7E." } },
+                    { q: { vi: "0.625 (thập phân) chuyển sang nhị phân phần phân là:", en: "Converting 0.625 (decimal) to a binary fraction is:" }, o: [{ vi: "0.011", en: "0.011" }, { vi: "0.101", en: "0.101" }, { vi: "0.110", en: "0.110" }, { vi: "0.1001", en: "0.1001" }], a: 1, explanation: { vi: "0.625*2=1.25 (lấy 1), 0.25*2=0.5 (lấy 0), 0.5*2=1.0 (lấy 1). Kết quả: 0.101.", en: "0.625*2=1.25 (take 1), 0.25*2=0.5 (take 0), 0.5*2=1.0 (take 1). Result: 0.101." } },
+                    { q: { vi: "Số chữ số hexa cần thiết để biểu diễn giá trị thập phân 234 là:", en: "The number of hex digits needed to represent the decimal value 234 is:" }, o: [{ vi: "1", en: "1" }, { vi: "2", en: "2" }, { vi: "3", en: "3" }, { vi: "4", en: "4" }], a: 1, explanation: { vi: "234 chia 16 được 14 (E) dư 10 (A). Kết quả là EA, cần 2 chữ số.", en: "234 divided by 16 is 14 (E) with a remainder of 10 (A). The result is EA, which requires 2 digits." } },
+                    { q: { vi: "Giá trị thập phân của địa chỉ dotted-decimal 17.234.34.14 là:", en: "The decimal value of the dotted-decimal address 17.234.34.14 is:" }, o: [{ vi: "30,055,6814", en: "30,055,6814" }, { vi: "300,556,814", en: "300,556,814" }, { vi: "3,005,568,14", en: "3,005,568,14" }, { vi: "30,055,681", en: "30,055,681" }], a: 1, explanation: { vi: "Tính: 17 * 256^3 + 234 * 256^2 + 34 * 256^1 + 14 * 256^0 = 300,556,814.", en: "Calculate: 17 * 256^3 + 234 * 256^2 + 34 * 256^1 + 14 * 256^0 = 300,556,814." } },
+                    { q: { vi: "(AB2)₁₆ bằng bao nhiêu (thập phân)?", en: "(AB2)₁₆ is equal to what (decimal)?" }, o: [{ vi: "2738", en: "2738" }, { vi: "2580", en: "2580" }, { vi: "2802", en: "2802" }, { vi: "2914", en: "2914" }], a: 0, explanation: { vi: "10*16^2 + 11*16^1 + 2*16^0 = 2560 + 176 + 2 = 2738.", en: "10*16^2 + 11*16^1 + 2*16^0 = 2560 + 176 + 2 = 2738." } },
+                    { q: { vi: "(123)₁₆ = ? (thập phân)", en: "(123)₁₆ = ? (decimal)" }, o: [{ vi: "291", en: "291" }, { vi: "274", en: "274" }, { vi: "315", en: "315" }, { vi: "299", en: "299" }], a: 0, explanation: { vi: "1*16^2 + 2*16^1 + 3*16^0 = 256 + 32 + 3 = 291.", en: "1*16^2 + 2*16^1 + 3*16^0 = 256 + 32 + 3 = 291." } },
+                    { q: { vi: "(ABB)₁₆ = ? (thập phân)", en: "(ABB)₁₆ = ? (decimal)" }, o: [{ vi: "2747", en: "2747" }, { vi: "2738", en: "2738" }, { vi: "2779", en: "2779" }, { vi: "2811", en: "2811" }], a: 0, explanation: { vi: "10*16^2 + 11*16^1 + 11*16^0 = 2560 + 176 + 11 = 2747.", en: "10*16^2 + 11*16^1 + 11*16^0 = 2560 + 176 + 11 = 2747." } },
+                    { q: { vi: "(35E.E1)₁₆ ≈ ? (thập phân, làm tròn thích hợp)", en: "(35E.E1)₁₆ ≈ ? (decimal, with appropriate rounding)" }, o: [{ vi: "862.75", en: "862.75" }, { vi: "862.875", en: "862.875" }, { vi: "862.87890625", en: "862.87890625" }, { vi: "862.9", en: "862.9" }], a: 2, explanation: { vi: "Phần nguyên: 3*256 + 5*16 + 14 = 862. Phần thập phân: 14/16 + 1/256 = 0.875 + 0.00390625 = 0.87890625.", en: "Integer part: 3*256 + 5*16 + 14 = 862. Fractional part: 14/16 + 1/256 = 0.875 + 0.00390625 = 0.87890625." } },
+                    { q: { vi: "(237)₈ = ? (thập phân)", en: "(237)₈ = ? (decimal)" }, o: [{ vi: "159", en: "159" }, { vi: "175", en: "175" }, { vi: "191", en: "191" }, { vi: "143", en: "143" }], a: 0, explanation: { vi: "2*8^2 + 3*8^1 + 7*8^0 = 128 + 24 + 7 = 159.", en: "2*8^2 + 3*8^1 + 7*8^0 = 128 + 24 + 7 = 159." } },
+                    { q: { vi: "(2731)₈ = ? (thập phân)", en: "(2731)₈ = ? (decimal)" }, o: [{ vi: "1379", en: "1379" }, { vi: "1497", en: "1497" }, { vi: "1501", en: "1501" }, { vi: "1605", en: "1605" }], a: 1, explanation: { vi: "2*8^3 + 7*8^2 + 3*8^1 + 1*8^0 = 1024 + 448 + 24 + 1 = 1497.", en: "2*8^3 + 7*8^2 + 3*8^1 + 1*8^0 = 1024 + 448 + 24 + 1 = 1497." } },
+                    { q: { vi: "(617.7)₈ = ? (thập phân)", en: "(617.7)₈ = ? (decimal)" }, o: [{ vi: "399.5", en: "399.5" }, { vi: "399.75", en: "399.75" }, { vi: "399.875", en: "399.875" }, { vi: "400.0", en: "400.0" }], a: 2, explanation: { vi: "Phần nguyên: 6*64 + 1*8 + 7 = 399. Phần thập phân: 7/8 = 0.875. Kết quả: 399.875.", en: "Integer part: 6*64 + 1*8 + 7 = 399. Fractional part: 7/8 = 0.875. Result: 399.875." } },
+                    { q: { vi: "(21.11)₈ = ? (thập phân)", en: "(21.11)₈ = ? (decimal)" }, o: [{ vi: "17.140625", en: "17.140625" }, { vi: "17.125", en: "17.125" }, { vi: "17.25", en: "17.25" }, { vi: "17.0625", en: "17.0625" }], a: 0, explanation: { vi: "Phần nguyên: 2*8+1=17. Phần thập phân: 1/8 + 1/64 = 0.125 + 0.015625 = 0.140625.", en: "Integer part: 2*8+1=17. Fractional part: 1/8 + 1/64 = 0.125 + 0.015625 = 0.140625." } },
+                    { q: { vi: "1234 (thập phân) sang nhị phân là:", en: "1234 (decimal) to binary is:" }, o: [{ vi: "10011010010", en: "10011010010" }, { vi: "10011000110", en: "10011000110" }, { vi: "10011101010", en: "10011101010" }, { vi: "10011100100", en: "10011100100" }], a: 0, explanation: { vi: "Chuyển đổi bằng cách chia lặp cho 2 và lấy các số dư theo thứ tự ngược lại.", en: "Convert by repeatedly dividing by 2 and taking the remainders in reverse order." } },
+                    { q: { vi: "1156 (thập phân) sang bát phân (octal) là:", en: "1156 (decimal) to octal is:" }, o: [{ vi: "2144", en: "2144" }, { vi: "2204", en: "2204" }, { vi: "2244", en: "2244" }, { vi: "2104", en: "2104" }], a: 1, explanation: { vi: "1156/8=144 dư 4, 144/8=18 dư 0, 18/8=2 dư 2, 2/8=0 dư 2. Đọc ngược: 2204.", en: "1156/8=144 R 4, 144/8=18 R 0, 18/8=2 R 2, 2/8=0 R 2. Read backwards: 2204." } },
+                    { q: { vi: "567 (thập phân) sang hexa là:", en: "567 (decimal) to hex is:" }, o: [{ vi: "237", en: "237" }, { vi: "245", en: "245" }, { vi: "2A7", en: "2A7" }, { vi: "22F", en: "22F" }], a: 0, explanation: { vi: "567/16=35 dư 7, 35/16=2 dư 3, 2/16=0 dư 2. Đọc ngược: 237.", en: "567/16=35 R 7, 35/16=2 R 3, 2/16=0 R 2. Read backwards: 237." } },
+                    { q: { vi: "Chuyển (1011000)₂ sang hex được:", en: "Convert (1011000)₂ to hex:" }, o: [{ vi: "5C", en: "5C" }, { vi: "58", en: "58" }, { vi: "50", en: "50" }, { vi: "1B", en: "1B" }], a: 1, explanation: { vi: "Gom nhóm 4 bit từ phải qua: 0101 1000. 0101 = 5, 1000 = 8. Kết quả: 58.", en: "Group into 4 bits from the right: 0101 1000. 0101 = 5, 1000 = 8. Result: 58." } },
+                    { q: { vi: "Chuyển (1011000)₂ sang octal được:", en: "Convert (1011000)₂ to octal:" }, o: [{ vi: "130", en: "130" }, { vi: "128", en: "128" }, { vi: "150", en: "150" }, { vi: "160", en: "160" }], a: 0, explanation: { vi: "Gom nhóm 3 bit từ phải qua: 001 011 000. 001=1, 011=3, 000=0. Kết quả: 130.", en: "Group into 3 bits from the right: 001 011 000. 001=1, 011=3, 000=0. Result: 130." } },
+                    { q: { vi: "Trong chuyển đổi nhị phân ↔ octal, một chữ số octal tương ứng với bao nhiêu bit?", en: "In binary ↔ octal conversion, one octal digit corresponds to how many bits?" }, o: [{ vi: "1 bit", en: "1 bit" }, { vi: "2 bit", en: "2 bits" }, { vi: "3 bit", en: "3 bits" }, { vi: "4 bit", en: "4 bits" }], a: 2, explanation: { vi: "Vì 8 = 2^3, mỗi 3 bit nhị phân tương ứng với một chữ số bát phân.", en: "Because 8 = 2^3, each 3 binary bits correspond to one octal digit." } },
+                    { q: { vi: "Trong chuyển đổi nhị phân ↔ hex, một chữ số hex tương ứng với bao nhiêu bit?", en: "In binary ↔ hex conversion, one hex digit corresponds to how many bits?" }, o: [{ vi: "2 bit", en: "2 bits" }, { vi: "3 bit", en: "3 bits" }, { vi: "4 bit", en: "4 bits" }, { vi: "8 bit", en: "8 bits" }], a: 2, explanation: { vi: "Vì 16 = 2^4, mỗi 4 bit nhị phân tương ứng với một chữ số thập lục phân.", en: "Because 16 = 2^4, each 4 binary bits correspond to one hexadecimal digit." } },
+                    { q: { vi: "Số nguyên lớn nhất có thể biểu diễn với 6 chữ số ở hệ thập phân là:", en: "The largest integer representable with 6 decimal digits is:" }, o: [{ vi: "99999", en: "99999" }, { vi: "999999", en: "999999" }, { vi: "1000000", en: "1000000" }, { vi: "9999", en: "9999" }], a: 1, explanation: { vi: "Số lớn nhất có 6 chữ số là 999,999. Công thức là 10^6 - 1.", en: "The largest 6-digit number is 999,999. The formula is 10^6 - 1." } },
+                    { q: { vi: "Số lớn nhất có thể biểu diễn với 5 chữ số ở hệ bát phân (octal) là:", en: "The largest number representable with 5 octal digits is:" }, o: [{ vi: "32766", en: "32766" }, { vi: "32767", en: "32767" }, { vi: "32768", en: "32768" }, { vi: "32769", en: "32769" }], a: 1, explanation: { vi: "Giá trị lớn nhất là 8^5 - 1 = 32768 - 1 = 32767.", en: "The largest value is 8^5 - 1 = 32768 - 1 = 32767." } },
+                    { q: { vi: "Số bit tối thiểu cần để lưu mọi số < 1000 là:", en: "The minimum number of bits needed to store any number < 1000 is:" }, o: [{ vi: "9", en: "9" }, { vi: "10", en: "10" }, { vi: "11", en: "11" }, { vi: "12", en: "12" }], a: 1, explanation: { vi: "Cần tìm n sao cho 2^n >= 1000. 2^9=512, 2^10=1024. Vậy cần 10 bit.", en: "We need to find n such that 2^n >= 1000. 2^9=512, 2^10=1024. So 10 bits are needed." } },
+                    { q: { vi: "Số bit tối thiểu để lưu mọi số < 100000 là:", en: "The minimum number of bits to store any number < 100000 is:" }, o: [{ vi: "16", en: "16" }, { vi: "17", en: "17" }, { vi: "18", en: "18" }, { vi: "19", en: "19" }], a: 1, explanation: { vi: "2^16 = 65536, 2^17 = 131072. Cần 17 bit.", en: "2^16 = 65536, 2^17 = 131072. 17 bits are needed." } },
+                    { q: { vi: "Số bit tối thiểu để lưu mọi số < 64 là:", en: "The minimum number of bits to store any number < 64 is:" }, o: [{ vi: "5", en: "5" }, { vi: "6", en: "6" }, { vi: "7", en: "7" }, { vi: "8", en: "8" }], a: 1, explanation: { vi: "Cần 6 bit để biểu diễn các số từ 0 đến 63 (2^6 = 64 giá trị).", en: "6 bits are needed to represent numbers from 0 to 63 (2^6 = 64 values)." } },
+                    { q: { vi: "Số bit tối thiểu để lưu mọi số < 256 là:", en: "The minimum number of bits to store any number < 256 is:" }, o: [{ vi: "7", en: "7" }, { vi: "8", en: "8" }, { vi: "9", en: "9" }, { vi: "10", en: "10" }], a: 1, explanation: { vi: "Cần 8 bit để biểu diễn các số từ 0 đến 255 (2^8 = 256 giá trị).", en: "8 bits are needed to represent numbers from 0 to 255 (2^8 = 256 values)." } },
+                    { q: { vi: "Chuyển 0.375 (thập phân) sang nhị phân (phần phân) là:", en: "Convert 0.375 (decimal) to a binary fraction:" }, o: [{ vi: "0.011", en: "0.011" }, { vi: "0.101", en: "0.101" }, { vi: "0.110", en: "0.110" }, { vi: "0.0110", en: "0.0110" }], a: 0, explanation: { vi: "0.375*2=0.75(0), 0.75*2=1.5(1), 0.5*2=1.0(1). Kết quả: 0.011.", en: "0.375*2=0.75(0), 0.75*2=1.5(1), 0.5*2=1.0(1). Result: 0.011." } },
+                    { q: { vi: "Số thập phân 7.1875 sang nhị phân là:", en: "The decimal number 7.1875 to binary is:" }, o: [{ vi: "111.0011", en: "111.0011" }, { vi: "111.001", en: "111.001" }, { vi: "111.00101", en: "111.00101" }, { vi: "111.0010", en: "111.0010" }], a: 0, explanation: { vi: "Phần nguyên: 7=111. Phần thập phân: 0.1875*2=0.375(0), 0.375*2=0.75(0), 0.75*2=1.5(1), 0.5*2=1.0(1) -> .0011. Kết quả: 111.0011.", en: "Integer part: 7=111. Fractional part: 0.1875*2=0.375(0), 0.375*2=0.75(0), 0.75*2=1.5(1), 0.5*2=1.0(1) -> .0011. Result: 111.0011." } },
+                    { q: { vi: "Theo công thức trong chương, số chữ số K cần trong base b để biểu diễn số N là:", en: "According to the formula in the chapter, the number of digits K needed in base b to represent the number N is:" }, o: [{ vi: "K = ⌊log_b N⌋", en: "K = ⌊log_b N⌋" }, { vi: "K = ⌈log_b N⌉", en: "K = ⌈log_b N⌉" }, { vi: "K = log_b (N)", en: "K = log_b (N)" }, { vi: "K = N * log_b", en: "K = N * log_b" }], a: 1, explanation: { vi: "Công thức sử dụng hàm ceiling (làm tròn lên) của logarit cơ số b của N.", en: "The formula uses the ceiling function of the base-b logarithm of N." } },
+                    { q: { vi: "Giá trị chữ số của Roman 'XIX' là:", en: "The value of the Roman numeral 'XIX' is:" }, o: [{ vi: "16", en: "16" }, { vi: "18", en: "18" }, { vi: "19", en: "19" }, { vi: "20", en: "20" }], a: 2, explanation: { vi: "X = 10, IX = 9. 10 + 9 = 19.", en: "X = 10, IX = 9. 10 + 9 = 19." } },
+                    { q: { vi: "Roman numeral 'MMVII' tương đương với:", en: "The Roman numeral 'MMVII' is equivalent to:" }, o: [{ vi: "2005", en: "2005" }, { vi: "2006", en: "2006" }, { vi: "2007", en: "2007" }, { vi: "2010", en: "2010" }], a: 2, explanation: { vi: "M=1000, V=5, I=1. 1000+1000+5+1+1 = 2007.", en: "M=1000, V=5, I=1. 1000+1000+5+1+1 = 2007." } },
+                    { q: { vi: "Việc thiếu ký số '0' trong một hệ (như một số hệ cổ) gây ra vấn đề gì chủ yếu?", en: "The lack of a '0' digit in a number system (like some ancient ones) primarily causes what issue?" }, o: [{ vi: "Không thể cộng hai số", en: "Cannot add two numbers" }, { vi: "Không thể biểu diễn số âm", en: "Cannot represent negative numbers" }, { vi: "Không phân biệt vị trí (place value) dẫn tới mơ hồ về trị giá các chữ số", en: "Ambiguity in place value, leading to confusion about digit values" }, { vi: "Không thể nhân hai số", en: "Cannot multiply two numbers" }], a: 2, explanation: { vi: "Số 0 đóng vai trò giữ chỗ. Nếu không có nó, rất khó để phân biệt giữa 25, 205, và 250.", en: "The number 0 acts as a placeholder. Without it, it's hard to distinguish between 25, 205, and 250." } },
+                    { q: { vi: "Trong số các hệ sau, hệ nào là không vị trí (nonpositional)?", en: "Among the following systems, which one is nonpositional?" }, o: [{ vi: "Decimal", en: "Decimal" }, { vi: "Binary", en: "Binary" }, { vi: "Roman numerals", en: "Roman numerals" }, { vi: "Hexadecimal", en: "Hexadecimal" }], a: 2, explanation: { vi: "Trong hệ La Mã, giá trị của một ký hiệu (X luôn là 10) không phụ thuộc hoàn toàn vào vị trí của nó, mà phụ thuộc vào các quy tắc cộng trừ với các ký hiệu bên cạnh.", en: "In the Roman system, a symbol's value (X is always 10) doesn't strictly depend on its position, but on addition/subtraction rules with adjacent symbols." } }
+                ]
+            },
             chapter3: {
                 theory: {
                     vi: `
@@ -468,10 +586,12 @@
                     { q: { vi: "One’s complement có một đặc điểm khác two’s complement là:", en: "One's complement has a characteristic different from two's complement, which is:" }, o: [{ vi: "One’s complement có hai biểu diễn cho zero (+0 và −0).", en: "One's complement has two representations for zero (+0 and −0)." }, { vi: "One’s complement chỉ có +0.", en: "One's complement only has +0." }, { vi: "Two’s complement có hai zero.", en: "Two's complement has two zeros." }, { vi: "Cả hai giống nhau.", en: "They are the same." }], a: 0, explanation: { vi: "Trong bù một, 000...0 là +0 và 111...1 là -0. Bù hai giải quyết vấn đề này.", en: "In one's complement, 000...0 is +0 and 111...1 is -0. Two's complement solves this issue." } },
                     { q: { vi: "Khi so sánh biểu diễn của cùng một chuỗi bit 00001101 nếu ta đọc như unsigned thì là 13; nếu đọc như two’s complement (8-bit) thì vẫn là:", en: "Comparing the representation of the same bit string 00001101, if read as unsigned it is 13; if read as two's complement (8-bit) it is still:" }, o: [{ vi: "−13", en: "-13" }, { vi: "+13", en: "+13" }, { vi: "−243", en: "-243" }, { vi: "Không xác định", en: "Undefined" }], a: 1, explanation: { vi: "Đối với các số có bit dấu (bit ngoài cùng bên trái) là 0, giá trị của chúng là như nhau trong cả biểu diễn không dấu và bù hai.", en: "For numbers with a sign bit (leftmost bit) of 0, their value is the same in both unsigned and two's complement representation." } },
                     { q: { vi: "Nếu một ảnh có kích thước 800×600 pixel và dùng True-Color (24 bit/pixel), kích thước thô (không nén) tính theo bytes là:", en: "If an image is 800×600 pixels and uses True-Color (24 bits/pixel), its raw (uncompressed) size in bytes is:" }, o: [{ vi: "1,440,000 bytes", en: "1,440,000 bytes" }, { vi: "1,440 bytes", en: "1,440 bytes" }, { vi: "19,200 bytes", en: "19,200 bytes" }, { vi: "Không xác định", en: "Undefined" }], a: 0, explanation: { vi: "Tổng số bit = 800 * 600 * 24 = 11,520,000 bit. Tổng số byte = 11,520,000 / 8 = 1,440,000 byte.", en: "Total bits = 800 * 600 * 24 = 11,520,000 bits. Total bytes = 11,520,000 / 8 = 1,440,000 bytes." } },
-                    { q: { vi: "Trong floating-point: “underflow” xảy ra khi:", en: "In floating-point: 'underflow' occurs when:" }, o: [{ vi: "Cố gắng lưu số nhỏ hơn giá trị +smallest có thể biểu diễn ⇒ bị underflow.", en: "Trying to store a number smaller than the smallest positive representable value." }, { vi: "Cố gắng lưu số lớn hơn +largest.", en: "Trying to store a number larger than the largest positive value." }, { vi: "Khi mantissa dài hơn exponent.", en: "When the mantissa is longer than the exponent." }, { vi: "Khi bit S = 1.", en: "When the S bit = 1." }], a: 0, explanation: { vi: "Underflow xảy ra khi kết quả của một phép toán quá gần số 0 để có thể được biểu diễn chính xác trong định dạng dấu phẩy động.", en: "Underflow occurs when the result of an operation is too close to zero to be accurately represented in the floating-point format." } },
+                    { q: { vi: "Trong floating-point: “underflow” xảy ra khi:", en: "In floating-point: 'underflow' occurs when:" }, o: [{ vi: "Cố gắng lưu số nhỏ hơn giá trị +smallest có thể biểu diễn.", en: "Trying to store a number smaller than the smallest positive representable value." }, { vi: "Cố gắng lưu số lớn hơn +largest.", en: "Trying to store a number larger than the largest positive value." }, { vi: "Khi mantissa dài hơn exponent.", en: "When the mantissa is longer than the exponent." }, { vi: "Khi bit S = 1.", en: "When the S bit = 1." }], a: 0, explanation: { vi: "Underflow xảy ra khi kết quả của một phép toán quá gần số 0 để có thể được biểu diễn chính xác trong định dạng dấu phẩy động.", en: "Underflow occurs when the result of an operation is too close to zero to be accurately represented in the floating-point format." } },
                     { q: { vi: "MP3 thuộc loại nén nào?", en: "What type of compression does MP3 belong to?" }, o: [{ vi: "Lossless (Bảo toàn dữ liệu)", en: "Lossless" }, { vi: "Lossy (Mất dữ liệu)", en: "Lossy" }, { vi: "Không nén", en: "No compression" }, { vi: "Uncompressed PCM", en: "Uncompressed PCM" }], a: 1, explanation: { vi: "Nén mất mát (lossy) loại bỏ một số dữ liệu (thường là những âm thanh mà tai người khó nhận biết) để giảm đáng kể kích thước tệp.", en: "Lossy compression removes some data (often sounds that are hard for the human ear to perceive) to significantly reduce file size." } },
                     { q: { vi: "Một hệ 4-bit unsigned có thể biểu diễn bao nhiêu giá trị khác nhau?", en: "How many different values can a 4-bit unsigned system represent?" }, o: [{ vi: "8", en: "8" }, { vi: "16", en: "16" }, { vi: "4", en: "4" }, { vi: "32", en: "32" }], a: 1, explanation: { vi: "Với n bit, có thể biểu diễn 2^n giá trị. Với 4 bit, có 2^4 = 16 giá trị (từ 0 đến 15).", en: "With n bits, 2^n values can be represented. With 4 bits, there are 2^4 = 16 values (from 0 to 15)." } },
-                    { q: { vi: "Trong biểu diễn Excess-7 (4-bit bias =7), giá trị 0 được biểu diễn bằng:", en: "In Excess-7 representation (4-bit, bias=7), the value 0 is represented by:" }, o: [{ vi: "0000", en: "0000" }, { vi: "0111", en: "0111" }, { vi: "1110", en: "1110" }, { vi: "1000", en: "1000" }], a: 1, explanation: { vi: "Giá trị lưu trữ = giá trị thực + bias. Do đó, 0 + 7 = 7. Số 7 trong hệ nhị phân 4-bit là 0111.", en: "Stored value = actual value + bias. Therefore, 0 + 7 = 7. The number 7 in 4-bit binary is 0111." } }
+                    { q: { vi: "Trong biểu diễn Excess-7 (4-bit bias =7), giá trị 0 được biểu diễn bằng:", en: "In Excess-7 representation (4-bit, bias=7), the value 0 is represented by:" }, o: [{ vi: "0000", en: "0000" }, { vi: "0111", en: "0111" }, { vi: "1110", en: "1110" }, { vi: "1000", en: "1000" }], a: 1, explanation: { vi: "Giá trị lưu trữ = giá trị thực + bias. Do đó, 0 + 7 = 7. Số 7 trong hệ nhị phân 4-bit là 0111.", en: "Stored value = actual value + bias. Therefore, 0 + 7 = 7. The number 7 in 4-bit binary is 0111." } },
+                    { q: { vi: "Số bit cần để biểu diễn N ký tự khác nhau là log2(N) làm tròn lên. Vậy để biểu diễn 256 ký tự cần ít nhất bao nhiêu bit?", en: "The number of bits needed to represent N different characters is ceil(log2(N)). So, to represent 256 characters, how many bits are needed at least?" }, o: [{ vi: "7", en: "7" }, { vi: "8", en: "8" }, { vi: "9", en: "9" }, { vi: "16", en: "16" }], a: 1, explanation: { vi: "Chúng ta cần tìm n sao cho 2^n >= 256. 2^8 = 256, vì vậy cần 8 bit.", en: "We need to find n such that 2^n >= 256. 2^8 = 256, so 8 bits are needed." } },
+                    { q: { vi: "Lý do phải normalize khi lưu floating-point là gì?", en: "What is the reason for normalizing when storing a floating-point number?" }, o: [{ vi: "Để tiết kiệm bit cho sign.", en: "To save a bit for the sign." }, { vi: "Để có biểu diễn chuẩn, giúp so sánh và thao tác chính xác hơn (1.x form).", en: "To have a standard representation, which helps in more accurate comparison and manipulation (1.x form)." }, { vi: "Để lưu exponent bằng dạng ASCII.", en: "To store the exponent in ASCII format." }, { vi: "Để nén dữ liệu.", en: "To compress the data." }], a: 1, explanation: { vi: "Chuẩn hóa đảm bảo rằng mỗi số có một biểu diễn duy nhất, loại bỏ sự mơ hồ và làm cho các hoạt động như so sánh trở nên đơn giản.", en: "Normalization ensures that every number has a unique representation, which removes ambiguity and makes operations like comparison straightforward." } }
                 ]
             },
             chapter4: {
@@ -639,19 +759,36 @@ Result: (1)0000 0111  (Discard final carry)
                         <ul>
                             <li><strong>CPU (Central Processing Unit):</strong> "Bộ não" của máy tính. Gồm 3 phần: ALU (tính toán), Control Unit (điều khiển), và Registers (thanh ghi).</li>
                             <li><strong>Bộ nhớ chính (Main Memory):</strong> Thường là RAM, lưu trữ chương trình và dữ liệu đang chạy.</li>
+                            <li><strong>Hệ thống Vào/Ra (I/O Subsystem):</strong> Gồm các thiết bị ngoại vi (bàn phím, màn hình, ổ cứng) và các bộ điều khiển (controllers) để giao tiếp với chúng.</li>
                         </ul>
-                        <h3>2. Phân cấp bộ nhớ (Memory Hierarchy)</h3>
-                        <p>Tốc độ và giá thành giảm dần, dung lượng tăng dần:</p>
-                        <p><span class="highlight">Registers → Cache → Main Memory → Storage (Ổ cứng)</span></p>
-                        <h3>3. Chu kỳ máy (Machine Cycle)</h3>
+                        <h3>2. Kết nối các thành phần</h3>
                         <ul>
-                             <li>Quá trình CPU thực thi một lệnh. Gồm 3 bước cơ bản:
+                            <li><strong>Bus hệ thống (System Bus):</strong> Là một tập hợp các đường dây điện tử kết nối CPU, bộ nhớ và hệ thống I/O, cho phép chúng trao đổi thông tin. Gồm 3 loại bus con:
                                 <ol>
-                                    <li><span class="highlight">Fetch (Nạp lệnh):</span> Lấy lệnh từ bộ nhớ.</li>
-                                    <li><span class="highlight">Decode (Giải mã):</span> Hiểu xem lệnh yêu cầu làm gì.</li>
-                                    <li><span class="highlight">Execute (Thực thi):</span> Thực hiện lệnh đó.</li>
+                                    <li><strong>Address Bus:</strong> Mang địa chỉ của ô nhớ hoặc thiết bị I/O mà CPU muốn truy cập.</li>
+                                    <li><strong>Data Bus:</strong> Mang dữ liệu thực tế được truyền qua lại.</li>
+                                    <li><strong>Control Bus:</strong> Mang các tín hiệu điều khiển (ví dụ: đọc hay ghi) để điều phối hoạt động.</li>
                                 </ol>
                             </li>
+                        </ul>
+                        <h3>3. Phân cấp bộ nhớ (Memory Hierarchy)</h3>
+                        <p>Một hệ thống gồm nhiều loại bộ nhớ khác nhau, được sắp xếp theo tốc độ và giá thành. Tốc độ và giá/bit giảm dần, trong khi dung lượng tăng dần:</p>
+                        <p><span class="highlight">Registers → Cache → Main Memory (RAM) → Magnetic Disk (Ổ cứng) → Magnetic Tape</span></p>
+                        <h3>4. Chu kỳ máy (Machine Cycle)</h3>
+                        <ul>
+                             <li>Là quá trình lặp đi lặp lại mà CPU dùng để thực thi một lệnh. Gồm 3 bước cơ bản:
+                                <ol>
+                                    <li><span class="highlight">Fetch (Nạp lệnh):</span> Đơn vị điều khiển lấy lệnh từ bộ nhớ (tại địa chỉ do Program Counter chỉ định).</li>
+                                    <li><span class="highlight">Decode (Giải mã):</span> Lệnh được giải mã để xác định thao tác cần thực hiện.</li>
+                                    <li><span class="highlight">Execute (Thực thi):</span> ALU hoặc các thành phần khác thực hiện lệnh đã giải mã.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                        <h3>5. Các kiến trúc CPU</h3>
+                        <ul>
+                            <li><strong>CISC (Complex Instruction Set Computer):</strong> Có một tập lệnh lớn và phức tạp. Một lệnh có thể thực hiện nhiều thao tác cấp thấp.</li>
+                            <li><strong>RISC (Reduced Instruction Set Computer):</strong> Có một tập lệnh nhỏ, được tối ưu hóa. Mỗi lệnh thực hiện một thao tác đơn giản và rất nhanh.</li>
+                            <li><strong>Pipelining:</strong> Kỹ thuật cho phép CPU xử lý gối đầu các giai đoạn của nhiều lệnh cùng lúc (giống dây chuyền lắp ráp), làm tăng thông lượng (throughput).</li>
                         </ul>
                     `,
                     en: `
@@ -660,19 +797,36 @@ Result: (1)0000 0111  (Discard final carry)
                         <ul>
                            <li><strong>CPU (Central Processing Unit):</strong> The "brain" of the computer. Contains 3 parts: ALU (calculation), Control Unit (control), and Registers.</li>
                             <li><strong>Main Memory:</strong> Usually RAM, stores currently running programs and data.</li>
+                            <li><strong>I/O Subsystem:</strong> Consists of peripheral devices (keyboard, monitor, hard drive) and their controllers for communication.</li>
                         </ul>
-                        <h3>2. Memory Hierarchy</h3>
-                        <p>Speed and cost decrease, while capacity increases:</p>
-                        <p><span class="highlight">Registers → Cache → Main Memory → Storage (Hard Drive)</span></p>
-                        <h3>3. Machine Cycle</h3>
+                        <h3>2. Connecting Components</h3>
+                        <ul>
+                            <li><strong>System Bus:</strong> A set of electronic pathways connecting the CPU, memory, and I/O subsystem, allowing them to exchange information. It comprises 3 sub-buses:
+                                <ol>
+                                    <li><strong>Address Bus:</strong> Carries the address of the memory location or I/O device the CPU wants to access.</li>
+                                    <li><strong>Data Bus:</strong> Carries the actual data being transferred.</li>
+                                    <li><strong>Control Bus:</strong> Carries control signals (e.g., read or write) to coordinate activities.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                        <h3>3. Memory Hierarchy</h3>
+                        <p>A system of different types of memory, organized by speed and cost. Speed and cost/bit decrease, while capacity increases:</p>
+                        <p><span class="highlight">Registers → Cache → Main Memory (RAM) → Magnetic Disk → Magnetic Tape</span></p>
+                        <h3>4. Machine Cycle</h3>
                         <ul>
                              <li>The repetitive process by which the CPU executes one instruction. Consists of 3 basic steps:
                                 <ol>
-                                    <li><span class="highlight">Fetch:</span> Get the instruction from memory.</li>
-                                    <li><span class="highlight">Decode:</span> Understand what the instruction wants to do.</li>
-                                    <li><span class="highlight">Execute:</span> Perform the instruction.</li>
+                                    <li><span class="highlight">Fetch:</span> The control unit retrieves an instruction from memory (at the address pointed to by the Program Counter).</li>
+                                    <li><span class="highlight">Decode:</span> The instruction is decoded to determine the required operation.</li>
+                                    <li><span class="highlight">Execute:</span> The ALU or other components perform the decoded instruction.</li>
                                 </ol>
                             </li>
+                        </ul>
+                        <h3>5. CPU Architectures</h3>
+                        <ul>
+                            <li><strong>CISC (Complex Instruction Set Computer):</strong> Has a large and complex instruction set. One instruction can perform multiple low-level operations.</li>
+                            <li><strong>RISC (Reduced Instruction Set Computer):</strong> Has a small, optimized instruction set. Each instruction performs a simple and very fast operation.</li>
+                            <li><strong>Pipelining:</strong> A technique that allows the CPU to overlap the stages of multiple instructions simultaneously (like an assembly line), increasing throughput.</li>
                         </ul>
                     `
                 },
@@ -833,141 +987,6 @@ Result: (1)0000 0111  (Discard final carry)
                 retakeQuiz: "Retake Quiz", askAI: "Ask AI"
             }
         };
-
-        function updateAllVisibleText() {
-            document.querySelectorAll('[data-lang-key]').forEach(el => {
-                const key = el.getAttribute('data-lang-key');
-                if (translations[currentLang][key]) {
-                    el.textContent = translations[currentLang][key];
-                }
-            });
-
-            for (const chapterId in contentData) {
-                const theoryDiv = document.querySelector(`#${chapterId} .theory-content`);
-                if (theoryDiv) {
-                    theoryDiv.innerHTML = contentData[chapterId].theory[currentLang];
-                }
-            }
-
-            if (quizState[currentChapter] && quizState[currentChapter].isActive) {
-                redisplayCurrentQuestion();
-            }
-        }
-
-        function redisplayCurrentQuestion() {
-            const state = quizState[currentChapter];
-            if (!state || !state.isActive || state.currentQuestionIndex >= state.questions.length) return;
-
-            const question = state.questions[state.currentQuestionIndex];
-            document.getElementById(`question-text-${currentChapter}`).textContent = `(${state.currentQuestionIndex + 1}/${state.questions.length}) ${question.q[currentLang]}`;
-            
-            const options = document.querySelectorAll(`#quiz-options-${currentChapter} button`);
-            options.forEach((button, index) => {
-                button.textContent = question.o[index][currentLang];
-            });
-
-            const explanationDiv = document.getElementById(`explanation-${currentChapter}`);
-            if (explanationDiv.innerHTML !== '') {
-                const explanationText = question.explanation ? question.explanation[currentLang] : '';
-                explanationDiv.innerHTML = `<div class="explanation-box"><strong>💡 ${currentLang === 'vi' ? 'Giải thích' : 'Explanation'}:</strong> ${explanationText}</div>`;
-            }
-        }
-        
-        function showQuizSetup(chapterId) {
-            document.querySelector(`#${chapterId} .theory-view`).style.display = 'none';
-            document.querySelector(`#${chapterId} .quiz-view`).style.display = 'block';
-            document.querySelector(`#${chapterId} .quiz-setup`).style.display = 'block';
-            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'none';
-            document.querySelector(`#${chapterId} .quiz-results`).style.display = 'none';
-        }
-
-        function showTheory(chapterId) {
-            if(quizState[chapterId]) quizState[chapterId].isActive = false;
-            document.querySelector(`#${chapterId} .theory-view`).style.display = 'block';
-            document.querySelector(`#${chapterId} .quiz-view`).style.display = 'none';
-        }
-
-        function startQuiz(chapterId) {
-            const allQuestions = contentData[chapterId].questions;
-            const numQuestionsInput = document.getElementById(`num-questions-${chapterId}`);
-            let numQuestions = parseInt(numQuestionsInput.value);
-            if (isNaN(numQuestions) || numQuestions <= 0 || numQuestions > allQuestions.length) {
-                numQuestions = Math.min(10, allQuestions.length);
-                numQuestionsInput.value = numQuestions;
-            }
-            
-            const questions = [...allQuestions].sort(() => 0.5 - Math.random()).slice(0, numQuestions);
-
-            quizState[chapterId] = { questions, currentQuestionIndex: 0, score: 0, isActive: true };
-
-            document.querySelector(`#${chapterId} .quiz-setup`).style.display = 'none';
-            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'block';
-            document.querySelector(`#${chapterId} .quiz-results`).style.display = 'none';
-            
-            displayQuestion(chapterId);
-        }
-
-        function displayQuestion(chapterId) {
-            const state = quizState[chapterId];
-            if (state.currentQuestionIndex >= state.questions.length) {
-                showResults(chapterId);
-                return;
-            }
-
-            const question = state.questions[state.currentQuestionIndex];
-            document.getElementById(`question-text-${chapterId}`).textContent = `(${state.currentQuestionIndex + 1}/${state.questions.length}) ${question.q[currentLang]}`;
-            
-            const optionsDiv = document.getElementById(`quiz-options-${chapterId}`);
-            optionsDiv.innerHTML = '';
-            question.o.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.textContent = option[currentLang];
-                button.onclick = () => selectAnswer(chapterId, index);
-                optionsDiv.appendChild(button);
-            });
-
-            document.getElementById(`explanation-${chapterId}`).innerHTML = '';
-            document.getElementById(`next-btn-${chapterId}`).style.display = 'none';
-        }
-
-        function selectAnswer(chapterId, selectedIndex) {
-            const state = quizState[chapterId];
-            const question = state.questions[state.currentQuestionIndex];
-            const correctIndex = question.a;
-            
-            const options = document.querySelectorAll(`#${chapterId} .quiz-options button`);
-            options.forEach(button => button.disabled = true);
-
-            if (selectedIndex === correctIndex) {
-                options[selectedIndex].classList.add('correct');
-                state.score++;
-            } else {
-                options[selectedIndex].classList.add('incorrect');
-                options[correctIndex].classList.add('correct');
-                const explanationDiv = document.getElementById(`explanation-${chapterId}`);
-                if(question.explanation) {
-                    explanationDiv.innerHTML = `<div class="explanation-box"><strong>💡 ${currentLang === 'vi' ? 'Giải thích' : 'Explanation'}:</strong> ${question.explanation[currentLang]}</div>`;
-                }
-            }
-            document.getElementById(`next-btn-${chapterId}`).style.display = 'inline-block';
-        }
-
-        function nextQuestion(chapterId) {
-            quizState[chapterId].currentQuestionIndex++;
-            displayQuestion(chapterId);
-        }
-
-        function showResults(chapterId) {
-            const state = quizState[chapterId];
-            state.isActive = false;
-            document.querySelector(`#${chapterId} .quiz-container`).style.display = 'none';
-            const resultsDiv = document.querySelector(`#${chapterId} .quiz-results`);
-            resultsDiv.style.display = 'block';
-            
-            const scoreText = translations[currentLang].scoreText;
-            document.getElementById(`score-${chapterId}`).textContent = `${scoreText} ${state.score} / ${state.questions.length} câu.`;
-        }
-
         function askAI() {
             const activeChapter = document.querySelector('.tab-pane.active');
             const titleElement = activeChapter.querySelector('.theory-content h2');
