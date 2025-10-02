@@ -3,101 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sổ tay Ôn tập CSI</title>
+    <title>Sổ tay Ôn tập CSI Toàn diện</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #f4f6f9;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.7;
             margin: 0;
             padding: 20px;
         }
         .container {
-            background-color: #fff;
+            background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 20px auto;
-            padding: 25px 30px;
+            padding: 30px 40px;
         }
         h1 {
-            color: #005691;
+            color: #0d47a1;
             text-align: center;
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 15px;
             margin-top: 0;
+            font-size: 2em;
         }
         .controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 20px;
+            margin-bottom: 30px;
             font-size: 1.1em;
             flex-wrap: wrap;
         }
         #chapter-select, #lang-toggle {
-            padding: 10px 15px;
+            padding: 12px 18px;
             border-radius: 8px;
             border: 1px solid #ccc;
             font-size: 1em;
             background-color: #f8f9fa;
             cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        #chapter-select:hover, #lang-toggle:hover {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
         }
         #lang-toggle {
-            background-color: #007bff;
+            background-color: #28a745;
             color: white;
-            border-color: #007bff;
+            border-color: #28a745;
+            font-weight: 500;
         }
         #content-display {
             border-top: 1px solid #eee;
             padding-top: 20px;
         }
         #content-display h3 {
-            color: #005691;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 5px;
+            color: #0d47a1;
+            font-size: 1.9em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #1e88e5;
+            padding-bottom: 8px;
             display: inline-block;
         }
         #content-display h4 {
-            color: #17a2b8;
-            font-size: 1.3em;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            color: #1565c0;
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid #1e88e5;
+            padding-left: 10px;
         }
         #content-display ul {
-            padding-left: 20px;
+            padding-left: 25px;
+            list-style-type: disc;
         }
         #content-display li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         #content-display strong {
-            color: #dc3545; /* Highlight color */
+            color: #d32f2f;
             font-weight: 600;
         }
         #content-display code {
             background-color: #e9ecef;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
             font-size: 0.95em;
+            color: #333;
         }
         .welcome-message {
             text-align: center;
             color: #6c757d;
             font-size: 1.2em;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
         .example {
             background-color: #f8f9fa;
             border-left: 4px solid #17a2b8;
-            padding: 15px;
-            margin: 15px 0;
+            padding: 15px 20px;
+            margin: 20px 0;
             border-radius: 0 8px 8px 0;
+            font-size: 1em;
+            overflow-x: auto;
         }
     </style>
 </head>
@@ -111,7 +124,7 @@
             <select id="chapter-select">
                 <option value="0" id="opt-0">--- Chọn một chương ---</option>
                 <option value="1" id="opt-1">Chương 1: Tổng quan</option>
-                <option value="2" id="opt-2">Chương 2: Các hệ đếm</option>
+                <option value="2" id="opt-2">Chương 2: Hệ thống số</option>
                 <option value="3" id="opt-3">Chương 3: Lưu trữ dữ liệu</option>
                 <option value="4" id="opt-4">Chương 4: Các phép toán</option>
                 <option value="5" id="opt-5">Chương 5: Tổ chức máy tính</option>
@@ -123,7 +136,7 @@
         <div id="content-display">
             <div class="welcome-message">
                 <p id="welcome-p1">Hãy chọn một chương từ menu bên trên để bắt đầu ôn tập.</p>
-                <p id="welcome-p2">Chúc em thi tốt!</p>
+                <p id="welcome-p2">Chúc bạn thi tốt!</p>
             </div>
         </div>
     </div>
@@ -131,492 +144,384 @@
     <script>
         // --- DATA TIẾNG VIỆT ---
         const theoryDataVI = {
-            "0": `
-                <div class="welcome-message">
-                    <p>Hãy chọn một chương từ menu bên trên để bắt đầu ôn tập.</p>
-                    <p>Nội dung lý thuyết chi tiết sẽ được hiển thị ở đây.</p>
-                </div>
-            `,
+            "0": `<div class="welcome-message"><p>Hãy chọn một chương từ menu bên trên để bắt đầu ôn tập.</p><p>Nội dung lý thuyết chi tiết sẽ được hiển thị ở đây.</p></div>`,
             "1": `
-                <h3>Chương 1: Introduction to Computer Science</h3>
-                <h4>Khái niệm Cốt lõi</h4>
+                <h3>Chương 1: Giới thiệu về Khoa học Máy tính</h3>
+                <h4>1. Hai Mô hình Nền tảng</h4>
                 <ul>
-                    <li><strong>Mô hình Turing:</strong> Một định nghĩa toán học về máy tính. Nó giới thiệu khái niệm <strong>"máy tính đa năng" (general-purpose machine)</strong>, có khả năng thực hiện bất kỳ phép tính nào nếu được cung cấp một chương trình phù hợp. Cấu trúc cơ bản: <code>Input Data + Program → Computer → Output Data</code>.</li>
-                    <li><strong>Mô hình Von Neumann:</strong> Là kiến trúc máy tính được sử dụng phổ biến nhất hiện nay.
+                    <li><strong>Mô hình Turing:</strong> Định nghĩa máy tính là một <strong>"bộ xử lý dữ liệu có thể lập trình được"</strong>. Nền tảng cho máy tính đa năng, nơi kết quả phụ thuộc vào cả <strong>dữ liệu đầu vào</strong> và <strong>chương trình</strong>. Công thức: <code>Input + Program → Computer → Output</code>.</li>
+                    <li><strong>Mô hình von Neumann:</strong> Là kiến trúc thực tế của hầu hết máy tính hiện đại.
                         <ul>
-                            <li>Đặc điểm quan trọng nhất: <strong>Stored Program Concept (Khái niệm chương trình được lưu trữ)</strong>. Tức là cả chương trình (tập hợp các lệnh) và dữ liệu đều được lưu trữ trong cùng một bộ nhớ (RAM).</li>
-                            <li><strong>Bốn hệ thống con (Subsystems):</strong>
+                            <li>Điểm đột phá: <strong>Khái niệm chương trình được lưu trữ (Stored-Program Concept)</strong>, tức là cả chương trình và dữ liệu đều được lưu chung trong bộ nhớ dưới dạng nhị phân.</li>
+                            <li><strong>Bốn khối chức năng:</strong>
                                 <ol>
-                                    <li><strong>Memory (Bộ nhớ):</strong> Lưu trữ chương trình và dữ liệu.</li>
-                                    <li><strong>Arithmetic Logic Unit (ALU):</strong> Thực hiện các phép toán số học và logic.</li>
-                                    <li><strong>Control Unit (Khối điều khiển):</strong> Điều khiển hoạt động của các bộ phận khác.</li>
-                                    <li><strong>Input/Output (Nhập/Xuất):</strong> Giao tiếp với thế giới bên ngoài.</li>
+                                    <li><strong>Bộ nhớ (Memory):</strong> Lưu trữ chương trình và dữ liệu.</li>
+                                    <li><strong>Đơn vị Số học & Logic (ALU):</strong> Thực hiện các phép toán.</li>
+                                    <li><strong>Đơn vị Điều khiển (Control Unit):</strong> "Bộ não" điều khiển mọi hoạt động.</li>
+                                    <li><strong>Thiết bị Vào/Ra (I/O):</strong> Giao tiếp với thế giới bên ngoài.</li>
                                 </ol>
                             </li>
                         </ul>
                     </li>
                 </ul>
-                <h4>Chi tiết Quan trọng</h4>
+                <h4>2. Ba Thành phần Cấu thành Máy tính</h4>
                 <ul>
-                    <li><strong>Ba thành phần cơ bản của một hệ thống máy tính:</strong>
-                        <ol>
-                            <li><strong>Hardware (Phần cứng):</strong> Các thiết bị vật lý.</li>
-                            <li><strong>Software (Phần mềm):</strong> Các chương trình, bao gồm hệ điều hành và ứng dụng.</li>
-                            <li><strong>Data (Dữ liệu):</strong> Thông tin mà chương trình xử lý.</li>
-                        </ol>
+                    <li><strong>Phần cứng (Hardware):</strong> Các thành phần vật lý (CPU, RAM, ...).</li>
+                    <li><strong>Dữ liệu (Data):</strong> Thông tin thô, được lưu trữ dưới dạng nhị phân (0 và 1).</li>
+                    <li><strong>Phần mềm (Software):</strong> Là các chương trình (tập hợp các chỉ thị) hướng dẫn phần cứng xử lý dữ liệu.</li>
+                </ul>
+                <h4>3. Lịch sử Phát triển</h4>
+                <ul>
+                    <li><strong>Giai đoạn cơ khí (Trước 1930):</strong> Máy Pascaline, Máy tính Phân tích của Babbage.</li>
+                    <li><strong>Khai sinh máy tính điện tử (1930 - 1950):</strong> Sử dụng bóng đèn chân không (ENIAC, EDVAC).</li>
+                    <li><strong>Các thế hệ hiện đại:</strong>
+                        <ul>
+                            <li><strong>Gen 1 (1950s):</strong> Bóng đèn chân không.</li>
+                            <li><strong>Gen 2 (1960s):</strong> Bóng bán dẫn (Transistor) - nhỏ hơn, nhanh hơn.</li>
+                            <li><strong>Gen 3 (1970s):</strong> Mạch tích hợp (IC) - nhiều transistor trên một chip.</li>
+                            <li><strong>Gen 4 (1980s):</strong> Vi xử lý (Microprocessor) - CPU trên một chip, khởi đầu PC.</li>
+                            <li><strong>Gen 5 (1985-nay):</strong> Xử lý song song, AI, mạng máy tính.</li>
+                        </ul>
                     </li>
-                    <li>Lịch sử máy tính được chia thành các thế hệ, đánh dấu bằng các công nghệ chính: Đèn chân không (Gen 1), Transistor (Gen 2), Mạch tích hợp - IC (Gen 3), Vi xử lý (Gen 4), Trí tuệ nhân tạo & Song song (Gen 5).</li>
                 </ul>
             `,
             "2": `
-                <h3>Chương 2: Number Systems (Hệ đếm)</h3>
-                <h4>Khái niệm Cốt lõi</h4>
+                <h3>Chương 2: Hệ thống số</h3>
+                <h4>1. Các Hệ đếm Quan trọng</h4>
                 <ul>
-                    <li>Máy tính chỉ làm việc với <strong>hệ nhị phân (Binary - base 2)</strong> vì các linh kiện điện tử có hai trạng thái (on/off).</li>
-                    <li>Con người dùng <strong>hệ thập phân (Decimal - base 10)</strong>.</li>
-                    <li>Lập trình viên dùng <strong>hệ thập lục phân (Hexadecimal - base 16)</strong> và <strong>hệ bát phân (Octal - base 8)</strong> để biểu diễn chuỗi bit một cách ngắn gọn.</li>
+                    <li><strong>Hệ Thập phân (Decimal - Base 10):</strong> Dùng 10 chữ số (0-9). Sử dụng hàng ngày.</li>
+                    <li><strong>Hệ Nhị phân (Binary - Base 2):</strong> Dùng 2 chữ số (0, 1). Là ngôn ngữ của máy tính.</li>
+                    <li><strong>Hệ Bát phân (Octal - Base 8):</strong> Dùng 8 chữ số (0-7). Dùng để viết gọn chuỗi nhị phân.</li>
+                    <li><strong>Hệ Thập lục phân (Hexadecimal - Base 16):</strong> Dùng 16 ký hiệu (0-9, A-F). Rất phổ biến để viết gọn chuỗi nhị phân.</li>
                 </ul>
-                <h4>Chi tiết Quan trọng & Ví dụ</h4>
+                <h4>2. Chuyển đổi giữa các Hệ cơ số</h4>
                 <ul>
-                    <li><strong>Chuyển từ cơ số bất kỳ sang hệ 10:</strong> Nhân từng chữ số với cơ số mũ vị trí tương ứng.</li>
-                    <div class="example"><strong>Ví dụ (Hexa → Dec):</strong> <code>(1A5)₁₆ = 1 * 16² + A * 16¹ + 5 * 16⁰ = 1 * 256 + 10 * 16 + 5 * 1 = 421</code>.</div>
-                    <li><strong>Chuyển từ hệ 10 sang cơ số bất kỳ (phần nguyên):</strong> Chia liên tiếp cho cơ số và lấy phần dư, đọc ngược lại.</li>
-                    <div class="example"><strong>Ví dụ (Dec → Binary):</strong> Chuyển <code>25</code> sang binary.<br>
-                        <code>25 / 2 = 12</code> dư <code>1</code><br>
-                        <code>12 / 2 = 6</code> dư <code>0</code><br>
-                        <code>6 / 2 = 3</code> dư <code>0</code><br>
-                        <code>3 / 2 = 1</code> dư <code>1</code><br>
-                        <code>1 / 2 = 0</code> dư <code>1</code><br>
-                        Kết quả: <code>(11001)₂</code>.
-                    </div>
-                    <li><strong>Chuyển đổi giữa Binary ↔ Octal ↔ Hexadecimal:</strong> Dựa trên mối quan hệ gom nhóm bit.
-                        <ul>
-                            <li><strong>1 Octal digit = 3 bits:</strong> <code>(725)₈ = (111 010 101)₂</code></li>
-                            <li><strong>1 Hexadecimal digit = 4 bits:</strong> <code>(A2F)₁₆ = (1010 0010 1111)₂</code></li>
-                        </ul>
+                    <li><strong>Bất kỳ sang Thập phân (Decimal):</strong> Dùng công thức tổng các (chữ_số * cơ_số ^ vị_trí).
+                        <div class="example"><strong>Ví dụ (1A)₁₆ sang base 10:</strong><br><code>1 * 16¹ + A * 16⁰ = 16 + 10 = 26</code>.</div>
                     </li>
-                    <div class="example"><strong>Ví dụ (Binary → Hexa):</strong> Chuyển <code>(1101011)₂</code>.<br>
-                        1. Gom nhóm 4 bit từ phải qua: <code>0110 1011</code> (thêm 0 ở đầu nếu cần).<br>
-                        2. <code>0110 = 6</code>, <code>1011 = 11 = B</code>.<br>
-                        3. Kết quả: <code>(6B)₁₆</code>.
-                    </div>
+                    <li><strong>Thập phân sang Bất kỳ:</strong> Chia liên tiếp cho cơ số đích, lấy phần dư và đọc ngược từ dưới lên.
+                        <div class="example"><strong>Ví dụ 26₁₀ sang base 2:</strong><br>26/2 = 13 dư 0<br>13/2 = 6 dư 1<br>6/2 = 3 dư 0<br>3/2 = 1 dư 1<br>1/2 = 0 dư 1<br><strong>Kết quả: (11010)₂</strong></div>
+                    </li>
+                    <li><strong>Nhị phân ↔ Bát phân/Thập lục phân:</strong> Dùng phương pháp gom nhóm bit.
+                        <ul>
+                            <li><strong>Nhị phân ↔ Bát phân:</strong> Gom nhóm <strong>3 bit</strong>.</li>
+                            <li><strong>Nhị phân ↔ Thập lục phân:</strong> Gom nhóm <strong>4 bit</strong>.</li>
+                        </ul>
+                        <div class="example"><strong>Ví dụ (11010)₂ sang Hexadecimal:</strong><br>1. Gom nhóm 4 bit từ phải qua: <code>0001 1010</code> (thêm 0 vào đầu nếu thiếu).<br>2. <code>0001₂ = 1₁₆</code>, <code>1010₂ = 10₁₀ = A₁₆</code>.<br><strong>Kết quả: (1A)₁₆</strong></div>
+                    </li>
                 </ul>
             `,
             "3": `
-                <h3>Chương 3: Data Storage (Lưu trữ dữ liệu)</h3>
-                <h4>Khái niệm Cốt lõi</h4>
+                <h3>Chương 3: Lưu trữ Dữ liệu</h3>
+                <h4>1. Lưu trữ Số (Storing Numbers)</h4>
                 <ul>
-                    <li>Tất cả dữ liệu (số, văn bản, ảnh,...) đều được mã hóa thành <strong>chuỗi bit (bit patterns)</strong>.</li>
-                </ul>
-                <h4>Chi tiết Quan trọng</h4>
-                <ul>
-                    <li><strong>Lưu trữ Số nguyên (Integers):</strong>
+                    <li><strong>Số nguyên (Integers):</strong>
                         <ul>
-                            <li><em>Unsigned:</em> Chỉ số không âm. Toàn bộ bit dùng để biểu diễn giá trị.</li>
-                            <li><em>Sign-and-Magnitude:</em> Bit trái nhất là bit dấu (0: dương, 1: âm). Gặp vấn đề với hai biểu diễn của số 0 (+0 và -0).</li>
-                            <li><strong>Two's Complement (Bù 2):</strong> <strong>Phương pháp chuẩn để lưu số nguyên có dấu.</strong>
+                            <li><strong>Không dấu (Unsigned):</strong> Chỉ biểu diễn số dương và 0.</li>
+                            <li><strong>Có dấu - Bù 2 (Signed - Two's Complement):</strong> <strong>Phương pháp chuẩn</strong> trong máy tính.
                                 <ul>
-                                    <li><strong>Cách tìm bù 2 của một số:</strong> Đảo tất cả các bit (tìm bù 1) rồi cộng 1.</li>
+                                    <li>Bit trái nhất là bit dấu (0: dương, 1: âm).</li>
                                     <li>Ưu điểm: Chỉ có một biểu diễn cho số 0, phép trừ trở thành phép cộng.</li>
+                                    <li><strong>Cách tìm số âm:</strong> Lấy biểu diễn nhị phân của số dương, đảo tất cả bit rồi cộng 1.</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><strong>Lưu trữ Số thực (Reals) - Floating-Point:</strong>
+                    <li><strong>Số thực (Real Numbers):</strong>
                         <ul>
-                            <li>Dựa trên cách biểu diễn khoa học: <code>(-1)^S * M * 2^E</code>.</li>
-                            <li><strong>Tiêu chuẩn IEEE 754</strong> chia chuỗi bit thành 3 phần:
-                                <ol>
-                                    <li><strong>Sign (S):</strong> Dấu của số (1 bit).</li>
-                                    <li><strong>Exponent (E):</strong> Số mũ, được lưu ở dạng "Excess" (thiên vị) để biểu diễn cả số mũ âm và dương.</li>
-                                    <li><strong>Mantissa (M):</strong> Phần định trị (phần thập phân của số khoa học).</li>
-                                </ol>
-                            </li>
+                            <li>Dùng biểu diễn <strong>Dấu phẩy động (Floating-Point)</strong> theo chuẩn <strong>IEEE 754</strong>.</li>
+                            <li>Cấu trúc gồm 3 phần: <strong>Sign (Dấu)</strong>, <strong>Exponent (Số mũ)</strong>, và <strong>Mantissa (Phần định trị)</strong>.</li>
                         </ul>
                     </li>
-                    <li><strong>Lưu trữ Văn bản (Text):</strong>
+                </ul>
+                <h4>2. Lưu trữ các loại Dữ liệu khác</h4>
+                <ul>
+                    <li><strong>Văn bản (Text):</strong> Mỗi ký tự được ánh xạ tới một chuỗi bit qua bảng mã (<strong>ASCII</strong>, <strong>Unicode</strong>).</li>
+                    <li><strong>Âm thanh (Audio):</strong> Tín hiệu analog được số hóa qua 3 bước: <strong>Lấy mẫu (Sampling)</strong>, <strong>Lượng tử hóa (Quantization)</strong>, và <strong>Mã hóa (Encoding)</strong>.</li>
+                    <li><strong>Hình ảnh (Images):</strong>
                         <ul>
-                            <li><strong>ASCII:</strong> 7-bit hoặc 8-bit, đủ cho tiếng Anh và các ký tự điều khiển.</li>
-                            <li><strong>Unicode (UTF-8, UTF-16):</strong> Chuẩn quốc tế, có thể biểu diễn mọi ngôn ngữ. UTF-8 là phổ biến nhất trên web.</li>
+                            <li><strong>Raster Graphics (Bitmap):</strong> Lưu ảnh dưới dạng lưới các <strong>pixel</strong> (điểm ảnh). Phù hợp cho ảnh chụp (JPEG, PNG).</li>
+                            <li><strong>Vector Graphics:</strong> Lưu ảnh dưới dạng công thức toán học (đường thẳng, đường cong). Phóng to không vỡ hình. Phù hợp cho logo (SVG).</li>
                         </ul>
                     </li>
-                    <li><strong>Lưu trữ Âm thanh (Audio):</strong>
-                        <ul>
-                            <li>Âm thanh (tín hiệu analog) được số hóa qua 3 bước: <strong>Sampling</strong> (lấy mẫu), <strong>Quantization</strong> (lượng tử hóa), và <strong>Encoding</strong> (mã hóa).</li>
-                            <li>Chất lượng phụ thuộc vào <strong>Sampling Rate</strong> và <strong>Bit Depth</strong>. Định dạng phổ biến: MP3, WAV.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Lưu trữ Hình ảnh (Images):</strong>
-                        <ul>
-                            <li><strong>Raster Graphics (Bitmap):</strong> Lưu ảnh dưới dạng lưới các <strong>pixel</strong>. Chất lượng phụ thuộc vào độ phân giải và độ sâu màu. Phù hợp cho ảnh chụp (JPEG, PNG).</li>
-                            <li><strong>Vector Graphics:</strong> Lưu ảnh dưới dạng các công thức toán học (đường thẳng, đường cong). Phóng to không vỡ hình. Phù hợp cho logo, icon (SVG, AI).</li>
-                        </ul>
-                    </li>
-                    <li><strong>Lưu trữ Video:</strong>
-                        <ul>
-                             <li>Là một chuỗi các hình ảnh (<strong>frames</strong>) chiếu liên tiếp. Tốc độ chiếu đo bằng <strong>fps (frames per second)</strong>.</li>
-                             <li>Nén dữ liệu là cực kỳ quan trọng. Định dạng phổ biến: MP4, AVI.</li>
-                        </ul>
-                    </li>
+                    <li><strong>Video:</strong> Là một chuỗi các hình ảnh (<strong>frames</strong>) được chiếu liên tiếp với tốc độ cao (fps).</li>
                 </ul>
             `,
             "4": `
-                <h3>Chương 4: Operations on Data (Các phép toán)</h3>
-                <h4>Khái niệm Cốt lõi</h4>
+                <h3>Chương 4: Các Thao tác trên Dữ liệu</h3>
+                <h4>1. Thao tác Logic (Logic Operations)</h4>
                 <ul>
-                    <li>Các phép toán trong máy tính được thực hiện ở mức bit.</li>
-                </ul>
-                <h4>Chi tiết Quan trọng & Ví dụ</h4>
-                <ul>
-                    <li><strong>1. Phép toán Logic (Logical Operations):</strong>
+                    <li>Gồm 4 phép toán cơ bản trên từng bit: <strong>NOT</strong> (đảo bit), <strong>AND</strong>, <strong>OR</strong>, <strong>XOR</strong>.</li>
+                    <li><strong>Ứng dụng với Mặt nạ (Masking):</strong> Cho phép thay đổi một vài bit cụ thể mà không ảnh hưởng các bit khác.
                         <ul>
-                            <li>Bao gồm: <code>NOT</code> (đảo bit), <code>AND</code> (chỉ 1 nếu cả hai là 1), <code>OR</code> (chỉ 0 nếu cả hai là 0), <code>XOR</code> (là 1 nếu hai bit khác nhau).</li>
-                            <li><strong>Ứng dụng với mặt nạ (Masking):</strong>
-                                <ul>
-                                    <li><strong>Unset (tắt bit):</strong> <code>data AND 11110111</code> (tắt bit thứ 3 từ phải sang).</li>
-                                    <li><strong>Set (bật bit):</strong> <code>data OR 00001000</code> (bật bit thứ 4 từ phải sang).</li>
-                                    <li><strong>Flip (lật bit):</strong> <code>data XOR 00000001</code> (lật bit cuối cùng).</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><strong>2. Phép toán Dịch chuyển (Shift Operations):</strong>
-                        <ul>
-                            <li><em>Logical Shift (Dịch logic):</em> Dịch bit sang trái/phải, chèn 0 vào chỗ trống.</li>
-                            <li><em>Arithmetic Shift (Dịch số học):</em> Khi dịch phải, <strong>giữ nguyên bit dấu</strong> (bit trái nhất) để bảo toàn giá trị của số âm.</li>
-                            <li><strong>Dịch trái n bit ≈ Nhân 2ⁿ. Dịch phải n bit ≈ Chia 2ⁿ (phần nguyên).</strong></li>
-                        </ul>
-                    </li>
-                    <li><strong>3. Phép toán Số học (Arithmetic Operations):</strong>
-                        <ul>
-                            <li><strong>Cộng/Trừ số Bù 2:</strong> Phép cộng thực hiện như cộng nhị phân bình thường. <strong>Bit nhớ ra khỏi bit trái nhất sẽ bị loại bỏ.</strong></li>
-                            <li><strong>Phép trừ A - B được thực hiện bằng A + (Bù 2 của B).</strong></li>
-                            <li><strong>Overflow (Tràn số):</strong> Xảy ra khi kết quả của phép toán vượt quá phạm vi biểu diễn. Dấu hiệu: cộng 2 số dương ra số âm, hoặc cộng 2 số âm ra số dương.</li>
+                            <li><strong>Tắt bit (Unset):</strong> Dùng phép <code>AND</code> với mặt nạ có bit 0 ở vị trí cần tắt.</li>
+                            <li><strong>Bật bit (Set):</strong> Dùng phép <code>OR</code> với mặt nạ có bit 1 ở vị trí cần bật.</li>
+                            <li><strong>Đảo bit (Flip):</strong> Dùng phép <code>XOR</code> với mặt nạ có bit 1 ở vị trí cần đảo.</li>
                         </ul>
                     </li>
                 </ul>
-                <div class="example"><strong>Ví dụ (Trừ bằng Bù 2, 8-bit):</strong> Tính <code>12 - 5</code><br>
-                    1. <code>12 = 00001100</code><br>
-                    2. <code>5 = 00000101</code><br>
-                    3. Bù 1 của 5 là <code>11111010</code>. Bù 2 của 5 là <code>-5 = 11111011</code>.<br>
-                    4. Thực hiện phép cộng: <code>00001100 (12) + 11111011 (-5) = (1)00000111</code>.<br>
-                    5. Bỏ bit nhớ 1 ở đầu, kết quả là <code>00000111 = 7</code>.
-                </div>
+                <h4>2. Thao tác Dịch chuyển (Shift Operations)</h4>
+                <ul>
+                    <li><strong>Dịch chuyển Logic (Logical Shift):</strong> Dịch bit và luôn chèn bit 0 vào chỗ trống. Dùng cho số không dấu.</li>
+                    <li><strong>Dịch chuyển Số học (Arithmetic Shift):</strong> Khi dịch phải, <strong>sao chép bit dấu</strong> vào chỗ trống để bảo toàn dấu của số. Dùng cho số có dấu.</li>
+                    <li>Dịch trái n bit tương đương <strong>nhân cho 2ⁿ</strong>. Dịch phải n bit tương đương <strong>chia cho 2ⁿ</strong>.</li>
+                </ul>
+                <h4>3. Thao tác Số học (Arithmetic Operations)</h4>
+                <ul>
+                    <li>CPU thực hiện mọi phép toán số học thông qua <strong>phép cộng</strong>.</li>
+                    <li>Phép trừ <code>A - B</code> được thực hiện bằng phép cộng <code>A + (Bù 2 của B)</code>.</li>
+                    <li>Khi cộng số bù 2, <strong>bit nhớ cuối cùng (nếu có) sẽ bị bỏ đi</strong>.</li>
+                </ul>
+                <div class="example"><strong>Ví dụ 19 - 23 (8-bit):</strong><br>1. Chuyển thành 19 + (-23).<br>2. 19 = <code>00010011</code><br>3. -23 = Bù 2 của (00010111) = <code>11101001</code><br>4. Cộng: <code>00010011 + 11101001 = 11111100</code>.<br>5. Kết quả <code>11111100</code> là -4.</div>
             `,
             "5": `
-                <h3>Chương 5: Computer Organization (Tổ chức máy tính)</h3>
-                <h4>Khái niệm Cốt lõi</h4>
+                <h3>Chương 5: Tổ chức Máy tính</h3>
+                <h4>1. Ba Hệ thống con (Subsystems)</h4>
                 <ul>
-                    <li>Nghiên cứu cách các thành phần phần cứng được kết nối và phối hợp với nhau để tạo thành một hệ thống máy tính hoạt động.</li>
+                    <li><strong>CPU (Central Processing Unit):</strong> "Bộ não" của máy tính.</li>
+                    <li><strong>Bộ nhớ chính (Main Memory):</strong> RAM (volatile - mất dữ liệu khi tắt nguồn) và ROM (non-volatile).</li>
+                    <li><strong>Hệ thống Vào/Ra (I/O Subsystem):</strong> Giúp máy tính giao tiếp.</li>
+                    <li>Các hệ thống con được kết nối qua <strong>Bus</strong> (Data bus, Address bus, Control bus).</li>
                 </ul>
-                <h4>Chi tiết Quan trọng</h4>
+                <h4>2. Bộ xử lý trung tâm (CPU)</h4>
                 <ul>
-                    <li><strong>Ba hệ thống con (Subsystems):</strong> <strong>CPU</strong>, <strong>Main Memory (RAM)</strong>, và <strong>I/O Subsystem</strong>. Chúng được kết nối qua hệ thống <strong>Bus</strong> (Data Bus, Address Bus, Control Bus).</li>
-                    <li><strong>CPU (Central Processing Unit):</strong>
+                    <li>Gồm: <strong>ALU</strong> (tính toán), <strong>Control Unit</strong> (điều khiển), và <strong>Registers</strong> (thanh ghi - bộ nhớ siêu nhanh).</li>
+                    <li>Thanh ghi quan trọng: <strong>Program Counter (PC)</strong> chứa địa chỉ lệnh tiếp theo, <strong>Instruction Register (IR)</strong> chứa lệnh đang thực thi.</li>
+                    <li>Hoạt động theo <strong>Chu kỳ máy (Machine Cycle)</strong> lặp đi lặp lại: <strong>Nạp (Fetch) → Giải mã (Decode) → Thực thi (Execute)</strong>.</li>
+                </ul>
+                <h4>3. Các khái niệm khác</h4>
+                <ul>
+                    <li><strong>Phân cấp bộ nhớ (Memory Hierarchy):</strong> Sắp xếp bộ nhớ theo tốc độ và dung lượng: <strong>Registers → Cache → Main Memory → Secondary Storage</strong>.</li>
+                    <li><strong>Kiến trúc máy tính:</strong>
                         <ul>
-                            <li><strong>ALU (Arithmetic Logic Unit):</strong> Trung tâm tính toán.</li>
-                            <li><strong>Control Unit (CU):</strong> "Nhạc trưởng" điều khiển luồng dữ liệu và lệnh.</li>
-                            <li><strong>Registers (Thanh ghi):</strong> Các ô nhớ nhỏ, siêu nhanh bên trong CPU.
-                                <ul>
-                                    <li><em>Program Counter (PC):</em> Chứa địa chỉ của lệnh <strong>tiếp theo</strong> sẽ được thực thi.</li>
-                                    <li><em>Instruction Register (IR):</em> Chứa lệnh <strong>hiện tại</strong> đang được thực thi.</li>
-                                </ul>
-                            </li>
+                            <li><strong>CISC (Complex Instruction Set):</strong> Tập lệnh phức tạp, mạnh mẽ (VD: Intel x86).</li>
+                            <li><strong>RISC (Reduced Instruction Set):</strong> Tập lệnh rút gọn, đơn giản, nhanh (VD: ARM trên điện thoại).</li>
                         </ul>
                     </li>
-                    <li><strong>Chu kỳ máy (Machine Cycle):</strong> Quy trình <strong>Fetch → Decode → Execute</strong> là nền tảng hoạt động của CPU.</li>
-                    <li><strong>Phân cấp bộ nhớ (Memory Hierarchy):</strong>
-                        <ul>
-                            <li>Mục đích: Cân bằng giữa <strong>tốc độ, dung lượng và chi phí</strong>.</li>
-                            <li>Thứ tự từ nhanh đến chậm: <strong>Registers → Cache → RAM → Storage (SSD/HDD).</strong></li>
-                        </ul>
-                    </li>
-                    <li><strong>Kiến trúc tập lệnh:</strong>
-                        <ul>
-                            <li><strong>CISC (Complex Instruction Set Computer):</strong> Tập lệnh phức tạp, một lệnh có thể làm nhiều việc. (VD: Intel x86).</li>
-                            <li><strong>RISC (Reduced Instruction Set Computer):</strong> Tập lệnh rút gọn, đơn giản, tối ưu hóa cho tốc độ. (VD: ARM).</li>
-                        </ul>
-                    </li>
+                    <li><strong>Tăng tốc xử lý:</strong> <strong>Pipelining</strong> (xử lý gối đầu các lệnh), <strong>Parallel Processing</strong> (xử lý song song).</li>
                 </ul>
             `,
             "6": `
-                <h3>Chương 6: Computer Networks & Internet</h3>
-                <h4>Khái niệm Cốt lõi</h4>
+                <h3>Chương 6: Mạng máy tính & Internet</h3>
+                <h4>1. Khái niệm Nền tảng</h4>
                 <ul>
-                    <li><strong>Protocol (Giao thức):</strong> Tập hợp các quy tắc mà các thiết bị phải tuân theo để giao tiếp với nhau.</li>
-                    <li><strong>Protocol Layering (Phân tầng giao thức):</strong> Chia nhỏ nhiệm vụ giao tiếp phức tạp thành các tầng (layers) đơn giản hơn, mỗi tầng có một chức năng cụ thể.</li>
+                    <li><strong>Giao thức (Protocol):</strong> Là một tập hợp các quy tắc mà các thiết bị phải tuân theo để giao tiếp với nhau.</li>
+                    <li><strong>Phân tầng Giao thức (Protocol Layering):</strong> Chia nhỏ nhiệm vụ giao tiếp phức tạp thành các tầng (layers) đơn giản hơn. Mô hình phổ biến là <strong>TCP/IP</strong>.</li>
                 </ul>
-                <h4>Mô hình TCP/IP (5 lớp)</h4>
+                <h4>2. Mô hình TCP/IP (5 lớp)</h4>
                 <ul>
-                    <li><strong>Layer 5 - Application (Ứng dụng):</strong> Cung cấp giao diện và dịch vụ cho người dùng.
-                        <ul><li>Giao thức: <strong>HTTP</strong> (web), <strong>FTP</strong> (truyền file), <strong>SMTP</strong> (email), <strong>DNS</strong> (phân giải tên miền).</li></ul>
-                    </li>
-                    <li><strong>Layer 4 - Transport (Giao vận):</strong> Giao tiếp <strong>end-to-end (process-to-process)</strong>.
+                    <li><strong>Lớp 5 - Ứng dụng (Application):</strong> Cung cấp dịch vụ cho người dùng (HTTP cho web, SMTP cho email, DNS...).</li>
+                    <li><strong>Lớp 4 - Giao vận (Transport):</strong> Giao tiếp từ tiến trình đến tiến trình (end-to-end).
                         <ul>
-                            <li><strong>TCP (Transmission Control Protocol):</strong> <strong>Hướng kết nối, tin cậy</strong>, đảm bảo dữ liệu đến đúng thứ tự và không mất mát.</li>
-                            <li><strong>UDP (User Datagram Protocol):</strong> <strong>Không kết nối, không tin cậy</strong>, ưu tiên tốc độ (dùng cho game, stream).</li>
-                            <li>Sử dụng <strong>Port Numbers</strong> để xác định ứng dụng.</li>
+                            <li><strong>TCP:</strong> <strong>Tin cậy</strong>, hướng kết nối. Đảm bảo dữ liệu đến đủ và đúng thứ tự.</li>
+                            <li><strong>UDP:</strong> <strong>Không tin cậy</strong>, không kết nối. Ưu tiên tốc độ (game, video call).</li>
+                            <li>Dùng <strong>Số hiệu cổng (Port Number)</strong> để định danh ứng dụng.</li>
                         </ul>
                     </li>
-                    <li><strong>Layer 3 - Network (Mạng):</strong> Chịu trách nhiệm định tuyến (routing) các gói tin qua các mạng khác nhau để đi từ nguồn đến đích (host-to-host).
+                    <li><strong>Lớp 3 - Mạng (Network):</strong> Chịu trách nhiệm <strong>định tuyến (routing)</strong> các gói tin đi từ mạng này sang mạng khác.
                         <ul>
                             <li>Giao thức chính: <strong>IP (Internet Protocol)</strong>.</li>
-                            <li>Sử dụng <strong>IP Address</strong> để định danh thiết bị trên mạng toàn cầu.</li>
+                            <li>Dùng <strong>Địa chỉ IP (IP Address)</strong> để định danh thiết bị trên Internet.</li>
                         </ul>
                     </li>
-                    <li><strong>Layer 2 - Data Link (Liên kết dữ liệu):</strong> Truyền dữ liệu trong cùng một mạng cục bộ (LAN), ví dụ từ máy tính đến router (node-to-node).
+                    <li><strong>Lớp 2 - Liên kết dữ liệu (Data Link):</strong> Truyền dữ liệu trong cùng một mạng cục bộ (LAN), ví dụ từ máy tính đến router.
                         <ul>
-                            <li>Giao thức: Ethernet.</li>
-                            <li>Sử dụng <strong>MAC Address</strong> (địa chỉ vật lý của card mạng).</li>
+                            <li>Dùng <strong>Địa chỉ MAC (MAC Address)</strong> - địa chỉ vật lý của card mạng.</li>
                         </ul>
                     </li>
-                    <li><strong>Layer 1 - Physical (Vật lý):</strong> Truyền luồng bit thô qua môi trường vật lý (cáp, sóng điện từ).</li>
+                    <li><strong>Lớp 1 - Vật lý (Physical):</strong> Truyền các bit 0, 1 qua môi trường vật lý (cáp đồng, cáp quang, sóng vô tuyến...).</li>
                 </ul>
             `
         };
 
         // --- DATA TIẾNG ANH ---
         const theoryDataEN = {
-            "0": `
-                <div class="welcome-message">
-                    <p>Please select a chapter from the menu above to start reviewing.</p>
-                    <p>Detailed theory content will be displayed here.</p>
-                </div>
-            `,
+            "0": `<div class="welcome-message"><p>Please select a chapter from the menu above to start reviewing.</p><p>Detailed theory content will be displayed here.</p></div>`,
             "1": `
                 <h3>Chapter 1: Introduction to Computer Science</h3>
-                <h4>Core Concepts</h4>
+                <h4>1. Two Fundamental Models</h4>
                 <ul>
-                    <li><strong>Turing Model:</strong> A mathematical definition of a computer. It introduces the concept of a <strong>"general-purpose machine"</strong>, capable of performing any computation if given the appropriate program. Basic structure: <code>Input Data + Program → Computer → Output Data</code>.</li>
-                    <li><strong>Von Neumann Model:</strong> The most commonly used computer architecture today.
+                    <li><strong>Turing Model:</strong> Defines a computer as a <strong>"programmable data processor"</strong>. The foundation for general-purpose computers, where the output depends on both <strong>input data</strong> and the <strong>program</strong>. Formula: <code>Input + Program → Computer → Output</code>.</li>
+                    <li><strong>Von Neumann Model:</strong> The practical architecture of most modern computers.
                         <ul>
-                            <li>Most important feature: <strong>Stored Program Concept</strong>. This means both the program (a set of instructions) and the data are stored in the same memory (RAM).</li>
+                            <li>Breakthrough: <strong>Stored-Program Concept</strong>, meaning both the program and data are stored together in memory as binary.</li>
                             <li><strong>Four Subsystems:</strong>
                                 <ol>
                                     <li><strong>Memory:</strong> Stores the program and data.</li>
-                                    <li><strong>Arithmetic Logic Unit (ALU):</strong> Performs arithmetic and logical operations.</li>
-                                    <li><strong>Control Unit:</strong> Directs the operation of the other components.</li>
+                                    <li><strong>Arithmetic Logic Unit (ALU):</strong> Performs calculations.</li>
+                                    <li><strong>Control Unit:</strong> The "brain" that directs all operations.</li>
                                     <li><strong>Input/Output (I/O):</strong> Communicates with the outside world.</li>
                                 </ol>
                             </li>
                         </ul>
                     </li>
                 </ul>
-                <h4>Important Details</h4>
+                <h4>2. Three Components of a Computer</h4>
                 <ul>
-                    <li><strong>Three basic components of a computer system:</strong>
-                        <ol>
-                            <li><strong>Hardware:</strong> The physical devices.</li>
-                            <li><strong>Software:</strong> Programs, including the operating system and applications.</li>
-                            <li><strong>Data:</strong> The information that programs process.</li>
-                        </ol>
+                    <li><strong>Hardware:</strong> The physical components (CPU, RAM, etc.).</li>
+                    <li><strong>Data:</strong> Raw information, stored as binary (0s and 1s).</li>
+                    <li><strong>Software:</strong> Programs (sets of instructions) that tell the hardware how to process data.</li>
+                </ul>
+                <h4>3. History of Development</h4>
+                <ul>
+                    <li><strong>Mechanical Era (Before 1930):</strong> Pascaline, Babbage's Analytical Engine.</li>
+                    <li><strong>Birth of Electronic Computers (1930 - 1950):</strong> Used vacuum tubes (ENIAC, EDVAC).</li>
+                    <li><strong>Modern Generations:</strong>
+                        <ul>
+                            <li><strong>Gen 1 (1950s):</strong> Vacuum Tubes.</li>
+                            <li><strong>Gen 2 (1960s):</strong> Transistors - smaller, faster.</li>
+                            <li><strong>Gen 3 (1970s):</strong> Integrated Circuits (ICs) - many transistors on one chip.</li>
+                            <li><strong>Gen 4 (1980s):</strong> Microprocessors - a whole CPU on one chip, leading to PCs.</li>
+                            <li><strong>Gen 5 (1985-Present):</strong> Parallel Processing, AI, computer networks.</li>
+                        </ul>
                     </li>
-                    <li>The history of computers is divided into generations, marked by key technologies: Vacuum Tubes (Gen 1), Transistors (Gen 2), Integrated Circuits - ICs (Gen 3), Microprocessors (Gen 4), Artificial Intelligence & Parallelism (Gen 5).</li>
                 </ul>
             `,
             "2": `
                 <h3>Chapter 2: Number Systems</h3>
-                <h4>Core Concepts</h4>
+                <h4>1. Important Number Systems</h4>
                 <ul>
-                    <li>Computers only work with the <strong>binary system (base 2)</strong> because electronic components have two states (on/off).</li>
-                    <li>Humans use the <strong>decimal system (base 10)</strong>.</li>
-                    <li>Programmers use the <strong>hexadecimal system (base 16)</strong> and <strong>octal system (base 8)</strong> to represent long bit strings concisely.</li>
+                    <li><strong>Decimal (Base 10):</strong> Uses 10 digits (0-9). Used in everyday life.</li>
+                    <li><strong>Binary (Base 2):</strong> Uses 2 digits (0, 1). The language of computers.</li>
+                    <li><strong>Octal (Base 8):</strong> Uses 8 digits (0-7). Used to shorten binary strings.</li>
+                    <li><strong>Hexadecimal (Base 16):</strong> Uses 16 symbols (0-9, A-F). Very common for shortening binary strings.</li>
                 </ul>
-                <h4>Important Details & Examples</h4>
+                <h4>2. Conversion Between Bases</h4>
                 <ul>
-                    <li><strong>Convert from any base to base 10:</strong> Multiply each digit by its positional value (base to the power of the position).</li>
-                    <div class="example"><strong>Example (Hex → Dec):</strong> <code>(1A5)₁₆ = 1 * 16² + 10 * 16¹ + 5 * 16⁰ = 1 * 256 + 10 * 16 + 5 * 1 = 421</code>.</div>
-                    <li><strong>Convert from base 10 to any base (integer part):</strong> Repeatedly divide by the target base and collect the remainders, then read in reverse.</li>
-                    <div class="example"><strong>Example (Dec → Binary):</strong> Convert <code>25</code> to binary.<br>
-                        <code>25 / 2 = 12</code> remainder <code>1</code><br>
-                        <code>12 / 2 = 6</code> remainder <code>0</code><br>
-                        <code>6 / 2 = 3</code> remainder <code>0</code><br>
-                        <code>3 / 2 = 1</code> remainder <code>1</code><br>
-                        <code>1 / 2 = 0</code> remainder <code>1</code><br>
-                        Result: <code>(11001)₂</code>.
-                    </div>
-                    <li><strong>Conversion between Binary ↔ Octal ↔ Hexadecimal:</strong> Based on bit grouping relationships.
-                        <ul>
-                            <li><strong>1 Octal digit = 3 bits:</strong> <code>(725)₈ = (111 010 101)₂</code></li>
-                            <li><strong>1 Hexadecimal digit = 4 bits:</strong> <code>(A2F)₁₆ = (1010 0010 1111)₂</code></li>
-                        </ul>
+                    <li><strong>Any Base to Decimal:</strong> Use the formula sum of (digit * base ^ position).
+                        <div class="example"><strong>Example (1A)₁₆ to base 10:</strong><br><code>1 * 16¹ + 10 * 16⁰ = 16 + 10 = 26</code>.</div>
                     </li>
-                    <div class="example"><strong>Example (Binary → Hex):</strong> Convert <code>(1101011)₂</code>.<br>
-                        1. Group bits into sets of 4 from the right: <code>0110 1011</code> (pad with a leading 0 if needed).<br>
-                        2. <code>0110 = 6</code>, <code>1011 = 11 = B</code>.<br>
-                        3. Result: <code>(6B)₁₆</code>.
-                    </div>
+                    <li><strong>Decimal to Any Base:</strong> Repeatedly divide by the target base, take the remainders, and read them in reverse order.
+                        <div class="example"><strong>Example 26₁₀ to base 2:</strong><br>26/2 = 13 rem 0<br>13/2 = 6 rem 1<br>6/2 = 3 rem 0<br>3/2 = 1 rem 1<br>1/2 = 0 rem 1<br><strong>Result: (11010)₂</strong></div>
+                    </li>
+                    <li><strong>Binary ↔ Octal/Hexadecimal:</strong> Use the bit-grouping method.
+                        <ul>
+                            <li><strong>Binary ↔ Octal:</strong> Group by <strong>3 bits</strong>.</li>
+                            <li><strong>Binary ↔ Hexadecimal:</strong> Group by <strong>4 bits</strong>.</li>
+                        </ul>
+                        <div class="example"><strong>Example (11010)₂ to Hexadecimal:</strong><br>1. Group by 4 bits from the right: <code>0001 1010</code> (pad with leading zeros if needed).<br>2. <code>0001₂ = 1₁₆</code>, <code>1010₂ = 10₁₀ = A₁₆</code>.<br><strong>Result: (1A)₁₆</strong></div>
+                    </li>
                 </ul>
             `,
             "3": `
                 <h3>Chapter 3: Data Storage</h3>
-                <h4>Core Concept</h4>
+                <h4>1. Storing Numbers</h4>
                 <ul>
-                    <li>All data (numbers, text, images, etc.) are encoded into <strong>bit patterns</strong>.</li>
-                </ul>
-                <h4>Important Details</h4>
-                <ul>
-                    <li><strong>Storing Integers:</strong>
+                    <li><strong>Integers:</strong>
                         <ul>
-                            <li><em>Unsigned:</em> Non-negative numbers only. All bits represent the value.</li>
-                            <li><em>Sign-and-Magnitude:</em> The leftmost bit is the sign bit (0: positive, 1: negative). Has the issue of two representations for zero (+0 and -0).</li>
-                            <li><strong>Two's Complement:</strong> <strong>The standard method for storing signed integers.</strong>
+                            <li><strong>Unsigned:</strong> Represents non-negative numbers and zero only.</li>
+                            <li><strong>Signed - Two's Complement:</strong> The <strong>standard method</strong> in computers.
                                 <ul>
-                                    <li><strong>How to find the two's complement:</strong> Invert all bits (find one's complement) and then add 1.</li>
-                                    <li>Advantages: Only one representation for zero, subtraction becomes addition.</li>
+                                    <li>The leftmost bit is the sign bit (0: positive, 1: negative).</li>
+                                    <li>Advantages: Only one representation for zero, subtraction is performed via addition.</li>
+                                    <li><strong>To find a negative number:</strong> Take the binary representation of the positive number, invert all bits, then add 1.</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><strong>Storing Reals - Floating-Point:</strong>
+                    <li><strong>Real Numbers:</strong>
                         <ul>
-                            <li>Based on scientific notation: <code>(-1)^S * M * 2^E</code>.</li>
-                            <li><strong>IEEE 754 Standard</strong> divides the bit pattern into 3 parts:
-                                <ol>
-                                    <li><strong>Sign (S):</strong> The sign of the number (1 bit).</li>
-                                    <li><strong>Exponent (E):</strong> The power, stored in an "Excess" format to represent both positive and negative exponents.</li>
-                                    <li><strong>Mantissa (M):</strong> The significand (the fractional part of the scientific number).</li>
-                                </ol>
-                            </li>
+                            <li>Uses <strong>Floating-Point</strong> representation based on the <strong>IEEE 754</strong> standard.</li>
+                            <li>Structure includes 3 parts: <strong>Sign</strong>, <strong>Exponent</strong>, and <strong>Mantissa</strong>.</li>
                         </ul>
                     </li>
-                    <li><strong>Storing Text:</strong>
+                </ul>
+                <h4>2. Storing Other Data Types</h4>
+                <ul>
+                    <li><strong>Text:</strong> Each character is mapped to a bit pattern via a character set (<strong>ASCII</strong>, <strong>Unicode</strong>).</li>
+                    <li><strong>Audio:</strong> Analog signals are digitized through 3 steps: <strong>Sampling</strong>, <strong>Quantization</strong>, and <strong>Encoding</strong>.</li>
+                    <li><strong>Images:</strong>
                         <ul>
-                            <li><strong>ASCII:</strong> 7-bit or 8-bit, sufficient for English and control characters.</li>
-                            <li><strong>Unicode (UTF-8, UTF-16):</strong> International standard, can represent all languages. UTF-8 is the most common on the web.</li>
+                            <li><strong>Raster Graphics (Bitmap):</strong> Stores an image as a grid of <strong>pixels</strong>. Suitable for photos (JPEG, PNG).</li>
+                            <li><strong>Vector Graphics:</strong> Stores an image as mathematical formulas (lines, curves). Scalable without quality loss. Suitable for logos (SVG).</li>
                         </ul>
                     </li>
-                    <li><strong>Storing Audio:</strong>
-                        <ul>
-                            <li>Audio (an analog signal) is digitized in 3 steps: <strong>Sampling</strong>, <strong>Quantization</strong>, and <strong>Encoding</strong>.</li>
-                            <li>Quality depends on <strong>Sampling Rate</strong> and <strong>Bit Depth</strong>. Common formats: MP3, WAV.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Storing Images:</strong>
-                        <ul>
-                            <li><strong>Raster Graphics (Bitmap):</strong> Stores images as a grid of <strong>pixels</strong>. Quality depends on resolution and color depth. Suitable for photographs (JPEG, PNG).</li>
-                            <li><strong>Vector Graphics:</strong> Stores images as mathematical formulas (lines, curves). Scalable without losing quality. Suitable for logos, icons (SVG, AI).</li>
-                        </ul>
-                    </li>
-                    <li><strong>Storing Video:</strong>
-                        <ul>
-                             <li>A sequence of images (<strong>frames</strong>) displayed rapidly. The display rate is measured in <strong>fps (frames per second)</strong>.</li>
-                             <li>Data compression is crucial. Common formats: MP4, AVI.</li>
-                        </ul>
-                    </li>
+                    <li><strong>Video:</strong> A sequence of images (<strong>frames</strong>) displayed rapidly (measured in fps).</li>
                 </ul>
             `,
             "4": `
                 <h3>Chapter 4: Operations on Data</h3>
-                <h4>Core Concept</h4>
+                <h4>1. Logic Operations</h4>
                 <ul>
-                    <li>Computer operations are performed at the bit level.</li>
-                </ul>
-                <h4>Important Details & Examples</h4>
-                <ul>
-                    <li><strong>1. Logical Operations:</strong>
+                    <li>Includes 4 basic bitwise operations: <strong>NOT</strong> (inverts bits), <strong>AND</strong>, <strong>OR</strong>, <strong>XOR</strong>.</li>
+                    <li><strong>Application with Masking:</strong> Allows changing specific bits without affecting others.
                         <ul>
-                            <li>Includes: <code>NOT</code> (inverts bits), <code>AND</code> (1 only if both are 1), <code>OR</code> (0 only if both are 0), <code>XOR</code> (1 if the two bits are different).</li>
-                            <li><strong>Application with Masking:</strong>
-                                <ul>
-                                    <li><strong>Unset a bit:</strong> <code>data AND 11110111</code> (unsets the 3rd bit from the right).</li>
-                                    <li><strong>Set a bit:</strong> <code>data OR 00001000</code> (sets the 4th bit from the right).</li>
-                                    <li><strong>Flip a bit:</strong> <code>data XOR 00000001</code> (flips the last bit).</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><strong>2. Shift Operations:</strong>
-                        <ul>
-                            <li><em>Logical Shift:</em> Shifts bits left/right, inserts 0s into the empty space.</li>
-                            <li><em>Arithmetic Shift:</em> When shifting right, <strong>preserves the sign bit</strong> (leftmost bit) to maintain the value of a negative number.</li>
-                            <li><strong>Left shift by n bits ≈ Multiply by 2ⁿ. Right shift by n bits ≈ Divide by 2ⁿ (integer division).</strong></li>
-                        </ul>
-                    </li>
-                    <li><strong>3. Arithmetic Operations:</strong>
-                        <ul>
-                            <li><strong>Two's Complement Addition/Subtraction:</strong> Addition is performed like normal binary addition. <strong>The carry-out from the most significant bit is discarded.</strong></li>
-                            <li><strong>Subtraction A - B is performed as A + (Two's Complement of B).</strong></li>
-                            <li><strong>Overflow:</strong> Occurs when the result of an operation is outside the representable range. Sign: adding two positive numbers yields a negative result, or adding two negative numbers yields a positive result.</li>
+                            <li><strong>Unset a bit:</strong> Use <code>AND</code> with a mask having a 0 at the target position.</li>
+                            <li><strong>Set a bit:</strong> Use <code>OR</code> with a mask having a 1 at the target position.</li>
+                            <li><strong>Flip a bit:</strong> Use <code>XOR</code> with a mask having a 1 at the target position.</li>
                         </ul>
                     </li>
                 </ul>
-                <div class="example"><strong>Example (Subtraction with Two's Complement, 8-bit):</strong> Calculate <code>12 - 5</code><br>
-                    1. <code>12 = 00001100</code><br>
-                    2. <code>5 = 00000101</code><br>
-                    3. One's complement of 5 is <code>11111010</code>. Two's complement of 5 is <code>-5 = 11111011</code>.<br>
-                    4. Perform addition: <code>00001100 (12) + 11111011 (-5) = (1)00000111</code>.<br>
-                    5. Discard the leading carry bit 1, the result is <code>00000111 = 7</code>.
-                </div>
+                <h4>2. Shift Operations</h4>
+                <ul>
+                    <li><strong>Logical Shift:</strong> Shifts bits and always inserts a 0 into the empty spot. Used for unsigned numbers.</li>
+                    <li><strong>Arithmetic Shift:</strong> When shifting right, it <strong>copies the sign bit</strong> into the empty spot to preserve the number's sign. Used for signed numbers.</li>
+                    <li>Left shift by n is equivalent to <strong>multiplying by 2ⁿ</strong>. Right shift by n is equivalent to <strong>dividing by 2ⁿ</strong>.</li>
+                </ul>
+                <h4>3. Arithmetic Operations</h4>
+                <ul>
+                    <li>The CPU performs all arithmetic via <strong>addition</strong>.</li>
+                    <li>Subtraction <code>A - B</code> is performed as <code>A + (Two's Complement of B)</code>.</li>
+                    <li>When adding two's complement numbers, the <strong>final carry bit (if any) is discarded</strong>.</li>
+                </ul>
+                <div class="example"><strong>Example 19 - 23 (8-bit):</strong><br>1. Convert to 19 + (-23).<br>2. 19 = <code>00010011</code><br>3. -23 = Two's Comp of (00010111) = <code>11101001</code><br>4. Add: <code>00010011 + 11101001 = 11111100</code>.<br>5. The result <code>11111100</code> is -4.</div>
             `,
             "5": `
                 <h3>Chapter 5: Computer Organization</h3>
-                <h4>Core Concept</h4>
+                <h4>1. Three Subsystems</h4>
                 <ul>
-                    <li>The study of how hardware components are connected and coordinated to form a functioning computer system.</li>
+                    <li><strong>CPU (Central Processing Unit):</strong> The "brain" of the computer.</li>
+                    <li><strong>Main Memory:</strong> RAM (volatile - data is lost on power off) and ROM (non-volatile).</li>
+                    <li><strong>I/O Subsystem:</strong> Helps the computer communicate.</li>
+                    <li>These subsystems are connected via a <strong>Bus</strong> (Data, Address, Control).</li>
                 </ul>
-                <h4>Important Details</h4>
+                <h4>2. Central Processing Unit (CPU)</h4>
                 <ul>
-                    <li><strong>Three Subsystems:</strong> <strong>CPU</strong>, <strong>Main Memory (RAM)</strong>, and <strong>I/O Subsystem</strong>. They are connected via a <strong>Bus</strong> system (Data Bus, Address Bus, Control Bus).</li>
-                    <li><strong>CPU (Central Processing Unit):</strong>
+                    <li>Consists of: <strong>ALU</strong> (calculation), <strong>Control Unit</strong> (direction), and <strong>Registers</strong> (super-fast memory).</li>
+                    <li>Important registers: <strong>Program Counter (PC)</strong> holds the address of the next instruction, <strong>Instruction Register (IR)</strong> holds the current instruction.</li>
+                    <li>Operates on a repeating <strong>Machine Cycle</strong>: <strong>Fetch → Decode → Execute</strong>.</li>
+                </ul>
+                <h4>3. Other Concepts</h4>
+                <ul>
+                    <li><strong>Memory Hierarchy:</strong> Arranges memory by speed and capacity: <strong>Registers → Cache → Main Memory → Secondary Storage</strong>.</li>
+                    <li><strong>Computer Architecture:</strong>
                         <ul>
-                            <li><strong>ALU (Arithmetic Logic Unit):</strong> The calculation center.</li>
-                            <li><strong>Control Unit (CU):</strong> The "conductor" that directs the flow of data and instructions.</li>
-                            <li><strong>Registers:</strong> Small, ultra-fast memory locations inside the CPU.
-                                <ul>
-                                    <li><em>Program Counter (PC):</em> Holds the address of the <strong>next</strong> instruction to be executed.</li>
-                                    <li><em>Instruction Register (IR):</em> Holds the <strong>current</strong> instruction being executed.</li>
-                                </ul>
-                            </li>
+                            <li><strong>CISC (Complex Instruction Set):</strong> Complex, powerful instructions (e.g., Intel x86).</li>
+                            <li><strong>RISC (Reduced Instruction Set):</strong> Simplified, fast instructions (e.g., ARM in phones).</li>
                         </ul>
                     </li>
-                    <li><strong>Machine Cycle:</strong> The <strong>Fetch → Decode → Execute</strong> cycle is the fundamental operation of the CPU.</li>
-                    <li><strong>Memory Hierarchy:</strong>
-                        <ul>
-                            <li>Purpose: To balance <strong>speed, capacity, and cost</strong>.</li>
-                            <li>Order from fastest to slowest: <strong>Registers → Cache → RAM → Storage (SSD/HDD).</strong></li>
-                        </ul>
-                    </li>
-                    <li><strong>Instruction Set Architecture:</strong>
-                        <ul>
-                            <li><strong>CISC (Complex Instruction Set Computer):</strong> Complex instruction set, one instruction can do many things. (e.g., Intel x86).</li>
-                            <li><strong>RISC (Reduced Instruction Set Computer):</strong> Reduced, simple instruction set, optimized for speed. (e.g., ARM).</li>
-                        </ul>
-                    </li>
+                    <li><strong>Performance Enhancement:</strong> <strong>Pipelining</strong> (overlapping instruction steps), <strong>Parallel Processing</strong>.</li>
                 </ul>
             `,
             "6": `
                 <h3>Chapter 6: Computer Networks & Internet</h3>
-                <h4>Core Concepts</h4>
+                <h4>1. Fundamental Concepts</h4>
                 <ul>
                     <li><strong>Protocol:</strong> A set of rules that devices must follow to communicate with each other.</li>
-                    <li><strong>Protocol Layering:</strong> Dividing the complex task of communication into simpler layers, each with a specific function.</li>
+                    <li><strong>Protocol Layering:</strong> Dividing the complex task of communication into simpler layers. The common model is <strong>TCP/IP</strong>.</li>
                 </ul>
-                <h4>TCP/IP Model (5 Layers)</h4>
+                <h4>2. TCP/IP Model (5 Layers)</h4>
                 <ul>
-                    <li><strong>Layer 5 - Application:</strong> Provides interfaces and services for users.
-                        <ul><li>Protocols: <strong>HTTP</strong> (web), <strong>FTP</strong> (file transfer), <strong>SMTP</strong> (email), <strong>DNS</strong> (domain name resolution).</li></ul>
-                    </li>
-                    <li><strong>Layer 4 - Transport:</strong> Provides <strong>end-to-end (process-to-process)</strong> communication.
+                    <li><strong>Layer 5 - Application:</strong> Provides services to users (HTTP for web, SMTP for email, DNS...).</li>
+                    <li><strong>Layer 4 - Transport:</strong> Handles process-to-process (end-to-end) communication.
                         <ul>
-                            <li><strong>TCP (Transmission Control Protocol):</strong> <strong>Connection-oriented, reliable</strong>, ensures data arrives in order and without loss.</li>
-                            <li><strong>UDP (User Datagram Protocol):</strong> <strong>Connectionless, unreliable</strong>, prioritizes speed (used for gaming, streaming).</li>
+                            <li><strong>TCP:</strong> <strong>Reliable</strong>, connection-oriented. Ensures data arrives completely and in order.</li>
+                            <li><strong>UDP:</strong> <strong>Unreliable</strong>, connectionless. Prioritizes speed (gaming, video calls).</li>
                             <li>Uses <strong>Port Numbers</strong> to identify applications.</li>
                         </ul>
                     </li>
-                    <li><strong>Layer 3 - Network:</strong> Responsible for routing packets across different networks from source to destination (host-to-host).
+                    <li><strong>Layer 3 - Network:</strong> Responsible for <strong>routing</strong> packets from one network to another.
                         <ul>
-                            <li>Main Protocol: <strong>IP (Internet Protocol)</strong>.</li>
-                            <li>Uses <strong>IP Addresses</strong> to identify devices on the global network.</li>
+                            <li>Main protocol: <strong>IP (Internet Protocol)</strong>.</li>
+                            <li>Uses <strong>IP Addresses</strong> to identify devices on the Internet.</li>
                         </ul>
                     </li>
-                    <li><strong>Layer 2 - Data Link:</strong> Transmits data within the same local network (LAN), e.g., from a computer to a router (node-to-node).
+                    <li><strong>Layer 2 - Data Link:</strong> Transmits data within the same local network (LAN), e.g., from a computer to a router.
                         <ul>
-                            <li>Protocol: Ethernet.</li>
-                            <li>Uses <strong>MAC Addresses</strong> (the physical address of the network card).</li>
+                            <li>Uses <strong>MAC Addresses</strong> - the physical address of a network card.</li>
                         </ul>
                     </li>
-                    <li><strong>Layer 1 - Physical:</strong> Transmits raw bit streams over a physical medium (cables, radio waves).</li>
+                    <li><strong>Layer 1 - Physical:</strong> Transmits 0s and 1s over a physical medium (copper cable, fiber optics, radio waves...).</li>
                 </ul>
             `
         };
@@ -635,13 +540,13 @@
                 selectLabel: "Chọn chương để xem:",
                 opt0: "--- Chọn một chương ---",
                 opt1: "Chương 1: Tổng quan",
-                opt2: "Chương 2: Các hệ đếm",
+                opt2: "Chương 2: Hệ thống số",
                 opt3: "Chương 3: Lưu trữ dữ liệu",
                 opt4: "Chương 4: Các phép toán",
                 opt5: "Chương 5: Tổ chức máy tính",
                 opt6: "Chương 6: Mạng máy tính",
                 welcome1: "Hãy chọn một chương từ menu bên trên để bắt đầu ôn tập.",
-                welcome2: "Chúc em thi tốt!",
+                welcome2: "Chúc bạn thi tốt!",
                 toggleBtn: "Switch to English"
             },
             en: {
@@ -663,7 +568,7 @@
         function updateContent() {
             const selectedChapter = chapterSelect.value;
             const data = (currentLang === 'vi') ? theoryDataVI : theoryDataEN;
-            contentDisplay.innerHTML = data[selectedChapter];
+            contentDisplay.innerHTML = data[selectedChapter] || theoryDataVI["0"];
         }
         
         function updateStaticText() {
@@ -678,14 +583,14 @@
             document.getElementById('opt-5').textContent = texts.opt5;
             document.getElementById('opt-6').textContent = texts.opt6;
             
-            // Cập nhật welcome message nếu nó đang hiển thị
-            const welcomeP1 = document.getElementById('welcome-p1');
-            if (welcomeP1) {
-                welcomeP1.textContent = texts.welcome1;
-                document.getElementById('welcome-p2').textContent = texts.welcome2;
-            }
-
             langToggleBtn.textContent = texts.toggleBtn;
+
+            // Cập nhật welcome message nếu nó đang hiển thị
+            const welcomeMsgContainer = contentDisplay.querySelector('.welcome-message');
+            if (welcomeMsgContainer) {
+                 welcomeMsgContainer.querySelector('p:first-child').textContent = texts.welcome1;
+                 welcomeMsgContainer.querySelector('p:last-child').textContent = staticText[currentLang === 'vi' ? 'en' : 'vi'].welcome2 === "Chúc em thi tốt!" ? "Chúc bạn thi tốt!" : texts.welcome2;
+            }
         }
 
         function toggleLanguage() {
@@ -697,7 +602,7 @@
         chapterSelect.addEventListener('change', updateContent);
         langToggleBtn.addEventListener('click', toggleLanguage);
         
-        // Khởi tạo giao diện ban đầu
+        // Khởi tạo giao diện ban đầu bằng cách gọi hàm cập nhật
         updateStaticText();
 
     </script>
