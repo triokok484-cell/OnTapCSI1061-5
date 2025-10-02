@@ -72,6 +72,7 @@
             border-bottom: 1px solid #eee;
             padding-bottom: 8px;
         }
+        .content-wrapper h3 { font-size: 1.1em; color: var(--primary-color); margin-top: 1.5em;}
         .content-wrapper p, .content-wrapper ul { margin-bottom: 1em; }
         ul { padding-left: 20px; }
         li { margin-bottom: 0.5em; }
@@ -98,7 +99,6 @@
         }
         .practice-box h3 {
             margin-top: 0;
-            color: var(--primary-color);
         }
         .navigation {
             display: flex;
@@ -141,170 +141,206 @@
 
 <script>
     const chapters = [
-        { // Chapter 1
+        { // Chapter 1 - UPDATED
             vi: {
                 tab: "Ch.1: Tổng quan",
-                title: "Chương 1: Giới thiệu về Khoa học Máy tính",
+                title: "Chương 1: Giới thiệu Khoa học Máy tính",
                 content: `
-                    <h2>1. Hai Mô hình Nền tảng</h2>
-                    <p><strong>Mô hình Turing (1936):</strong> Mô hình lý thuyết định nghĩa máy tính là <span class="highlight">"bộ xử lý dữ liệu có thể lập trình được"</span>.</p>
-                    <p>Điểm mấu chốt: Kết quả đầu ra phụ thuộc vào cả dữ liệu đầu vào và chương trình. <br>Công thức: <code>Input Data + Program → Computer → Output Data</code></p>
-                    <p><strong>Mô hình von Neumann (~1945):</strong> Mô hình kiến trúc thực tế. Điểm đột phá là <span class="highlight">"khái niệm chương trình được lưu trữ"</span>, nơi cả <strong>lệnh</strong> và <strong>dữ liệu</strong> được lưu chung trong bộ nhớ dưới dạng nhị phân.</p>
-                    <p>Kiến trúc gồm 4 khối chính:</p>
+                    <h3>Mô hình Turing</h3>
+                    <p>Được đề xuất bởi Alan Turing (1936), là mô hình lý thuyết định nghĩa máy tính là một <strong class="highlight">bộ xử lý dữ liệu có thể lập trình được</strong>.</p>
                     <ul>
-                        <li><strong>Bộ nhớ (Memory):</strong> Nơi lưu trữ chương trình và dữ liệu.</li>
-                        <li><strong>Đơn vị số học & logic (ALU):</strong> Thực hiện các phép toán.</li>
-                        <li><strong>Đơn vị điều khiển (Control Unit):</strong> "Bộ não" điều khiển hoạt động.</li>
-                        <li><strong>Thiết bị vào/ra (I/O):</strong> Giúp giao tiếp với thế giới bên ngoài.</li>
+                        <li><strong>Máy Turing Phổ quát (Universal Turing Machine):</strong> Một máy tính có thể thực hiện bất kỳ phép tính nào nếu được cung cấp đủ dữ liệu và chương trình.</li>
+                        <li><strong>Khái niệm Hộp đen:</strong> <code>Input → Xử lý → Output</code>.</li>
+                        <li><strong>Sự đột phá:</strong> Kết quả (Output) phụ thuộc vào cả <strong>Input</strong> và <strong>Chương trình</strong>. <br><code>Cùng Input, khác Chương trình → Khác Output</code>.</li>
                     </ul>
-                    <h2>2. Ba Thành phần Cấu thành Máy tính</h2>
+                    <h3>Mô hình Von Neumann</h3>
+                    <p>Mô hình kiến trúc thực tế do John von Neumann đề xuất (1944-1945), là nền tảng của hầu hết máy tính hiện đại.</p>
                     <ul>
-                        <li><strong>Phần cứng (Hardware):</strong> Các thành phần vật lý (CPU, RAM). Xây dựng dựa trên kiến trúc von Neumann.</li>
-                        <li><strong>Dữ liệu (Data):</strong> Thông tin thô được lưu dưới dạng <code>nhị phân (binary)</code>.</li>
-                        <li><strong>Phần mềm (Software):</strong> Các chương trình, là tập hợp chỉ thị (thuật toán) để hướng dẫn phần cứng xử lý dữ liệu.</li>
+                        <li><strong>Khái niệm đột phá:</strong> <strong class="highlight">Chương trình được lưu trữ (Stored-Program Concept)</strong>, tức là cả lệnh và dữ liệu đều được lưu trong bộ nhớ dưới dạng nhị phân.</li>
+                        <li><strong>Bốn hệ thống con phần cứng:</strong>
+                            <ol>
+                                <li><strong>Bộ nhớ (Memory):</strong> Lưu trữ chương trình và dữ liệu.</li>
+                                <li><strong>Bộ số học & logic (ALU):</strong> Thực hiện phép tính toán và logic.</li>
+                                <li><strong>Đơn vị điều khiển (Control Unit):</strong> Điều khiển hoạt động của các thành phần khác.</li>
+                                <li><strong>Hệ thống I/O:</strong> Giao tiếp với bên ngoài (chấp nhận input, xuất output, lưu trữ thứ cấp như đĩa cứng).</li>
+                            </ol>
+                        </li>
+                        <li><strong>Thực thi tuần tự:</strong> Các chỉ thị được thực thi một cách tuần tự (Nạp → Giải mã → Thực thi).</li>
                     </ul>
-                    <h2>3. Lịch sử Phát triển</h2>
+                    <h3>Các thành phần máy tính</h3>
                     <ul>
-                        <li><strong>Máy cơ khí (Trước 1930):</strong> Máy Pascaline, Máy Phân tích của Babbage.</li>
-                        <li><strong>Khai sinh máy tính điện tử (1930 - 1950):</strong> Dùng <span class="highlight">bóng đèn chân không</span>. Máy nổi bật: ENIAC, EDVAC.</li>
-                        <li><strong>Thế hệ 1 (1950-1959):</strong> Bóng đèn chân không - lớn, đắt.</li>
-                        <li><strong>Thế hệ 2 (1959-1965):</strong> <strong class="highlight">Bóng bán dẫn (Transistor)</strong> - nhỏ, nhanh, rẻ hơn.</li>
-                        <li><strong>Thế hệ 3 (1965-1975):</strong> <strong class="highlight">Mạch tích hợp (IC)</strong> - tích hợp nhiều transistor lên chip, tạo ra minicomputer.</li>
-                        <li><strong>Thế hệ 4 (1975-1985):</strong> <strong class="highlight">Vi xử lý (Microprocessor)</strong> - toàn bộ CPU trên một chip, khởi đầu kỷ nguyên máy tính cá nhân (PC).</li>
-                        <li><strong>Thế hệ 5 (1985-nay):</strong> Phát triển mạnh xử lý song song, mạng máy tính, AI, thiết bị di động.</li>
+                        <li><strong>Phần cứng (Hardware):</strong> Các thành phần vật lý.</li>
+                        <li><strong>Dữ liệu (Data):</strong> Thông tin thô được chuyển đổi và lưu dưới dạng chuỗi bit (0 và 1).</li>
+                        <li><strong>Phần mềm (Software):</strong> Gồm các chương trình. Một chương trình là tập hợp các chỉ thị (thuật toán) để giải quyết một vấn đề, được viết bằng một <strong>ngôn ngữ lập trình</strong>.</li>
+                    </ul>
+                    <h3>Lịch sử Máy tính</h3>
+                    <ul>
+                        <li><strong>Máy cơ khí:</strong> Máy Pascaline (Pascal), Bánh xe Leibniz (Leibniz), Máy dệt (Jacquard), Động cơ Phân tích (Babbage).</li>
+                        <li><strong>Máy tính điện tử (Chương trình bên ngoài):</strong> ABC, Z1, Mark I, Colossus.</li>
+                        <li><strong>Thế hệ máy tính (dựa trên công nghệ):</strong>
+                            <ol>
+                                <li><strong>Thế hệ 1 (1950-59):</strong> <span class="highlight">Đèn chân không</span>. Máy tính thương mại ra đời (ENIAC, EDVAC).</li>
+                                <li><strong>Thế hệ 2 (1959-65):</strong> <span class="highlight">Bóng bán dẫn (Transistor)</span>. Máy nhỏ, rẻ hơn, ngôn ngữ lập trình cấp cao xuất hiện (FORTRAN, COBOL).</li>
+                                <li><strong>Thế hệ 3 (1965-75):</strong> <span class="highlight">Mạch tích hợp (IC)</span>. Máy tính mini ra đời, có gói phần mềm và hệ điều hành.</li>
+                                <li><strong>Thế hệ 4 (1975-85):</strong> <span class="highlight">Bộ vi xử lý</span>. Kỷ nguyên máy tính cá nhân (PC) bắt đầu.</li>
+                                <li><strong>Thế hệ 5 (1985-nay):</strong> Máy tính xách tay, đa phương tiện, mạng máy tính, AI.</li>
+                            </ol>
+                        </li>
                     </ul>
                 `
             }
         },
-        { // Chapter 2
+        { // Chapter 2 - UPDATED
             vi: {
                 tab: "Ch.2: Hệ số",
-                title: "Chương 2: Hệ thống số",
+                title: "Chương 2: Hệ Thống Số",
                 content: `
-                    <h2>1. Phân loại Hệ thống số</h2>
-                    <p><strong>Hệ không theo vị trí (Non-positional):</strong> Giá trị ký hiệu không phụ thuộc vị trí. Ví dụ: Số La Mã (Trong <code>XX</code>, cả hai <code>X</code> đều có giá trị 10).</p>
-                    <p><strong>Hệ theo vị trí (Positional):</strong> Giá trị chữ số phụ thuộc vị trí. Giá trị được tính bằng <code>chữ_số * cơ_số ^ vị_trí</code>.</p>
-                    <h2>2. Các Hệ đếm quan trọng</h2>
+                    <h3>Hệ thống số theo vị trí (Positional)</h3>
+                    <p>Giá trị của một chữ số phụ thuộc vào vị trí của nó. Bao gồm cả <strong>phần nguyên</strong> (lũy thừa không âm của cơ số) và <strong>phần phân số</strong> (lũy thừa âm).</p>
+                    <p><strong>Giá trị lớn nhất</strong> có thể biểu diễn với K chữ số trong cơ số b là <code>N_max = b^K - 1</code>.</p>
+                    <h3>Các hệ đếm quan trọng</h3>
                     <ul>
-                        <li><strong>Thập phân (Base 10):</strong> Dùng hàng ngày (0-9).</li>
-                        <li><strong>Nhị phân (Base 2):</strong> Máy tính sử dụng (0, 1). Mỗi chữ số là một <strong class="highlight">bit</strong>. Tương ứng với hai trạng thái vật lý (có/không có điện).</li>
-                        <li><strong>Thập lục phân (Hexadecimal - Base 16):</strong> Dùng (0-9, A-F). Mục đích: <span class="highlight">Biểu diễn các chuỗi nhị phân dài một cách ngắn gọn, dễ đọc hơn cho con người.</span></li>
-                        <li><strong>Bát phân (Octal - Base 8):</strong> Dùng (0-7). Mục đích tương tự Hexa nhưng ít phổ biến hơn.</li>
+                        <li><strong>Nhị phân (Binary - Base 2):</strong> Dùng 0, 1. Quan trọng nhất với máy tính.</li>
+                        <li><strong>Thập lục phân (Hexadecimal - Base 16):</strong> Dùng 0-9, A-F. Mục đích chính là <span class="highlight">biểu diễn chuỗi nhị phân dài một cách ngắn gọn</span>.</li>
+                        <li><strong>Bát phân (Octal - Base 8):</strong> Dùng 0-7.</li>
                     </ul>
-                    <h2>3. Chuyển đổi giữa các Hệ cơ số</h2>
-                    <p><strong>Từ cơ số 10 sang cơ số khác:</strong> <span class="highlight">Chia liên tiếp cho cơ số đích, lấy phần dư</span>. Đọc chuỗi dư từ dưới lên.</p>
-                    <p><strong>Từ cơ số khác sang cơ số 10:</strong> Lấy từng chữ số nhân với <code class="highlight">(cơ số)<sup>vị trí</sup></code> rồi cộng tổng lại.</p>
+                    <h3>Hệ thống số không theo vị trí (Non-positional)</h3>
+                    <p>Ví dụ điển hình là <strong>Số La Mã</strong>. Đặc điểm:</p>
+                    <ul>
+                        <li>Các ký hiệu có giá trị cố định (I=1, V=5, X=10, L=50, C=100, D=500, M=1000).</li>
+                        <li>Sử dụng quy tắc <strong>cộng</strong> (VD: <code>VI = 6</code>) và <strong>trừ</strong> (VD: <code>IV = 4</code>).</li>
+                        <li>Không có ký hiệu cho số 0.</li>
+                    </ul>
                     <div class="practice-box">
-                        <h3>Ví dụ Tính toán</h3>
-                        <p><strong>Ví dụ 1: Chuyển <code>(1101)₂</code> sang hệ 10.</strong></p>
-                        <p>Giá trị = (1*2³) + (1*2²) + (0*2¹) + (1*2⁰) = 8 + 4 + 0 + 1 = <strong>13₁₀</strong>.</p>
-                        <p><strong>Ví dụ 2: Chuyển <code>(5E)₁₆</code> sang hệ 2.</strong></p>
-                        <p>Tách từng chữ số Hexa và chuyển sang 4 bit nhị phân tương ứng:</p>
+                        <h3>Ví dụ Tính toán Chuyển đổi Cơ số</h3>
+                        <p><strong>Ví dụ 1: Chuyển <code>(6A.4)₁₆</code> sang hệ 10.</strong></p>
+                        <p>Giá trị = (6 * 16¹) + (10 * 16⁰) + (4 * 16⁻¹)<br>
+                           = 96 + 10 + 4/16 = <strong>106.25₁₀</strong>.</p>
+
+                        <p><strong>Ví dụ 2: Chuyển <code>25.125₁₀</code> sang hệ 2.</strong></p>
                         <ul>
-                            <li><code>5₁₆</code> = <code>0101₂</code></li>
-                            <li><code>E₁₆</code> (là 14₁₀) = <code>1110₂</code></li>
+                            <li><strong>Phần nguyên (25):</strong> Chia 2 liên tiếp được <code>11001₂</code>.</li>
+                            <li><strong>Phần phân số (0.125):</strong> Nhân 2 liên tiếp:
+                                <ul>
+                                    <li>0.125 * 2 = <strong>0</strong>.25</li>
+                                    <li>0.25 * 2 = <strong>0</strong>.5</li>
+                                    <li>0.5 * 2 = <strong>1</strong>.0 → Dừng.</li>
+                                </ul>
+                                Đọc từ trên xuống: <code>.001₂</code>
+                            </li>
                         </ul>
-                        <p>Ghép lại: <strong><code>01011110₂</code></strong>. (Số 0 ở đầu có thể giữ hoặc bỏ tùy ngữ cảnh).</p>
+                        <p>Kết quả: <strong><code>11001.001₂</code></strong>.</p>
+                        
+                        <p><strong>Ví dụ 3: Chuyển <code>(173)₈</code> sang hệ 16.</strong></p>
+                        <p>Sử dụng <span class="highlight">nhị phân làm trung gian</span>:</p>
+                        <ol>
+                            <li><strong>Octal → Binary:</strong> Tách từng chữ số thành 3 bit.
+                                <ul>
+                                    <li>1 → <code>001</code>, 7 → <code>111</code>, 3 → <code>011</code>.</li>
+                                    <li>Ghép lại: <code>001111011₂</code>.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Binary → Hexadecimal:</strong> Nhóm 4 bit từ phải qua trái.
+                                <ul>
+                                    <li><code>0111</code> → 7, <code>0111</code> → F. Thêm 3 số 0 để đủ nhóm: <code>0000 0111 1011</code>.</li>
+                                     <li>Nhóm lại: <code>(0)011 1101 1...</code>. Sửa: <code>(0)111 1011</code> -> `7` và `B`</li>
+                                     <li>Đúng: <code>(00)1 1110 11</code> -> <code>0011 1101 1...</code> Sai. Nhóm lại từ phải: `011` và `111` và `001`. Nhóm lại 4: <code>...001111011</code> -> <code>011</code> , <code>1111</code>, `0` -> <code>3F1</code> Sai. 
+                                     Phải là <code>001 111 011</code>. Nhóm 4 từ phải: <code>(0)111 1011</code> => <code>7B</code>.</li>
+
+                                </ul>
+                                    Sửa lại cho đúng:
+                                    <br>Chuỗi nhị phân là: <code>001111011</code>
+                                    <br>Nhóm 4 bit từ phải sang trái: <code>1011</code> và <code>0111</code> và <code>0</code>.
+                                    <br><code>1011</code> là <code>B₁₆</code>. <code>0111</code> là <code>7₁₆</code>.
+                                    <br>Kết quả là <strong><code>7B₁₆</code></strong>.
+                            </li>
+                        </ol>
                     </div>
                 `
             }
         },
-        { // Chapter 3
+        { // Chapter 3 - UPDATED
             vi: {
                 tab: "Ch.3: Lưu trữ",
                 title: "Chương 3: Lưu trữ Dữ liệu",
                 content: `
-                    <h2>1. Lưu Trữ SỐ (Storing Numbers)</h2>
-                    <p><strong>Số nguyên (Integers):</strong></p>
+                    <h3>Biểu diễn dữ liệu</h3>
+                    <p>Tất cả dữ liệu (số, văn bản, video...) đều được lưu trữ dưới dạng một chuỗi các bit, gọi là <strong class="highlight">mẫu bit (bit pattern)</strong>. Các đơn vị cơ bản:</p>
                     <ul>
-                        <li><strong>Không dấu (Unsigned):</strong> Chỉ số dương và 0.</li>
+                        <li><strong>Bit (Binary Digit):</strong> Đơn vị nhỏ nhất, có giá trị 0 hoặc 1.</li>
+                        <li><strong>Byte:</strong> Một nhóm 8 bit.</li>
+                        <li><strong>Word:</strong> Một nhóm nhiều byte (vd: 16, 32, 64 bit), tùy thuộc kiến trúc máy tính.</li>
+                    </ul>
+                    <h3>Lưu trữ Số Nguyên (Integers)</h3>
+                    <ul>
+                        <li><strong>Không dấu (Unsigned):</strong> Chỉ biểu diễn số dương và 0. Phạm vi từ <code>0</code> đến <code>2^n - 1</code>. Có thể xảy ra <strong>tràn số (overflow)</strong>.</li>
                         <li><strong>Có dấu (Signed):</strong>
                             <ul>
-                                <li><em>Sign-and-Magnitude:</em> Bit đầu làm bit dấu. Nhược điểm: có 2 biểu diễn cho số 0 (+0, -0).</li>
-                                <li><strong class="highlight">Two's Complement (Bù 2):</strong> Phương pháp chuẩn, khắc phục nhược điểm trên. Phép cộng/trừ đơn giản.</li>
+                                <li><strong>Dấu và Độ lớn (Sign-and-Magnitude):</strong> Bit đầu làm bit dấu. Nhược điểm: có 2 biểu diễn cho số 0.</li>
+                                <li><strong>Bù Hai (Two's Complement):</strong> Phương pháp chuẩn, khắc phục nhược điểm trên. Cách tìm: Đảo bit (Bù 1) rồi cộng 1.</li>
                             </ul>
                         </li>
                     </ul>
-                    <p><strong>Số thực (Real Numbers):</strong></p>
+                    <h3>Lưu trữ Số thực (Reals) - Chuẩn IEEE 754</h3>
+                    <p>Dựa trên ký pháp khoa học và <span class="highlight">chuẩn hóa</span> số nhị phân về dạng <code>1.xxxxx * 2^n</code>. Gồm:</p>
                     <ul>
-                        <li>Sử dụng biểu diễn <strong class="highlight">Floating-Point</strong> (dấu phẩy động).</li>
-                        <li><strong class="highlight">Chuẩn IEEE 754 (Rất quan trọng):</strong> Gồm 3 phần: <strong>Dấu (S)</strong>, <strong>Số mũ (E)</strong> (lưu dưới dạng Lệch 127), và <strong>Phần định trị (M)</strong>.</li>
+                        <li><strong>Độ chính xác đơn (Single Precision - 32 bit):</strong> 1 bit dấu, 8 bit số mũ (lệch 127), 23 bit phần định trị.</li>
+                        <li><strong>Độ chính xác kép (Double Precision - 64 bit):</strong> 1 bit dấu, 11 bit số mũ (lệch 1023), 52 bit phần định trị.</li>
+                        <li>Lưu ý: Có thể gặp các lỗi như <strong>Tràn số (Overflow/Underflow)</strong> và <strong>Lỗi cắt cụt (Truncation Errors)</strong>.</li>
                     </ul>
-                    <h2>2. Lưu trữ VĂN BẢN (Storing Text)</h2>
-                    <p>Mỗi ký tự được ánh xạ tới một chuỗi bit qua bảng mã. Phổ biến:</p>
+                    <h3>Lưu trữ các loại dữ liệu khác</h3>
                     <ul>
-                        <li><strong>ASCII:</strong> Dùng 8 bit, cho tiếng Anh.</li>
-                        <li><strong>Unicode:</strong> Chuẩn quốc tế, dùng 16/32 bit, biểu diễn hầu hết ngôn ngữ.</li>
-                    </ul>
-                    <h2>3. Lưu trữ ÂM THANH, HÌNH ẢNH, VIDEO</h2>
-                    <ul>
-                        <li><strong>Âm thanh (MP3):</strong> Số hóa tín hiệu analog qua 3 bước: <span class="highlight">Sampling (Lấy mẫu), Quantization (Lượng tử hóa), Encoding (Mã hóa)</span>.</li>
+                        <li><strong>Văn bản:</strong> Dùng bảng mã <strong>ASCII</strong> (8 bit, là một phần của Unicode) hoặc <strong>Unicode</strong> (16/32 bit, chuẩn quốc tế).</li>
+                        <li><strong>Âm thanh:</strong> Số hóa qua 3 bước: <strong>Lấy mẫu (Sampling)</strong>, <strong>Lượng tử hóa (Quantization)</strong>, và <strong>Mã hóa (Encoding)</strong>. Tốc độ bit = Tốc độ lấy mẫu × Độ sâu bit.</li>
                         <li><strong>Hình ảnh:</strong>
                             <ul>
-                                <li><strong>Raster (Bitmap) (JPEG, PNG):</strong> Lưới các pixel, phù hợp cho ảnh chụp.</li>
-                                <li><strong>Vector:</strong> Dựa trên công thức toán, phù hợp cho logo, icon, không vỡ hình khi phóng to.</li>
+                                <li><strong>Raster (Bitmap) (JPEG, GIF):</strong> Dưới dạng lưới pixel. Chất lượng phụ thuộc <strong>Độ phân giải</strong> và <strong>Độ sâu màu</strong> (True-Color 24-bit hoặc Indexed Color 8-bit).</li>
+                                <li><strong>Vector (SVG, AI):</strong> Dưới dạng công thức toán học. Không vỡ hình khi phóng to.</li>
                             </ul>
                         </li>
-                        <li><strong>Video (MPEG, MP4):</strong> Là một chuỗi các hình ảnh (frames), yêu cầu nén dữ liệu.</li>
+                        <li><strong>Video (MPEG, AVI):</strong> Một chuỗi các hình ảnh (frames), thường được nén mất mát (lossy compression).</li>
                     </ul>
-                    <div class="practice-box">
-                        <h3>Ví dụ Tính toán (Quan trọng)</h3>
-                        <p><strong>Ví dụ 1: Biểu diễn số <code>-28</code> dưới dạng <span class="highlight">bù 2 8-bit</span>.</strong></p>
-                        <ol>
-                            <li>Biểu diễn số dương 28 (8-bit): <code>00011100</code></li>
-                            <li>Đảo tất cả các bit (Bù 1): <code>11100011</code></li>
-                            <li>Cộng thêm 1: <code>11100011 + 1</code> = <strong><code>11100100</code></strong>.</li>
-                        </ol>
-                    </div>
                 `
             }
         },
-        { // Chapter 4
+        { // Chapter 4 - UPDATED
             vi: {
                 tab: "Ch.4: Thao tác",
                 title: "Chương 4: Các Thao tác trên Dữ liệu",
                 content: `
-                    <h2>1. Thao tác Logic (Logic Operations)</h2>
-                    <p>Xử lý trên từng bit: <strong>NOT</strong> (đảo), <strong>AND</strong>, <strong>OR</strong>, <strong>XOR</strong> (khác nhau thì bằng 1).</p>
-                    <p><strong>Ứng dụng quan trọng:</strong> Dùng <strong class="highlight">mặt nạ (Mask)</strong>:</p>
+                    <h3>Thao tác Logic (Logic Operations)</h3>
+                    <p>Xử lý trên từng bit riêng lẻ hoặc trên toàn bộ mẫu bit.</p>
                     <ul>
-                        <li>Tắt bit (Unset): Dùng phép <strong>AND</strong> với bit 0.</li>
-                        <li>Bật bit (Set): Dùng phép <strong>OR</strong> với bit 1.</li>
-                        <li>Đảo bit (Flip): Dùng phép <strong>XOR</strong> với bit 1.</li>
+                        <li><strong>NOT:</strong> Đảo bit (Phép Bù Một).</li>
+                        <li><strong>AND:</strong> Kết quả là 1 CHỈ KHI cả hai bit là 1. Tính chất: <code>X AND 0 = 0</code>.</li>
+                        <li><strong>OR (Inclusive-OR):</strong> Kết quả là 0 CHỈ KHI cả hai bit là 0. Tính chất: <code>X OR 1 = 1</code>.</li>
+                        <li><strong>XOR (Exclusive-OR):</strong> Kết quả là 1 CHỈ KHI hai bit khác nhau. Tính chất: <code>X XOR 1 = NOT X</code> (lật bit).</li>
                     </ul>
-                    <h2>2. Thao tác Dịch chuyển (Shift Operations)</h2>
+                    <p><strong>Ứng dụng:</strong> Dùng <strong class="highlight">mặt nạ (Mask)</strong> để bật (Set - OR), tắt (Unset - AND), hoặc đảo (Flip - XOR) các bit cụ thể.</p>
+                    <h3>Thao tác Dịch chuyển (Shift Operations)</h3>
                     <ul>
-                        <li><strong>Dịch chuyển Logic:</strong> Dùng cho số không dấu. Bit trống chèn vào là 0.</li>
-                        <li><strong>Dịch chuyển Số học:</strong> Dùng cho số Bù 2 để <span class="highlight">nhân/chia nhanh cho 2</span>. Khi dịch phải (chia 2), bit dấu được sao chép để bảo toàn dấu.</li>
+                        <li><strong>Dịch chuyển Logic (Logical Shift):</strong> Áp dụng cho số không dấu. Bit bị đẩy ra ngoài sẽ mất, bit trống được chèn vào là 0.</li>
+                        <li><strong>Dịch chuyển Vòng (Circular Shift / Rotate):</strong> Không có bit nào bị mất. Bit bị đẩy ra ở đầu này sẽ được chèn vào đầu kia.</li>
+                        <li><strong>Dịch chuyển Số học (Arithmetic Shift):</strong> Áp dụng cho số có dấu (Bù 2) để <span class="highlight">nhân/chia nhanh cho 2</span>.
+                            <ul>
+                                <li><strong>Dịch phải (Chia 2):</strong> Bit dấu (bit trái nhất) được giữ lại và sao chép vào vị trí trống.</li>
+                                <li><strong>Dịch trái (Nhân 2):</strong> Chèn bit 0 vào bên phải. Cần <span class="highlight">kiểm tra tràn số</span> nếu bit dấu bị thay đổi.</li>
+                            </ul>
+                        </li>
                     </ul>
-                    <h2>3. Thao tác Số học (Arithmetic Operations)</h2>
-                    <p>Nguyên tắc vàng: Phép trừ <code>A - B</code> được máy tính thực hiện bằng <code class="highlight">A + (Bù 2 của B)</code>.</p>
                     <div class="practice-box">
-                        <h3>Ví dụ Tính toán: Thực hiện <code>19 - 23</code> trong hệ 8-bit.</h3>
-                        <p>Chuyển thành phép cộng: <code>19 + (-23)</code>.</p>
-                        <ol>
-                            <li>Biểu diễn các số dưới dạng 8-bit Bù 2:
-                                <ul>
-                                    <li>+19 = <code>00010011</code></li>
-                                    <li>Để tìm -23:
-                                        <ul>
-                                            <li>+23 = <code>00010111</code></li>
-                                            <li>Đảo bit (Bù 1) = <code>11101000</code></li>
-                                            <li>Cộng 1 = <code>11101001</code>. Vậy <strong>-23 = <code>11101001</code></strong>.</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Thực hiện phép cộng:
-                                <code>
-                                &nbsp;&nbsp;00010011 (19)<br>
-                                + 11101001 (-23)<br>
-                                ------------<br>
-                                &nbsp;&nbsp;<strong>11111100</strong>
-                                </code>
-                            </li>
-                            <li>Kết quả <code>11111100</code> là một số âm. Kiểm tra giá trị: Lấy bù 2 của nó sẽ ra <code>00000100</code>, tức là 4. Vậy kết quả là <strong>-4</strong> (đúng).</li>
-                        </ol>
+                        <h3>Ví dụ Tính toán</h3>
+                        <p><strong>Ví dụ 1: Tắt 4 bit bên trái của chuỗi <code>10110101</code>.</strong></p>
+                        <p>Dùng phép <strong>AND</strong> với mặt nạ <code>00001111</code> (bit 0 ở vị trí cần tắt).</p>
+                        <code>
+                            &nbsp;&nbsp;10110101 (Data)<br>
+                            & 00001111 (Mask)<br>
+                            ------------<br>
+                            &nbsp;&nbsp;<strong>00000101</strong> (Result)
+                        </code>
+                        <p><strong>Ví dụ 2: Dịch chuyển vòng phải (Right Rotate) chuỗi <code>11001010</code> 1 vị trí.</strong></p>
+                        <p>Bit phải nhất (<code>0</code>) sẽ được chuyển lên vị trí trái nhất.</p>
+                        <p><code>11001010</code> → <strong><code>01100101</code></strong></p>
                     </div>
                 `
             }
@@ -377,12 +413,12 @@
 
     // --- Fill in English Translations (abbreviated) ---
     const translations = [
-        { tab: "Ch.1: Intro", title: "Chapter 1: Intro to CS", content: "..." },
-        { tab: "Ch.2: Numbers", title: "Chapter 2: Number Systems", content: "..." },
-        { tab: "Ch.3: Storage", title: "Chapter 3: Data Storage", content: "..." },
-        { tab: "Ch.4: Ops", title: "Chapter 4: Data Operations", content: "..." },
-        { tab: "Ch.5: Arch", title: "Chapter 5: Computer Organization", content: "..." },
-        { tab: "Ch.6: Network", title: "Chapter 6: Networking", content: "..." }
+        { tab: "Ch.1: Intro", title: "Chapter 1: Intro to CS"},
+        { tab: "Ch.2: Numbers", title: "Chapter 2: Number Systems"},
+        { tab: "Ch.3: Storage", title: "Chapter 3: Data Storage"},
+        { tab: "Ch.4: Ops", title: "Chapter 4: Data Operations"},
+        { tab: "Ch.5: Arch", title: "Chapter 5: Computer Organization"},
+        { tab: "Ch.6: Network", title: "Chapter 6: Networking"}
     ];
     translations.forEach((t, i) => chapters[i].en = t);
     
@@ -415,7 +451,8 @@
 
     function renderChapter() {
         const chapterData = chapters[currentChapter][currentLang];
-        contentEl.innerHTML = `<h2>${chapterData.title}</h2>` + chapterData.content;
+        // Ensure content is not null/undefined before setting innerHTML
+        contentEl.innerHTML = `<h2>${chapterData.title}</h2>` + (chapterData.content || '<p>Content not available in this language.</p>');
         updateNavButtons();
     }
     
