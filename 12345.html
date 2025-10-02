@@ -150,4 +150,335 @@
         </div>
     </div>
 
-<
+<script>
+    // --- DATABASE ---
+    const chapters = [
+        { // Chapter 1
+            vi: {
+                tab: "Ch.1: Tổng quan",
+                title: "Chương 1: Giới thiệu về Khoa học Máy tính",
+                content: `
+                    <h2>1. Hai Mô hình Nền tảng của Máy tính</h2>
+                    <p><strong>Mô hình Turing (1936):</strong> Mô hình lý thuyết định nghĩa máy tính là một <span class="highlight">"bộ xử lý dữ liệu có thể lập trình được"</span>. Kết quả đầu ra (Output) phụ thuộc vào cả dữ liệu đầu vào (Input) và chương trình (Program). Đây là nền tảng cho máy tính đa năng.</p>
+                    <p><strong>Mô hình von Neumann (~1945):</strong> Mô hình kiến trúc thực tế. Điểm đột phá là <span class="highlight">"khái niệm chương trình được lưu trữ"</span> (Stored-Program Concept), nơi cả <strong>lệnh</strong> và <strong>dữ liệu</strong> được lưu chung trong bộ nhớ dưới dạng nhị phân.</p>
+                    <p>Kiến trúc gồm 4 khối chính: <strong>Bộ nhớ (Memory)</strong>, <strong>ALU</strong>, <strong>Đơn vị điều khiển (Control Unit)</strong>, và <strong>Thiết bị vào/ra (I/O)</strong>.</p>
+                    
+                    <h2>2. Ba Thành phần Cấu thành Máy tính</h2>
+                    <ul>
+                        <li><strong>Phần cứng (Hardware):</strong> Các thành phần vật lý (CPU, RAM).</li>
+                        <li><strong>Dữ liệu (Data):</strong> Thông tin thô được lưu dưới dạng <code>nhị phân (binary)</code>.</li>
+                        <li><strong>Phần mềm (Software):</strong> Các chương trình (tập hợp các chỉ thị) hướng dẫn phần cứng xử lý dữ liệu.</li>
+                    </ul>
+
+                    <h2>3. Lịch sử Phát triển của Máy tính</h2>
+                    <p>Các thế hệ máy tính hiện đại:</p>
+                    <ul>
+                        <li><strong>Thế hệ 1 (1950-1959):</strong> <span class="highlight">Bóng đèn chân không</span> - lớn và đắt.</li>
+                        <li><strong>Thế hệ 2 (1959-1965):</strong> <span class="highlight">Bóng bán dẫn (Transistor)</span> - nhỏ hơn, nhanh hơn.</li>
+                        <li><strong>Thế hệ 3 (1965-1975):</strong> <span class="highlight">Mạch tích hợp (IC)</span> - thu nhỏ máy tính (minicomputer).</li>
+                        <li><strong>Thế hệ 4 (1975-1985):</strong> <span class="highlight">Vi xử lý (Microprocessor)</span> - kỷ nguyên máy tính cá nhân (PC).</li>
+                        <li><strong>Thế hệ 5 (1985-nay):</strong> Xử lý song song, mạng máy tính, AI, thiết bị di động.</li>
+                    </ul>
+                `
+            },
+            en: { /* ... English translation ... */ }
+        },
+        { // Chapter 2
+            vi: {
+                tab: "Ch.2: Hệ số",
+                title: "Chương 2: Hệ thống số",
+                content: `
+                    <h2>1. Phân loại Hệ thống số</h2>
+                    <p><strong>Hệ theo vị trí (Positional):</strong> Giá trị chữ số phụ thuộc vị trí của nó. Ví dụ: Trong số <code>123</code>, '1' đại diện cho 100.</p>
+                    
+                    <h2>2. Các Hệ đếm quan trọng</h2>
+                    <ul>
+                        <li><strong>Thập phân (Decimal - Base 10):</strong> Dùng hàng ngày (0-9).</li>
+                        <li><strong>Nhị phân (Binary - Base 2):</strong> Máy tính sử dụng (0, 1). Mỗi chữ số là một <strong class="highlight">bit</strong>.</li>
+                        <li><strong>Thập lục phân (Hexadecimal - Base 16):</strong> Dùng (0-9, A-F) để biểu diễn chuỗi nhị phân dài một cách ngắn gọn.</li>
+                    </ul>
+
+                    <h2>3. Chuyển đổi giữa các Hệ cơ số</h2>
+                    <p><strong>Từ cơ số bất kỳ sang cơ số 10:</strong> Lấy từng chữ số nhân với <code class="highlight">(cơ số)<sup>vị trí</sup></code> rồi cộng tất cả lại.</p>
+                    <p><strong>Từ cơ số 10 sang cơ số bất kỳ:</strong> <span class="highlight">Chia liên tiếp cho cơ số đích, lấy phần dư</span>. Đọc chuỗi dư từ dưới lên.</p>
+                    <p><strong>Chuyển đổi nhanh Binary ↔ Hexa:</strong> <strong class="highlight">Nhóm 4 bit</strong> nhị phân thành 1 chữ số Hexa.</p>
+
+                    <div class="practice-box">
+                        <h3>Ví dụ Tính toán</h3>
+                        <p><strong>Ví dụ 1: Chuyển <code>(10110)₂</code> sang hệ 10.</strong></p>
+                        <p>Giá trị = (1 * 2⁴) + (0 * 2³) + (1 * 2²) + (1 * 2¹) + (0 * 2⁰)<br>
+                           = 16 + 0 + 4 + 2 + 0 = <strong>22₁₀</strong>.</p>
+                        
+                        <p><strong>Ví dụ 2: Chuyển <code>45₁₀</code> sang hệ 2.</strong></p>
+                        <ul>
+                            <li>45 / 2 = 22 dư <strong>1</strong></li>
+                            <li>22 / 2 = 11 dư <strong>0</strong></li>
+                            <li>11 / 2 = 5 dư <strong>1</strong></li>
+                            <li>5 / 2 = 2 dư <strong>1</strong></li>
+                            <li>2 / 2 = 1 dư <strong>0</strong></li>
+                            <li>1 / 2 = 0 dư <strong>1</strong></li>
+                        </ul>
+                        <p>Đọc ngược từ dưới lên: <strong><code>101101₂</code></strong>.</p>
+                    </div>
+                `
+            },
+            en: { /* ... English translation ... */ }
+        },
+        { // Chapter 3
+            vi: {
+                tab: "Ch.3: Lưu trữ",
+                title: "Chương 3: Lưu trữ Dữ liệu",
+                content: `
+                    <h2>1. Lưu Trữ SỐ (Storing Numbers)</h2>
+                    <p><strong>Số nguyên có dấu (Signed Integers):</strong></p>
+                    <ul>
+                        <li><strong class="highlight">Two's Complement (Bù 2):</strong> Phương pháp chuẩn trong máy tính. Ưu điểm: Chỉ có một biểu diễn cho số 0, phép cộng/trừ đơn giản.</li>
+                    </ul>
+                    <p><strong>Số thực (Real Numbers):</strong></p>
+                    <ul>
+                        <li>Sử dụng biểu diễn Dấu phẩy động (Floating-Point).</li>
+                        <li><strong class="highlight">Chuẩn IEEE 754:</strong> Rất quan trọng, gồm 3 phần: <strong>Dấu (Sign)</strong>, <strong>Số mũ (Exponent)</strong>, và <strong>Phần định trị (Mantissa)</strong>.</li>
+                    </ul>
+
+                    <h2>2. Lưu trữ VĂN BẢN, ÂM THANH, HÌNH ẢNH</h2>
+                    <ul>
+                        <li><strong>Văn bản:</strong> Dùng bảng mã <strong>ASCII</strong> (8-bit) hoặc <strong>Unicode</strong> (quốc tế, 16/32-bit).</li>
+                        <li><strong>Âm thanh:</strong> Số hóa qua 3 bước: <span class="highlight">Lấy mẫu, Lượng tử hóa, Mã hóa</span>.</li>
+                        <li><strong>Hình ảnh:</strong> <strong>Raster</strong> (lưới pixel, cho ảnh chụp) và <strong>Vector</strong> (công thức toán, cho logo).</li>
+                    </ul>
+
+                    <div class="practice-box">
+                        <h3>Ví dụ Tính toán (Quan trọng)</h3>
+                        <p><strong>Ví dụ 1: Biểu diễn số <code>-42</code> dưới dạng <span class="highlight">bù 2 8-bit</span>.</strong></p>
+                        <ol>
+                            <li>Biểu diễn số dương 42 (8-bit): <code>00101010</code></li>
+                            <li>Đảo tất cả các bit (Bù 1): <code>11010101</code></li>
+                            <li>Cộng thêm 1: <code>11010101 + 1</code> = <strong><code>11010110</code></strong>.</li>
+                        </ol>
+                        
+                        <p><strong>Ví dụ 2: Biểu diễn số <code>9.375</code> dưới dạng <span class="highlight">IEEE 754 Single Precision</span> (32-bit).</strong></p>
+                        <ol>
+                            <li><strong>Dấu (S):</strong> Số dương → <code>S = 0</code>.</li>
+                            <li><strong>Chuyển sang nhị phân:</strong> 9 = <code>1001₂</code>, 0.375 = <code>.011₂</code> → <code>1001.011₂</code>.</li>
+                            <li><strong>Chuẩn hóa:</strong> Dịch dấu phẩy sang trái 3 vị trí → <code>1.001011 x 2³</code>.</li>
+                            <li><strong>Số mũ (E):</strong> Lấy số mũ thực (3) cộng với độ lệch (127) → E = 3 + 127 = 130. Chuyển 130 sang 8-bit nhị phân → <code>10000010</code>.</li>
+                            <li><strong>Phần định trị (M):</strong> Lấy phần sau dấu phẩy của dạng chuẩn hóa (<code>001011</code>), thêm 0 vào cuối cho đủ 23 bit → <code>00101100000000000000000</code>.</li>
+                        </ol>
+                        <p><strong>Kết quả:</strong> <code>0 | 10000010 | 00101100000000000000000</code></p>
+                    </div>
+                `
+            },
+            en: { /* ... English translation ... */ }
+        },
+        { // Chapter 4
+            vi: {
+                tab: "Ch.4: Thao tác",
+                title: "Chương 4: Các Thao tác trên Dữ liệu",
+                content: `
+                    <h2>1. Thao tác Logic (Logic Operations)</h2>
+                    <p>Xử lý trên từng bit riêng lẻ: <strong>NOT</strong> (đảo bit), <strong>AND</strong> (&), <strong>OR</strong> (|), <strong>XOR</strong> (^).</p>
+                    <p><strong>Ứng dụng quan trọng:</strong> Dùng <strong class="highlight">mặt nạ (Mask)</strong> để bật (Set), tắt (Unset), hoặc đảo (Flip/Toggle) các bit cụ thể.</p>
+
+                    <h2>2. Thao tác Dịch chuyển (Shift Operations)</h2>
+                    <ul>
+                        <li><strong>Dịch chuyển Logic:</strong> Dùng cho số không dấu. Bit trống chèn vào là 0.</li>
+                        <li><strong>Dịch chuyển Số học:</strong> Dùng cho số Bù 2. Mục đích: <span class="highlight">Nhân/chia cho 2 nhanh chóng</span>. Khi dịch phải, bit dấu được giữ nguyên.</li>
+                    </ul>
+
+                    <h2>3. Thao tác Số học (Arithmetic Operations)</h2>
+                    <p>Nguyên tắc vàng: ALU thực hiện mọi thứ qua phép cộng. Phép trừ <code>A - B</code> được thực hiện bằng <code class="highlight">A + (Bù 2 của B)</code>.</p>
+                    
+                    <div class="practice-box">
+                        <h3>Ví dụ Tính toán</h3>
+                        <p><strong>Ví dụ 1: Dùng MASK để <span class="highlight">đảo 4 bit giữa</span> của chuỗi <code>11110000</code>.</strong></p>
+                        <p>Để đảo bit, ta dùng phép <strong>XOR</strong> với mặt nạ có bit 1 ở vị trí cần đảo.</p>
+                        <code>
+                            &nbsp;&nbsp;11110000 (Data)<br>
+                            ^ 00111100 (Mask)<br>
+                            ------------<br>
+                            &nbsp;&nbsp;<strong>11001100</strong> (Result)
+                        </code>
+                        
+                        <p><strong>Ví dụ 2: Nhân <code>-6</code> với 2 dùng <span class="highlight">dịch trái số học</span> (8-bit Bù 2).</strong></p>
+                        <ol>
+                            <li>Biểu diễn -6 dưới dạng Bù 2 8-bit: <code>11111010</code>.</li>
+                            <li>Dịch trái 1 vị trí (bit trống bên phải điền 0): <strong><code>11110100</code></strong>.</li>
+                            <li><em>Kiểm tra kết quả:</em> <code>11110100</code> là dạng Bù 2 của <strong>-12</strong>. Phép tính đúng (-6 * 2 = -12).</li>
+                        </ol>
+                    </div>
+                `
+            },
+            en: { /* ... English translation ... */ }
+        },
+        { // Chapter 5
+            vi: {
+                tab: "Ch.5: Tổ chức",
+                title: "Chương 5: Tổ chức Máy tính",
+                content: `
+                    <h2>1. Ba hệ thống con</h2>
+                    <ul>
+                        <li><strong>CPU (Central Processing Unit):</strong> "Bộ não" gồm <span class="highlight">ALU, bộ điều khiển và các thanh ghi</span>.</li>
+                        <li><strong>Main Memory (Bộ nhớ chính):</strong> Gồm RAM (khả biến) và ROM (bất biến).</li>
+                        <li><strong>I/O Subsystem (Hệ thống I/O):</strong> Giao tiếp với bên ngoài.</li>
+                    </ul>
+                    
+                    <h2>2. Chu kỳ máy (Machine Cycle)</h2>
+                    <p>CPU lặp đi lặp lại một chu kỳ gồm 3 bước để thực thi chương trình:</p>
+                    <ol>
+                        <li><strong>Fetch (Nạp lệnh):</strong> Lấy lệnh từ bộ nhớ.</li>
+                        <li><strong>Decode (Giải mã lệnh):</strong> Hiểu lệnh cần làm gì.</li>
+                        <li><strong>Execute (Thực thi lệnh):</strong> Thực hiện công việc.</li>
+                    </ol>
+                    
+                    <h2>3. Liên kết hệ thống con</h2>
+                    <p>Các hệ thống con được kết nối qua các <strong>Bus</strong>:</p>
+                    <ul>
+                        <li><strong class="highlight">Data Bus:</strong> Truyền dữ liệu.</li>
+                        <li><strong class="highlight">Address Bus:</strong> Truyền địa chỉ.</li>
+                        <li><strong class="highlight">Control Bus:</strong> Truyền tín hiệu điều khiển.</li>
+                    </ul>
+
+                    <h2>4. Cải thiện hiệu năng</h2>
+                    <p><strong>RISC vs CISC:</strong> RISC (tập lệnh rút gọn) nhanh hơn CISC (tập lệnh phức tạp).</p>
+                    <p><strong>Pipelining:</strong> Gối đầu các bước của chu kỳ máy để tăng tốc.</p>
+                `
+            },
+            en: { /* ... English translation ... */ }
+        },
+        { // Chapter 6
+            vi: {
+                tab: "Ch.6: Mạng",
+                title: "Chương 6: Mạng Máy tính và Internet",
+                content: `
+                    <h2>1. Tổng quan</h2>
+                    <p><strong>LAN (Local Area Network):</strong> Mạng cục bộ. <strong>WAN (Wide Area Network):</strong> Mạng diện rộng.</p>
+                    <p><strong>Internet:</strong> Là một mạng liên kết toàn cầu, hoạt động dựa trên bộ giao thức <strong>TCP/IP</strong>.</p>
+                    
+                    <h2>2. Bộ giao thức TCP/IP (5 lớp)</h2>
+                    <ol>
+                        <li><strong>Lớp Ứng dụng (Application):</strong> Gần người dùng nhất. Giao thức: <strong class="highlight">HTTP, FTP, DNS</strong>.</li>
+                        <li><strong>Lớp Giao vận (Transport):</strong> Giao tiếp từ tiến trình đến tiến trình. Giao thức:
+                            <ul>
+                                <li><strong class="highlight">TCP:</strong> Hướng kết nối, đáng tin cậy.</li>
+                                <li><strong class="highlight">UDP:</strong> Không kết nối, nhanh, không đảm bảo.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Lớp Mạng (Network):</strong> Chuyển gói tin từ nguồn đến đích. Chức năng chính là <span class="highlight">định tuyến (routing)</span>. Giao thức: <strong>IP (IPv4, IPv6)</strong>.</li>
+                        <li><strong>Lớp Liên kết dữ liệu (Data-link):</strong> Truyền dữ liệu giữa các nút kề nhau. Công nghệ: <strong>Ethernet, WiFi</strong>.</li>
+                        <li><strong>Lớp Vật lý (Physical):</strong> Truyền bit qua môi trường vật lý (cáp, sóng).</li>
+                    </ol>
+                `
+            },
+            en: { /* ... English translation ... */ }
+        }
+    ];
+
+    // --- Fill in English Translations (abbreviated for brevity) ---
+    chapters[0].en = {tab:"Ch.1: Intro", title: "Chapter 1: Intro to CS", content: "..."};
+    chapters[1].en = {tab:"Ch.2: Numbers", title: "Chapter 2: Number Systems", content: "..."};
+    chapters[2].en = {tab:"Ch.3: Storage", title: "Chapter 3: Data Storage", content: "..."};
+    chapters[3].en = {tab:"Ch.4: Ops", title: "Chapter 4: Data Operations", content: "..."};
+    chapters[4].en = {tab:"Ch.5: Arch", title: "Chapter 5: Computer Organization", content: "..."};
+    chapters[5].en = {tab:"Ch.6: Network", title: "Chapter 6: Networking", content: "..."};
+    // Note: For a real app, you would add full translations here. 
+    // This is a placeholder to make the language toggle work.
+    
+    // --- SCRIPT LOGIC ---
+    let currentChapter = 0;
+    let currentLang = 'vi'; // 'vi' or 'en'
+
+    const tabContainerEl = document.getElementById('tab-container');
+    const contentEl = document.getElementById('chapter-content');
+    const mainTitleEl = document.getElementById('main-title');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const langToggleBtn = document.getElementById('lang-toggle');
+
+    function createTabs() {
+        tabContainerEl.innerHTML = '';
+        chapters.forEach((chapter, index) => {
+            const tabBtn = document.createElement('button');
+            tabBtn.className = 'tab-btn';
+            if (index === currentChapter) {
+                tabBtn.classList.add('active');
+            }
+            tabBtn.textContent = chapter[currentLang].tab;
+            tabBtn.setAttribute('data-index', index);
+            tabBtn.addEventListener('click', () => {
+                currentChapter = index;
+                render();
+            });
+            tabContainerEl.appendChild(tabBtn);
+        });
+    }
+
+    function renderChapter() {
+        const chapterData = chapters[currentChapter][currentLang];
+        // Don't update the h1 on chapter change, only on lang change.
+        // H1 now has chapter title, so let's make an element for it.
+        contentEl.innerHTML = `<h1>${chapterData.title}</h1>` + chapterData.content;
+        updateNavButtons();
+    }
+    
+    function updateNavButtons() {
+        prevBtn.disabled = currentChapter === 0;
+        nextBtn.disabled = currentChapter === chapters.length - 1;
+    }
+
+    function updateActiveTab() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach((tab, index) => {
+            if (index === currentChapter) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+    
+    function render() {
+        renderChapter();
+        updateActiveTab();
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'vi' ? 'en' : 'vi';
+        
+        if (currentLang === 'vi') {
+            mainTitleEl.textContent = 'Ôn tập CSI';
+            langToggleBtn.textContent = 'English';
+            prevBtn.textContent = 'Chương trước';
+            nextBtn.textContent = 'Chương tiếp';
+        } else {
+            mainTitleEl.textContent = 'CSI Review';
+            langToggleBtn.textContent = 'Tiếng Việt';
+            prevBtn.textContent = 'Previous';
+            nextBtn.textContent = 'Next';
+        }
+        
+        createTabs(); // Re-create tabs with new language
+        render(); // Re-render content
+    }
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentChapter < chapters.length - 1) {
+            currentChapter++;
+            render();
+        }
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        if (currentChapter > 0) {
+            currentChapter--;
+            render();
+        }
+    });
+    
+    langToggleBtn.addEventListener('click', toggleLanguage);
+
+    // Initial load
+    createTabs();
+    render();
+</script>
+</body>
+</html>
