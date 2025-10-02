@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ôn tập Lý thuyết Khoa học Máy tính</title>
+    <title>Sổ tay Ôn tập CSI</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #f0f2f5;
             color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
+            line-height: 1.6;
             margin: 0;
             padding: 20px;
-            box-sizing: border-box;
         }
-        .quiz-container {
+        .container {
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
+            margin: 20px auto;
             padding: 25px 30px;
         }
         h1 {
@@ -32,337 +29,334 @@
             padding-bottom: 15px;
             margin-top: 0;
         }
-        .top-controls {
+        .controls {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 1.1em;
         }
         #chapter-select {
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 10px 15px;
+            border-radius: 8px;
             border: 1px solid #ccc;
             font-size: 1em;
-        }
-        .question-container {
-            margin-bottom: 20px;
-        }
-        #question-text {
-            font-size: 1.2em;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-        .answers-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .answer-btn {
             background-color: #f8f9fa;
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-            padding: 12px 15px;
-            font-size: 1em;
-            cursor: pointer;
-            text-align: left;
-            transition: background-color 0.2s, border-color 0.2s;
-            width: 100%;
         }
-        .answer-btn:hover:not(:disabled) {
-            background-color: #e9ecef;
-            border-color: #adb5bd;
+        #content-display {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
-        .answer-btn.correct {
-            background-color: #d1e7dd;
-            border-color: #a3cfbb;
-            color: #0a3622;
+        #content-display h3 {
+            color: #005691;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            display: inline-block;
         }
-        .answer-btn.incorrect {
-            background-color: #f8d7da;
-            border-color: #f1aeb5;
-            color: #58151c;
-        }
-        .answer-btn:disabled {
-            cursor: not-allowed;
-        }
-        #feedback {
-            margin-top: 15px;
-            font-size: 0.9em;
-            padding: 10px;
-            border-radius: 6px;
-        }
-        #feedback.correct {
-            background-color: #e6ffec;
-            color: #096a23;
-        }
-        #feedback.incorrect {
-            background-color: #ffe6e6;
-            color: #a60000;
-        }
-        .bottom-controls {
-            display: flex;
-            justify-content: flex-end;
+        #content-display h4 {
+            color: #17a2b8;
+            font-size: 1.3em;
             margin-top: 20px;
+            margin-bottom: 10px;
         }
-        #next-btn, #restart-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.2s;
+        #content-display ul {
+            padding-left: 20px;
         }
-        #next-btn:hover, #restart-btn:hover {
-            background-color: #0056b3;
+        #content-display li {
+            margin-bottom: 8px;
         }
-        .hidden {
-            display: none;
+        #content-display strong {
+            color: #dc3545; /* Highlight color */
+            font-weight: 600;
         }
-        .result-container {
-            text-align: center;
+        #content-display code {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
         }
-        #no-questions-msg {
+        .welcome-message {
             text-align: center;
             color: #6c757d;
-            padding: 20px;
+            font-size: 1.2em;
+            padding: 40px 20px;
+        }
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="quiz-container">
-        <h1>Trắc nghiệm Lý thuyết CSI</h1>
-        
-        <div class="top-controls">
-            <label for="chapter-select">Ôn tập chương:</label>
+    <div class="container">
+        <h1>Sổ tay Ôn tập Lý thuyết CSI</h1>
+
+        <div class="controls">
+            <label for="chapter-select">Chọn chương để xem:</label>
             <select id="chapter-select">
-                <option value="0">Tất cả các chương</option>
-                <option value="1">Chương 1 - Tổng quan</option>
-                <option value="2">Chương 2 - Hệ đếm</option>
-                <option value="3">Chương 3 - Lưu trữ dữ liệu</option>
-                <option value="4">Chương 4 - Phép toán</option>
-                <option value="5">Chương 5 - Tổ chức máy tính</option>
-                <option value="6">Chương 6 - Mạng máy tính</option>
+                <option value="0">--- Chọn một chương ---</option>
+                <option value="1">Chương 1: Tổng quan</option>
+                <option value="2">Chương 2: Các hệ đếm</option>
+                <option value="3">Chương 3: Lưu trữ dữ liệu</option>
+                <option value="4">Chương 4: Các phép toán</option>
+                <option value="5">Chương 5: Tổ chức máy tính</option>
+                <option value="6">Chương 6: Mạng máy tính</option>
             </select>
         </div>
 
-        <div id="quiz-view">
-            <div class="question-container">
-                <p id="question-text"></p>
+        <div id="content-display">
+            <div class="welcome-message">
+                <p>Hãy chọn một chương từ menu bên trên để bắt đầu ôn tập.</p>
+                <p>Chúc em thi tốt!</p>
             </div>
-            <div id="answers-container" class="answers-container"></div>
-            <p id="no-questions-msg" class="hidden">Không có câu hỏi cho chương này.</p>
-            <div id="feedback" class="hidden"></div>
-            <div class="bottom-controls">
-                <button id="next-btn" class="hidden">Câu tiếp theo</button>
-            </div>
-        </div>
-
-        <div id="result-view" class="result-container hidden">
-            <h2>Hoàn thành!</h2>
-            <p id="score-text"></p>
-            <button id="restart-btn">Chọn chương khác</button>
         </div>
     </div>
 
     <script>
-        const allQuizData = [
-            {
-                chapter: 1,
-                question: "Khái niệm 'Stored Program Concept' là đặc điểm cốt lõi của mô hình nào?",
-                answers: [ { text: "Mô hình Turing", correct: false }, { text: "Mô hình Von Neumann", correct: true }, { text: "Mô hình phân cấp bộ nhớ", correct: false }, { text: "Mô hình TCP/IP", correct: false } ],
-                explanation: "Stored Program Concept, tức chương trình và dữ liệu được lưu chung trong bộ nhớ, là phát kiến quan trọng nhất của mô hình Von Neumann."
-            },
-            {
-                chapter: 1,
-                question: "Thành phần nào sau đây KHÔNG thuộc 4 hệ thống con của mô hình Von Neumann?",
-                answers: [ { text: "Memory (Bộ nhớ)", correct: false }, { text: "Control Unit (Khối điều khiển)", correct: false }, { text: "Cache Memory", correct: true }, { text: "Input/Output", correct: false } ],
-                explanation: "4 hệ thống con gồm Memory, ALU, Control Unit, và I/O. Cache là một phần của hệ thống phân cấp bộ nhớ, không phải là một hệ thống con cơ bản trong mô hình này."
-            },
-            {
-                chapter: 2,
-                question: "Để biểu diễn (A9F)₁₆ trong hệ nhị phân, bạn cần bao nhiêu bit?",
-                answers: [ { text: "8 bit", correct: false }, { text: "12 bit", correct: true }, { text: "16 bit", correct: false }, { text: "10 bit", correct: false } ],
-                explanation: "Mỗi ký tự Hexadecimal tương đương với 4 bit. (A9F)₁₆ có 3 ký tự, vậy cần 3 * 4 = 12 bit."
-            },
-            {
-                chapter: 2,
-                question: "Số nhị phân (101101)₂ tương đương với số bát phân (Octal) nào?",
-                answers: [ { text: "(55)₈", correct: true }, { text: "(65)₈", correct: false }, { text: "(2D)₈", correct: false }, { text: "(45)₈", correct: false } ],
-                explanation: "Gom nhóm 3 bit từ phải sang: (101 101)₂. Ta có 101₂ = 5 và 101₂ = 5. Kết quả là (55)₈."
-            },
-            {
-                chapter: 3,
-                question: "Trong chuẩn IEEE 754 để biểu diễn số thực, phần Exponent (số mũ) được lưu trữ theo dạng nào?",
-                answers: [ { text: "Two's Complement", correct: false }, { text: "Sign-and-Magnitude", correct: false }, { text: "Dạng Excess (thiên vị)", correct: true }, { text: "Unsigned integer", correct: false } ],
-                explanation: "Dạng Excess (hay Biased) được dùng để lưu số mũ, cho phép biểu diễn cả số mũ âm và dương mà không cần bit dấu riêng."
-            },
-            {
-                chapter: 3,
-                question: "Biểu diễn Two's Complement 8-bit của số -1 là gì?",
-                answers: [ { text: "10000001", correct: false }, { text: "11111111", correct: true }, { text: "01111111", correct: false }, { text: "10000000", correct: false } ],
-                explanation: "Số 1 là 00000001. Đảo bit (bù 1) ta được 11111110. Cộng thêm 1 ta được 11111111."
-            },
-            {
-                chapter: 4,
-                question: "Để lật (flip) 4 bit cuối cùng của một byte 8-bit `D` mà không thay đổi 4 bit đầu, ta nên dùng phép toán nào?",
-                answers: [ { text: "D AND 00001111", correct: false }, { text: "D OR 00001111", correct: false }, { text: "D XOR 00001111", correct: true }, { text: "NOT D", correct: false } ],
-                explanation: "Phép XOR với 1 sẽ lật bit (0->1, 1->0), còn XOR với 0 sẽ giữ nguyên bit. Do đó, `D XOR 00001111` sẽ giữ nguyên 4 bit đầu và lật 4 bit cuối."
-            },
-            {
-                chapter: 4,
-                question: "Một số nguyên âm được lưu bằng 8-bit Two's Complement. Sau khi thực hiện phép 'Arithmetic Shift Right' 1 lần, giá trị của nó sẽ thay đổi như thế nào?",
-                answers: [ { text: "Chia cho 2 và làm tròn xuống", correct: true }, { text: "Nhân với 2", correct: false }, { text: "Trở thành số dương", correct: false }, { text: "Không thay đổi", correct: false } ],
-                explanation: "Arithmetic Shift Right tương đương với phép chia 2 (lấy phần nguyên). Đối với số âm, nó sẽ làm tròn xuống (ví dụ -5/2 = -2.5 -> -3)."
-            },
-            {
-                chapter: 5,
-                question: "Trong chu kỳ máy, thanh ghi nào chứa địa chỉ của lệnh TIẾP THEO sẽ được thực thi?",
-                answers: [ { text: "Instruction Register (IR)", correct: false }, { text: "Accumulator (AC)", correct: false }, { text: "Program Counter (PC)", correct: true }, { text: "Memory Address Register (MAR)", correct: false } ],
-                explanation: "Program Counter (PC) luôn trỏ đến địa chỉ của lệnh kế tiếp trong bộ nhớ. Sau mỗi lần Fetch, PC sẽ được cập nhật."
-            },
-            {
-                chapter: 5,
-                question: "Nguyên tắc hoạt động của bộ nhớ Cache là gì?",
-                answers: [ { text: "Lưu trữ vĩnh viễn dữ liệu", correct: false }, { text: "Lưu trữ bản sao của dữ liệu thường xuyên truy cập từ RAM", correct: true }, { text: "Thay thế hoàn toàn cho RAM", correct: false }, { text: "Điều khiển các thiết bị I/O", correct: false } ],
-                explanation: "Cache là bộ nhớ đệm tốc độ cao, nó lưu trữ tạm thời các dữ liệu và lệnh mà CPU có khả năng cần đến trong tương lai gần để giảm thời gian chờ đợi truy cập RAM."
-            },
-            {
-                chapter: 6,
-                question: "Giao thức nào ở tầng Transport đảm bảo tính tin cậy và truyền dữ liệu theo đúng thứ tự?",
-                answers: [ { text: "IP", correct: false }, { text: "UDP", correct: false }, { text: "TCP", correct: true }, { text: "HTTP", correct: false } ],
-                explanation: "TCP (Transmission Control Protocol) là giao thức hướng kết nối (connection-oriented), nó sử dụng cơ chế bắt tay, đánh số thứ tự gói tin và xác nhận để đảm bảo dữ liệu được truyền đi một cách tin cậy."
-            },
-             {
-                chapter: 6,
-                question: "Sự khác biệt chính giữa địa chỉ MAC và địa chỉ IP là gì?",
-                answers: [ { text: "MAC dùng ở tầng Network, IP dùng ở tầng Data Link", correct: false }, { text: "MAC là địa chỉ logic, IP là địa chỉ vật lý", correct: false }, { text: "MAC dùng cho mạng cục bộ (local), IP dùng cho mạng toàn cầu (global)", correct: true }, { text: "Không có sự khác biệt nào", correct: false } ],
-                explanation: "Địa chỉ MAC là định danh duy nhất của card mạng, chỉ có ý nghĩa trong một mạng LAN. Địa chỉ IP là địa chỉ logic, có tính toàn cầu, được dùng để các thiết bị tìm thấy nhau trên Internet."
-            }
-        ];
+        const theoryData = {
+            "0": `
+                <div class="welcome-message">
+                    <p>Hãy chọn một chương từ menu bên trên để bắt đầu ôn tập.</p>
+                    <p>Nội dung lý thuyết chi tiết sẽ được hiển thị ở đây.</p>
+                </div>
+            `,
+            "1": `
+                <h3>Chương 1: Introduction to Computer Science</h3>
+                <h4>Khái niệm Cốt lõi</h4>
+                <ul>
+                    <li><strong>Mô hình Turing:</strong> Một định nghĩa toán học về máy tính. Nó giới thiệu khái niệm <strong>"máy tính đa năng" (general-purpose machine)</strong>, có khả năng thực hiện bất kỳ phép tính nào nếu được cung cấp một chương trình phù hợp. Cấu trúc cơ bản: <code>Input Data + Program → Computer → Output Data</code>.</li>
+                    <li><strong>Mô hình Von Neumann:</strong> Là kiến trúc máy tính được sử dụng phổ biến nhất hiện nay.
+                        <ul>
+                            <li>Đặc điểm quan trọng nhất: <strong>Stored Program Concept (Khái niệm chương trình được lưu trữ)</strong>. Tức là cả chương trình (tập hợp các lệnh) và dữ liệu đều được lưu trữ trong cùng một bộ nhớ (RAM).</li>
+                            <li><strong>Bốn hệ thống con (Subsystems):</strong>
+                                <ol>
+                                    <li><strong>Memory (Bộ nhớ):</strong> Lưu trữ chương trình và dữ liệu.</li>
+                                    <li><strong>Arithmetic Logic Unit (ALU):</strong> Thực hiện các phép toán số học và logic.</li>
+                                    <li><strong>Control Unit (Khối điều khiển):</strong> Điều khiển hoạt động của các bộ phận khác.</li>
+                                    <li><strong>Input/Output (Nhập/Xuất):</strong> Giao tiếp với thế giới bên ngoài.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Chi tiết Quan trọng</h4>
+                <ul>
+                    <li><strong>Ba thành phần cơ bản của một hệ thống máy tính:</strong>
+                        <ol>
+                            <li><strong>Hardware (Phần cứng):</strong> Các thiết bị vật lý.</li>
+                            <li><strong>Software (Phần mềm):</strong> Các chương trình, bao gồm hệ điều hành và ứng dụng.</li>
+                            <li><strong>Data (Dữ liệu):</strong> Thông tin mà chương trình xử lý.</li>
+                        </ol>
+                    </li>
+                    <li>Lịch sử máy tính được chia thành các thế hệ, đánh dấu bằng các công nghệ chính: Đèn chân không (Gen 1), Transistor (Gen 2), Mạch tích hợp - IC (Gen 3), Vi xử lý (Gen 4), Trí tuệ nhân tạo & Song song (Gen 5).</li>
+                </ul>
+            `,
+            "2": `
+                <h3>Chương 2: Number Systems (Hệ đếm)</h3>
+                <h4>Khái niệm Cốt lõi</h4>
+                <ul>
+                    <li>Máy tính chỉ làm việc với <strong>hệ nhị phân (Binary - base 2)</strong> vì các linh kiện điện tử có hai trạng thái (on/off).</li>
+                    <li>Con người dùng <strong>hệ thập phân (Decimal - base 10)</strong>.</li>
+                    <li>Lập trình viên dùng <strong>hệ thập lục phân (Hexadecimal - base 16)</strong> và <strong>hệ bát phân (Octal - base 8)</strong> để biểu diễn chuỗi bit một cách ngắn gọn.</li>
+                </ul>
+                <h4>Chi tiết Quan trọng & Ví dụ</h4>
+                <ul>
+                    <li><strong>Chuyển từ cơ số bất kỳ sang hệ 10:</strong> Nhân từng chữ số với cơ số mũ vị trí tương ứng.</li>
+                    <div class="example"><strong>Ví dụ (Hexa → Dec):</strong> <code>(1A5)₁₆ = 1 * 16² + A * 16¹ + 5 * 16⁰ = 1 * 256 + 10 * 16 + 5 * 1 = 421</code>.</div>
+                    <li><strong>Chuyển từ hệ 10 sang cơ số bất kỳ (phần nguyên):</strong> Chia liên tiếp cho cơ số và lấy phần dư, đọc ngược lại.</li>
+                    <div class="example"><strong>Ví dụ (Dec → Binary):</strong> Chuyển <code>25</code> sang binary.<br>
+                        <code>25 / 2 = 12</code> dư <code>1</code><br>
+                        <code>12 / 2 = 6</code> dư <code>0</code><br>
+                        <code>6 / 2 = 3</code> dư <code>0</code><br>
+                        <code>3 / 2 = 1</code> dư <code>1</code><br>
+                        <code>1 / 2 = 0</code> dư <code>1</code><br>
+                        Kết quả: <code>(11001)₂</code>.
+                    </div>
+                    <li><strong>Chuyển đổi giữa Binary ↔ Octal ↔ Hexadecimal:</strong> Dựa trên mối quan hệ gom nhóm bit.
+                        <ul>
+                            <li><strong>1 Octal digit = 3 bits:</strong> <code>(725)₈ = (111 010 101)₂</code></li>
+                            <li><strong>1 Hexadecimal digit = 4 bits:</strong> <code>(A2F)₁₆ = (1010 0010 1111)₂</code></li>
+                        </ul>
+                    </li>
+                    <div class="example"><strong>Ví dụ (Binary → Hexa):</strong> Chuyển <code>(1101011)₂</code>.<br>
+                        1. Gom nhóm 4 bit từ phải qua: <code>0110 1011</code> (thêm 0 ở đầu nếu cần).<br>
+                        2. <code>0110 = 6</code>, <code>1011 = 11 = B</code>.<br>
+                        3. Kết quả: <code>(6B)₁₆</code>.
+                    </div>
+                </ul>
+            `,
+            "3": `
+                <h3>Chương 3: Data Storage (Lưu trữ dữ liệu)</h3>
+                <h4>Khái niệm Cốt lõi</h4>
+                <ul>
+                    <li>Tất cả dữ liệu (số, văn bản, ảnh,...) đều được mã hóa thành <strong>chuỗi bit (bit patterns)</strong>.</li>
+                </ul>
+                <h4>Chi tiết Quan trọng</h4>
+                <ul>
+                    <li><strong>Lưu trữ Số nguyên (Integers):</strong>
+                        <ul>
+                            <li><em>Unsigned:</em> Chỉ số không âm. Toàn bộ bit dùng để biểu diễn giá trị.</li>
+                            <li><em>Sign-and-Magnitude:</em> Bit trái nhất là bit dấu (0: dương, 1: âm). Gặp vấn đề với hai biểu diễn của số 0 (+0 và -0).</li>
+                            <li><strong>Two's Complement (Bù 2):</strong> <strong>Phương pháp chuẩn để lưu số nguyên có dấu.</strong>
+                                <ul>
+                                    <li><strong>Cách tìm bù 2 của một số:</strong> Đảo tất cả các bit (tìm bù 1) rồi cộng 1.</li>
+                                    <li>Ưu điểm: Chỉ có một biểu diễn cho số 0, phép trừ trở thành phép cộng.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Lưu trữ Số thực (Reals) - Floating-Point:</strong>
+                        <ul>
+                            <li>Dựa trên cách biểu diễn khoa học: <code>(-1)^S * M * 2^E</code>.</li>
+                            <li><strong>Tiêu chuẩn IEEE 754</strong> chia chuỗi bit thành 3 phần:
+                                <ol>
+                                    <li><strong>Sign (S):</strong> Dấu của số (1 bit).</li>
+                                    <li><strong>Exponent (E):</strong> Số mũ, được lưu ở dạng "Excess" (thiên vị) để biểu diễn cả số mũ âm và dương.</li>
+                                    <li><strong>Mantissa (M):</strong> Phần định trị (phần thập phân của số khoa học).</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Lưu trữ Văn bản (Text):</strong>
+                        <ul>
+                            <li><strong>ASCII:</strong> 7-bit hoặc 8-bit, đủ cho tiếng Anh và các ký tự điều khiển.</li>
+                            <li><strong>Unicode (UTF-8, UTF-16):</strong> Chuẩn quốc tế, có thể biểu diễn mọi ngôn ngữ. UTF-8 là phổ biến nhất trên web.</li>
+                        </ul>
+                    </li>
+                </ul>
+            `,
+            "4": `
+                <h3>Chương 4: Operations on Data (Các phép toán)</h3>
+                <h4>Khái niệm Cốt lõi</h4>
+                <ul>
+                    <li>Các phép toán trong máy tính được thực hiện ở mức bit.</li>
+                </ul>
+                <h4>Chi tiết Quan trọng & Ví dụ</h4>
+                <ul>
+                    <li><strong>1. Phép toán Logic (Logical Operations):</strong>
+                        <ul>
+                            <li>Bao gồm: <code>NOT</code> (đảo bit), <code>AND</code> (chỉ 1 nếu cả hai là 1), <code>OR</code> (chỉ 0 nếu cả hai là 0), <code>XOR</code> (là 1 nếu hai bit khác nhau).</li>
+                            <li><strong>Ứng dụng với mặt nạ (Masking):</strong>
+                                <ul>
+                                    <li><strong>Unset (tắt bit):</strong> <code>data AND 11110111</code> (tắt bit thứ 3 từ phải sang).</li>
+                                    <li><strong>Set (bật bit):</strong> <code>data OR 00001000</code> (bật bit thứ 4 từ phải sang).</li>
+                                    <li><strong>Flip (lật bit):</strong> <code>data XOR 00000001</code> (lật bit cuối cùng).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>2. Phép toán Dịch chuyển (Shift Operations):</strong>
+                        <ul>
+                            <li><em>Logical Shift (Dịch logic):</em> Dịch bit sang trái/phải, chèn 0 vào chỗ trống.</li>
+                            <li><em>Arithmetic Shift (Dịch số học):</em> Khi dịch phải, <strong>giữ nguyên bit dấu</strong> (bit trái nhất) để bảo toàn giá trị của số âm.</li>
+                            <li><strong>Dịch trái n bit ≈ Nhân 2ⁿ. Dịch phải n bit ≈ Chia 2ⁿ (phần nguyên).</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>3. Phép toán Số học (Arithmetic Operations):</strong>
+                        <ul>
+                            <li><strong>Cộng/Trừ số Bù 2:</strong> Phép cộng thực hiện như cộng nhị phân bình thường. <strong>Bit nhớ ra khỏi bit trái nhất sẽ bị loại bỏ.</strong></li>
+                            <li><strong>Phép trừ A - B được thực hiện bằng A + (Bù 2 của B).</strong></li>
+                            <li><strong>Overflow (Tràn số):</strong> Xảy ra khi kết quả của phép toán vượt quá phạm vi biểu diễn. Dấu hiệu: cộng 2 số dương ra số âm, hoặc cộng 2 số âm ra số dương.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="example"><strong>Ví dụ (Trừ bằng Bù 2, 8-bit):</strong> Tính <code>12 - 5</code><br>
+                    1. <code>12 = 00001100</code><br>
+                    2. <code>5 = 00000101</code><br>
+                    3. Bù 1 của 5 là <code>11111010</code>. Bù 2 của 5 là <code>-5 = 11111011</code>.<br>
+                    4. Thực hiện phép cộng: <code>00001100 (12) + 11111011 (-5) = (1)00000111</code>.<br>
+                    5. Bỏ bit nhớ 1 ở đầu, kết quả là <code>00000111 = 7</code>.
+                </div>
+            `,
+            "5": `
+                <h3>Chương 5: Computer Organization (Tổ chức máy tính)</h3>
+                <h4>Khái niệm Cốt lõi</h4>
+                <ul>
+                    <li>Nghiên cứu cách các thành phần phần cứng được kết nối và phối hợp với nhau để tạo thành một hệ thống máy tính hoạt động.</li>
+                </ul>
+                <h4>Chi tiết Quan trọng</h4>
+                <ul>
+                    <li><strong>Ba hệ thống con (Subsystems):</strong> <strong>CPU</strong>, <strong>Main Memory (RAM)</strong>, và <strong>I/O Subsystem</strong>. Chúng được kết nối qua hệ thống <strong>Bus</strong> (Data Bus, Address Bus, Control Bus).</li>
+                    <li><strong>CPU (Central Processing Unit):</strong>
+                        <ul>
+                            <li><strong>ALU (Arithmetic Logic Unit):</strong> Trung tâm tính toán.</li>
+                            <li><strong>Control Unit (CU):</strong> "Nhạc trưởng" điều khiển luồng dữ liệu và lệnh.</li>
+                            <li><strong>Registers (Thanh ghi):</strong> Các ô nhớ nhỏ, siêu nhanh bên trong CPU.
+                                <ul>
+                                    <li><em>Program Counter (PC):</em> Chứa địa chỉ của lệnh <strong>tiếp theo</strong> sẽ được thực thi.</li>
+                                    <li><em>Instruction Register (IR):</em> Chứa lệnh <strong>hiện tại</strong> đang được thực thi.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Chu kỳ máy (Machine Cycle):</strong> Quy trình <strong>Fetch → Decode → Execute</strong> là nền tảng hoạt động của CPU.</li>
+                    <li><strong>Phân cấp bộ nhớ (Memory Hierarchy):</strong>
+                        <ul>
+                            <li>Mục đích: Cân bằng giữa <strong>tốc độ, dung lượng và chi phí</strong>.</li>
+                            <li>Thứ tự từ nhanh đến chậm: <strong>Registers → Cache → RAM → Storage (SSD/HDD).</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>Kiến trúc tập lệnh:</strong>
+                        <ul>
+                            <li><strong>CISC (Complex Instruction Set Computer):</strong> Tập lệnh phức tạp, một lệnh có thể làm nhiều việc. (VD: Intel x86).</li>
+                            <li><strong>RISC (Reduced Instruction Set Computer):</strong> Tập lệnh rút gọn, đơn giản, tối ưu hóa cho tốc độ. (VD: ARM).</li>
+                        </ul>
+                    </li>
+                </ul>
+            `,
+            "6": `
+                <h3>Chương 6: Computer Networks & Internet</h3>
+                <h4>Khái niệm Cốt lõi</h4>
+                <ul>
+                    <li><strong>Protocol (Giao thức):</strong> Tập hợp các quy tắc mà các thiết bị phải tuân theo để giao tiếp với nhau.</li>
+                    <li><strong>Protocol Layering (Phân tầng giao thức):</strong> Chia nhỏ nhiệm vụ giao tiếp phức tạp thành các tầng (layers) đơn giản hơn, mỗi tầng có một chức năng cụ thể.</li>
+                </ul>
+                <h4>Mô hình TCP/IP (5 lớp)</h4>
+                <ul>
+                    <li><strong>Layer 5 - Application (Ứng dụng):</strong> Cung cấp giao diện và dịch vụ cho người dùng.
+                        <ul><li>Giao thức: <strong>HTTP</strong> (web), <strong>FTP</strong> (truyền file), <strong>SMTP</strong> (email), <strong>DNS</strong> (phân giải tên miền).</li></ul>
+                    </li>
+                    <li><strong>Layer 4 - Transport (Giao vận):</strong> Giao tiếp <strong>end-to-end (process-to-process)</strong>.
+                        <ul>
+                            <li><strong>TCP (Transmission Control Protocol):</strong> <strong>Hướng kết nối, tin cậy</strong>, đảm bảo dữ liệu đến đúng thứ tự và không mất mát.</li>
+                            <li><strong>UDP (User Datagram Protocol):</strong> <strong>Không kết nối, không tin cậy</strong>, ưu tiên tốc độ (dùng cho game, stream).</li>
+                            <li>Sử dụng <strong>Port Numbers</strong> để xác định ứng dụng.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Layer 3 - Network (Mạng):</strong> Chịu trách nhiệm định tuyến (routing) các gói tin qua các mạng khác nhau để đi từ nguồn đến đích (host-to-host).
+                        <ul>
+                            <li>Giao thức chính: <strong>IP (Internet Protocol)</strong>.</li>
+                            <li>Sử dụng <strong>IP Address</strong> để định danh thiết bị trên mạng toàn cầu.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Layer 2 - Data Link (Liên kết dữ liệu):</strong> Truyền dữ liệu trong cùng một mạng cục bộ (LAN), ví dụ từ máy tính đến router (node-to-node).
+                        <ul>
+                            <li>Giao thức: Ethernet.</li>
+                            <li>Sử dụng <strong>MAC Address</strong> (địa chỉ vật lý của card mạng).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Layer 1 - Physical (Vật lý):</strong> Truyền luồng bit thô qua môi trường vật lý (cáp, sóng điện từ).</li>
+                </ul>
+            `
+        };
 
-        // Lấy các element từ HTML
         const chapterSelect = document.getElementById('chapter-select');
-        const quizView = document.getElementById('quiz-view');
-        const resultView = document.getElementById('result-view');
-        const questionText = document.getElementById('question-text');
-        const answersContainer = document.getElementById('answers-container');
-        const feedback = document.getElementById('feedback');
-        const nextBtn = document.getElementById('next-btn');
-        const restartBtn = document.getElementById('restart-btn');
-        const scoreText = document.getElementById('score-text');
-        const noQuestionsMsg = document.getElementById('no-questions-msg');
+        const contentDisplay = document.getElementById('content-display');
 
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let filteredQuizData = [];
-
-        function startQuiz() {
-            const selectedChapter = parseInt(chapterSelect.value);
-            if (selectedChapter === 0) {
-                filteredQuizData = [...allQuizData];
-            } else {
-                filteredQuizData = allQuizData.filter(q => q.chapter === selectedChapter);
-            }
-
-            filteredQuizData.sort(() => Math.random() - 0.5);
-
-            currentQuestionIndex = 0;
-            score = 0;
-            quizView.style.display = 'block';
-            resultView.classList.add('hidden');
-            nextBtn.classList.add('hidden');
-
-            if (filteredQuizData.length > 0) {
-                questionText.style.display = 'block';
-                answersContainer.style.display = 'flex';
-                noQuestionsMsg.classList.add('hidden');
-                showQuestion();
-            } else {
-                resetState();
-                questionText.style.display = 'none';
-                answersContainer.style.display = 'none';
-                noQuestionsMsg.classList.remove('hidden');
-            }
+        function updateContent() {
+            const selectedChapter = chapterSelect.value;
+            contentDisplay.innerHTML = theoryData[selectedChapter];
         }
 
-        function showQuestion() {
-            resetState();
-            const currentQuestion = filteredQuizData[currentQuestionIndex];
-            questionText.innerText = `Câu hỏi: ${currentQuestion.question}`;
-            
-            currentQuestion.answers.forEach(answer => {
-                const button = document.createElement('button');
-                button.innerText = answer.text;
-                button.classList.add('answer-btn');
-                button.addEventListener('click', () => selectAnswer(answer.correct, button));
-                answersContainer.appendChild(button);
-            });
-        }
-        
-        function resetState() {
-            feedback.classList.add('hidden');
-            nextBtn.classList.add('hidden');
-            while (answersContainer.firstChild) {
-                answersContainer.removeChild(answersContainer.firstChild);
-            }
-        }
-
-        function selectAnswer(isCorrect, selectedButton) {
-            if (isCorrect) {
-                score++;
-            }
-            
-            feedback.innerText = (isCorrect ? "Chính xác! " : "Chưa đúng. ") + filteredQuizData[currentQuestionIndex].explanation;
-            feedback.className = isCorrect ? 'correct' : 'incorrect';
-
-            Array.from(answersContainer.children).forEach(button => {
-                const answer = filteredQuizData[currentQuestionIndex].answers.find(ans => ans.text === button.innerText);
-                if (answer.correct) {
-                    button.classList.add('correct');
-                } else if (button === selectedButton) {
-                    button.classList.add('incorrect');
-                }
-                button.disabled = true;
-            });
-
-            feedback.classList.remove('hidden');
-            
-            if(filteredQuizData.length > currentQuestionIndex + 1) {
-                nextBtn.innerText = 'Câu tiếp theo';
-            } else {
-                nextBtn.innerText = 'Xem kết quả';
-            }
-            nextBtn.classList.remove('hidden');
-        }
-
-        function handleNextButtonClick() {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < filteredQuizData.length) {
-                showQuestion();
-            } else {
-                showResults();
-            }
-        }
-
-        function showResults() {
-            quizView.style.display = 'none';
-            resultView.classList.remove('hidden');
-            scoreText.innerText = `Bạn đã trả lời đúng ${score} trên ${filteredQuizData.length} câu!`;
-        }
-        
-        nextBtn.addEventListener('click', handleNextButtonClick);
-        restartBtn.addEventListener('click', () => {
-            resultView.classList.add('hidden');
-            startQuiz();
-        });
-        chapterSelect.addEventListener('change', startQuiz);
-
-        document.addEventListener('DOMContentLoaded', startQuiz);
+        chapterSelect.addEventListener('change', updateContent);
     </script>
 
 </body>
